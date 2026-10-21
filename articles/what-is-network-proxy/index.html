@@ -1,0 +1,44 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>翻墙是什么：新手先搞懂的基本概念 · 科学上网入门手册</title><meta name="description" content="翻墙、梯子和机场分别指什么？从网站打不开的原因讲起，解释代理与 VPN 如何改变访问路径，以及连接成功后仍需注意的隐私边界。"><meta name="theme-color" content="#123f35"><meta property="og:title" content="翻墙是什么：新手先搞懂的基本概念"><meta property="og:description" content="翻墙、梯子和机场分别指什么？从网站打不开的原因讲起，解释代理与 VPN 如何改变访问路径，以及连接成功后仍需注意的隐私边界。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="翻墙是什么：新手先搞懂的基本概念"><meta name="twitter:description" content="翻墙、梯子和机场分别指什么？从网站打不开的原因讲起，解释代理与 VPN 如何改变访问路径，以及连接成功后仍需注意的隐私边界。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"翻墙是什么：新手先搞懂的基本概念","description":"翻墙、梯子和机场分别指什么？从网站打不开的原因讲起，解释代理与 VPN 如何改变访问路径，以及连接成功后仍需注意的隐私边界。","inLanguage":"zh-CN","dateModified":"2026-10-18"}</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a  href="/about/">关于</a></nav></div></header><div class="reading-progress" aria-hidden="true"><span></span></div><div class="article-shell"><aside class="series-sidebar" aria-label="系列目录"><a class="back-link" href="/#chapters">← 全部文章</a><p class="eyebrow">THE FIELD GUIDE / 1 PUBLISHED CHAPTER</p><nav aria-label="章节导航"><div class="sidebar-group"><p>基础认知</p><a aria-current="page" href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a></div></nav></aside><main class="article-main" id="main"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">首页</a><span>/</span><a href="/#group-basics">基础认知</a><span>/</span><span>第 01 篇</span></nav><header class="article-header"><p class="eyebrow">CHAPTER 01 <span> / 1</span></p><h1>翻墙是什么：新手先搞懂的基本概念</h1><p class="article-summary">网站为什么打不开？改变网络路径能做什么，又不能保证什么？</p><div class="article-meta"><span>约 5 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div></header><details class="mobile-outline"><summary>阅读导航：系列目录与本文目录</summary><nav aria-label="手机章节导航"><div class="sidebar-group"><p>基础认知</p><a aria-current="page" href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a></div></nav><p class="eyebrow">本文目录</p><ol><li class="toc-h2"><a href="#为什么有些网站打不开">为什么有些网站打不开</a></li><li class="toc-h2"><a href="#墙-可以怎么理解">“墙”可以怎么理解</a></li><li class="toc-h2"><a href="#翻墙不等于匿名">翻墙不等于匿名</a></li><li class="toc-h2"><a href="#翻墙不等于绝对安全">翻墙不等于绝对安全</a></li><li class="toc-h2"><a href="#选择工具之前">选择工具之前</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></details><article class="prose"><p>第一次听到“翻墙”，很多人会把它想象成一个按钮：打开软件，点一下连接，原本打不开的网站就能用了。</p>
+<p>“翻墙”是通俗说法，通常指通过代理、VPN、加密隧道或其他网络中继方式，改变设备访问目标网站时经过的路径，并不是某一种软件的名字。</p>
+<p>例如，原本由设备直接访问的网站，可以改成先连接一个中转服务器，再由它访问。请求经过的路线变了，网站看到的出口也可能改变，但这并不意味着你获得了“隐身”能力。</p>
+<p>日常说的“梯子”通常泛指这类连接工具；“机场”在代理工具的讨论里，通常指提供订阅和节点的服务商。客户端是操作的软件，服务由运营者提供，具体连接地址则写在配置中。</p>
+<h2 id="为什么有些网站打不开">为什么有些网站打不开</h2>
+<p>打开一个网页，背后通常要经历域名解析、建立连接、传输数据几个步骤。输入域名后，设备要先通过 DNS 找到目标服务器的 IP 地址；随后建立 TCP 或其他类型的网络连接；连接成功后，浏览器才开始请求网页内容。</p>
+<p>任何一环出问题，都可能表现为“网站打不开”。常见情况包括：</p>
+<ul>
+<li>DNS 解析失败或返回了不正确的结果；</li>
+<li>目标 IP 或域名无法访问；</li>
+<li>连接超时、端口不可用；</li>
+<li>网络拥堵、丢包严重；</li>
+<li>网站本身故障；</li>
+<li>页面可以打开，但图片、脚本或视频加载失败；</li>
+<li>某些应用没有使用系统代理。</li>
+</ul>
+<p>看到“打不开”三个字，先别急着换软件。换 DNS 只能处理部分解析问题，不能解决所有网络限制。</p>
+<p>浏览器的隐身模式解决的又是另一件事：减少浏览器在本地保留的历史记录。它不改变网络出口，也不会自动隐藏身份。Mozilla 明确说明，隐私窗口不等于在互联网上匿名；网站、网络服务提供商或组织网络仍可能收集相关访问信息。[1]</p>
+<h2 id="墙-可以怎么理解">“墙”可以怎么理解</h2>
+<p>日常说的“墙”，通常不是一堵看得见的墙，而是对网络访问进行限制、过滤或干预的一组机制。它可能发生在域名解析、IP 连接、协议识别、流量过滤等不同层面。</p>
+<p>对普通用户来说，没必要一开始就记住所有技术细节。先记住一件事就够了：网络访问不是“能不能上网”这么简单，而是“你的设备能否通过当前路径到达某个目标服务”。</p>
+<p>这也解释了为什么有时一个网站能打开，里面的图片却加载不出来；为什么手机可以访问，电脑却不行；为什么白天速度正常，晚上连接变慢。问题可能出在不同环节，而不是工具只有“能用”和“不能用”两种状态。</p>
+<h2 id="翻墙不等于匿名">翻墙不等于匿名</h2>
+<p>代理或 VPN 可能改变网站看到的出口 IP，也可能让本地网络更难直接读取传输内容，但这不代表你变成了匿名用户。只要登录邮箱、社交媒体或购物账户，网站仍然知道这个账户是谁。浏览器 Cookie、设备信息、浏览器指纹和行为习惯，也可能把不同访问关联起来。</p>
+<p>Tor Project 的说明同样强调：即使使用 Tor，如果用户主动填写姓名、邮箱、电话或登录已有账号，网站仍然能够知道这些身份信息。[2] 网络工具能够减少某些暴露，不会替用户撤回已经提交的信息。</p>
+<h2 id="翻墙不等于绝对安全">翻墙不等于绝对安全</h2>
+<p>网络连接经过第三方服务器，就意味着你需要考虑第三方的可信度。VPN 服务商可能看到连接时间、流量大小和部分元数据；代理服务可能记录请求；来历不明的客户端还可能带来恶意软件、广告注入或账号窃取风险。</p>
+<p>“加密”也需要看加密发生在哪里。HTTPS 能保护设备与网站之间的传输内容，但网站仍能看到你主动提交的账号和资料。VPN 隧道能保护一段链路，却不能保证终点网站、客户端本身或服务商都值得信任。</p>
+<p>还有一个容易混淆的地方：看不到网页正文，不等于看不到任何信息。连接时间、流量大小、目标 IP，以及某些情况下的域名信息，和正文内容是不同层面的线索。排查隐私问题时，要问清楚“谁看不到什么”，而不是只问“有没有加密”。</p>
+<h2 id="选择工具之前">选择工具之前</h2>
+<p>可以先对照下面几项，判断自己需要解决什么问题：</p>
+<ol>
+<li>翻墙本质上是改变网络访问路径。</li>
+<li>网站打不开，可能是 DNS、连接、应用设置或网络质量问题。</li>
+<li>代理、VPN 和 Tor 都不是“自动匿名”工具。</li>
+<li>能连上不等于安全，工具来源和服务商可信度同样重要。</li>
+</ol>
+<p>新手不必急着背协议名称，也不必先下载一堆软件。先理解自己遇到的是访问问题、速度问题，还是隐私问题。例如，只有一个应用打不开时，先查它的网络设置，比同时更换客户端和服务更容易找到原因。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>[1] <a href="https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history">Mozilla：隐私浏览的作用与限制</a></li>
+<li>[2] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Project：Tor Browser 安全使用建议</a></li>
+</ul>
+</article><div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div><nav class="article-pagination" aria-label="上一篇与下一篇"><a href="/#chapters"><small>← 阅读目录</small><strong>查看全部文章</strong></a><a href="/about/"><small>读完以后 →</small><strong>关于本手册与内容纠错</strong></a></nav></main><aside class="toc-sidebar" aria-label="本文目录"><p class="eyebrow">ON THIS PAGE</p><h2>本文目录</h2><nav><ol><li class="toc-h2"><a href="#为什么有些网站打不开">为什么有些网站打不开</a></li><li class="toc-h2"><a href="#墙-可以怎么理解">“墙”可以怎么理解</a></li><li class="toc-h2"><a href="#翻墙不等于匿名">翻墙不等于匿名</a></li><li class="toc-h2"><a href="#翻墙不等于绝对安全">翻墙不等于绝对安全</a></li><li class="toc-h2"><a href="#选择工具之前">选择工具之前</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></nav><div class="toc-note">不急着换工具，<br>先弄清楚问题。</div></aside></div><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务信息分开 · 内容复核 2026-10-18</p></footer></body></html>
