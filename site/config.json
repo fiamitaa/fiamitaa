@@ -1,0 +1,51 @@
+{
+  "name": "科学上网入门手册",
+  "shortName": "科学上网入门手册",
+  "description": "机场订阅和机场节点是什么？先从代理、VPN 与网络工具的基础概念开始，理解连接路径、工具边界与后续学习方向。",
+  "repository": "https://github.com/fiamitaa/fiamitaa",
+  "branch": "main",
+  "reviewed": "2026-10-18",
+  "groups": [
+    {
+      "id": "basics",
+      "name": "基础认知",
+      "caption": "先把概念分清",
+      "description": "从访问路径开始，弄清代理、VPN 与 Tor 分别解决什么问题。"
+    },
+    {
+      "id": "ecosystem",
+      "name": "工具生态",
+      "caption": "看懂名字背后的角色",
+      "description": "客户端、核心和协议不是一回事。把常见名称放回各自的位置。"
+    },
+    {
+      "id": "practice",
+      "name": "配置与排查",
+      "caption": "让问题有迹可循",
+      "description": "理解订阅、节点与规则，按顺序排查，而不是反复重装。"
+    },
+    {
+      "id": "safety",
+      "name": "安全与边界",
+      "caption": "能连上，还不够",
+      "description": "识别不可靠的承诺，了解隐私、权限与使用责任。"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "what-is-network-proxy",
+      "file": "01-翻墙是什么-新手基本概念.md",
+      "group": "basics",
+      "label": "翻墙是什么",
+      "summary": "网站为什么打不开？改变网络路径能做什么，又不能保证什么？",
+      "description": "翻墙、梯子和机场分别指什么？从网站打不开的原因讲起，解释代理与 VPN 如何改变访问路径，以及连接成功后仍需注意的隐私边界。"
+    }
+  ],
+  "seoTitle": "代理、VPN、Clash 与订阅配置入门｜科学上网入门手册",
+  "promotion": {
+    "url": "",
+    "label": "查看机场与订阅服务整理",
+    "description": "先核对客户端兼容、订阅方式、试用与售后，再决定是否选择连接服务。"
+  },
+  "aboutDescription": "了解科学上网入门手册的写作方法、参考来源、内容纠错与外部服务入口，查看机场订阅和 VPN 相关科普的适用范围、隐私说明及使用边界。"
+}
