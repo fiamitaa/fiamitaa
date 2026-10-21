@@ -1,16 +1,20 @@
-## Hi there 👋
+# 🧭 科学上网入门手册
 
-<!--
-**fiamitaa/fiamitaa** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+从“翻墙是什么”讲起，聊清代理和 VPN 的区别、机场订阅与机场节点是什么，以及 Clash 配置为什么会出现连接问题。
 
-Here are some ideas to get you started:
+这份手册适合刚接触网络工具、准备看机场测评，或想弄明白“节点能用但网页打不开”这类问题的读者。内容不替你排机场，也不把连接成功说成匿名或绝对安全；它更重视先把工具和配置看懂。
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+你可以从这里了解：
+
+- 代理、VPN 与 Tor 的基本区别
+- 客户端、核心、协议、节点和订阅各自负责什么
+- Clash、Mihomo、V2Ray、Xray 等常见名称之间的关系
+- 规则、DNS、延迟、丢包和基础连接排查
+- 看机场订阅、稳定节点和机场测速时，哪些信息值得核对
+- 订阅凭据、软件来源、隐私和使用边界
+
+📖 **[开始阅读：翻墙是什么]()**  ·  **[打开手册首页]()**
+
+> 🔎 能连上，只说明某一段连接建立了。节点、服务商、账号和所在地规则仍然需要单独判断。
+
+文章参考项目官方文档、RFC 和公开安全资料。软件功能会随版本变化；订阅链接、配置文件、密钥和二维码可能包含访问凭据，请勿公开发布。
