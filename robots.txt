@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://fiamitaa.github.io/fiamitaa/sitemap.xml
