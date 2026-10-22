@@ -1,0 +1,80 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理、VPN、Tor 有什么区别：覆盖范围与信任关系 · 科学上网入门手册</title><meta name="description" content="机场 VPN 和代理是一回事吗？对照代理、VPN、Tor 的覆盖范围、信任关系与速度限制，弄清机场节点和 VPN 服务之间的区别。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.win/articles/proxy-vpn-tor/"><meta property="og:url" content="https://ladderer.win/articles/proxy-vpn-tor/"><meta property="og:title" content="代理、VPN、Tor 有什么区别：覆盖范围与信任关系"><meta property="og:description" content="机场 VPN 和代理是一回事吗？对照代理、VPN、Tor 的覆盖范围、信任关系与速度限制，弄清机场节点和 VPN 服务之间的区别。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理、VPN、Tor 有什么区别：覆盖范围与信任关系"><meta name="twitter:description" content="机场 VPN 和代理是一回事吗？对照代理、VPN、Tor 的覆盖范围、信任关系与速度限制，弄清机场节点和 VPN 服务之间的区别。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"代理、VPN、Tor 有什么区别：覆盖范围与信任关系","description":"机场 VPN 和代理是一回事吗？对照代理、VPN、Tor 的覆盖范围、信任关系与速度限制，弄清机场节点和 VPN 服务之间的区别。","inLanguage":"zh-CN","dateModified":"2026-10-18","mainEntityOfPage":"https://ladderer.win/articles/proxy-vpn-tor/"}</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a  href="/about/">关于</a></nav></div></header><div class="reading-progress" aria-hidden="true"><span></span></div><div class="article-shell"><aside class="series-sidebar" aria-label="系列目录"><a class="back-link" href="/#chapters">← 全部文章</a><p class="eyebrow">THE FIELD GUIDE / 2 PUBLISHED CHAPTERS</p><nav aria-label="章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a aria-current="page" href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div></nav></aside><main class="article-main" id="main"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">首页</a><span>/</span><a href="/#group-basics">基础认知</a><span>/</span><span>第 02 篇</span></nav><header class="article-header"><p class="eyebrow">CHAPTER 02 <span> / 2</span></p><h1>代理、VPN、Tor 有什么区别：覆盖范围与信任关系</h1><p class="article-summary">从覆盖范围、信任关系与隐私目标，理解三种不同的网络工具。</p><div class="article-meta"><span>约 6 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div></header><details class="mobile-outline"><summary>阅读导航：系列目录与本文目录</summary><nav aria-label="手机章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a aria-current="page" href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div></nav><p class="eyebrow">本文目录</p><ol><li class="toc-h2"><a href="#代理-一个中转站">代理：一个中转站</a></li><li class="toc-h2"><a href="#vpn-一条加密隧道">VPN：一条加密隧道</a></li><li class="toc-h2"><a href="#tor-多层中继网络">Tor：多层中继网络</a></li><li class="toc-h2"><a href="#三者放在一起怎么比较">三者放在一起怎么比较</a></li><li class="toc-h2"><a href="#怎么按需求思考">怎么按需求思考</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></details><article class="prose"><p>代理、VPN、Tor 经常一起出现在“如何访问某些网络服务”的讨论里。对新手来说，它们看起来都像是在做同一件事：让请求绕一个弯。</p>
+<p>它们确实都涉及流量转发，但覆盖范围、信任关系和隐私目标不同，适合的场景也不一样。</p>
+<p>“机场 VPN”这个叫法容易让人混淆服务类型。机场通常指提供代理订阅和节点的服务，VPN 则描述一种隧道技术或相应服务。判断它们会接管哪些流量，还要看客户端的运行模式和实际配置。</p>
+<h2 id="代理-一个中转站">代理：一个中转站</h2>
+<p>代理可以理解成“替你向目标网站发请求的中间人”。你的浏览器或某个应用先把请求交给代理服务器，代理再访问目标地址，把结果返回给你。</p>
+<p>HTTP 代理常用于网页请求，也能通过 CONNECT 方法建立隧道；SOCKS5 则定义了连接转发与 UDP 转发等机制。具体应用和服务器支持哪些能力，仍要看实现，不能简单理解为“HTTP 代理只能打开网页”。[4][5]</p>
+<p>它们都可以按应用配置。例如，只让浏览器经过代理，其他软件仍然使用原来的网络路径。</p>
+<p>不过，只给浏览器配好代理，不代表其他程序也能用。代理可能只对一个应用生效，某些应用还有自己的网络设置，完全不理会浏览器代理。于是就会出现“网页能开，但桌面客户端还是连不上”的情况。</p>
+<p>代理还带来一个信任问题：请求经过谁的服务器？对方保存什么日志？是否修改内容？如果代理服务商没有清晰的运营主体和隐私说明，就不适合拿来处理重要账号或敏感资料。</p>
+<h2 id="vpn-一条加密隧道">VPN：一条加密隧道</h2>
+<p>VPN 的常见工作方式，是在设备与 VPN 服务器之间建立一条加密隧道。设备的部分或全部网络流量经过隧道转发，再从 VPN 服务器访问互联网。</p>
+<p>它的覆盖范围通常比浏览器代理更大，能够影响多个应用，甚至整个系统的网络出口。对于公共 Wi-Fi、远程办公或访问企业内网，VPN 也有正常且广泛的使用场景。</p>
+<p>但“VPN 有加密”不等于“VPN 让你完全匿名”。你把一部分网络信任从本地网络转移给 VPN 服务商。VPN 服务器会解开 VPN 这一层隧道；如果里面还使用了正常校验的 HTTPS，网页内容仍受 HTTPS 保护。没有应用层加密的内容，则不能指望 VPN 自动保护到目标网站。</p>
+<p>即使读不到 HTTPS 正文，服务商仍可能接触到连接时间、流量规模和目标 IP 等元数据；如果你登录网站，网站也仍能关联到你的账户。</p>
+<p>VPN 更适合解决“让一组应用通过另一条网络路径访问”的问题，而不是承诺消除所有身份线索。</p>
+<h2 id="tor-多层中继网络">Tor：多层中继网络</h2>
+<p>Tor 通过多个中继节点转发流量。Tor Project 的介绍通常把它概括为：连接经过多个中继，每一层只知道自己需要知道的那一部分，从而降低单个观察者同时把用户和目标网站对应起来的可能性。[1]</p>
+<p>Tor Browser 不是普通浏览器简单加一个代理。它基于 Firefox ESR，并针对隐私、浏览器指纹和会话管理做了专门修改。Tor Project 也不建议把其他浏览器随意接到 Tor 网络上，因为浏览器配置、插件和应用行为可能造成信息泄露。[2]</p>
+<p>Tor 的代价也很明显：多跳转发会增加延迟，部分网站会把 Tor 出口视为高风险来源，要求额外验证，甚至拒绝服务。它更偏向隐私和匿名性场景，不是追求视频速度或低延迟游戏体验的万能方案。</p>
+<h2 id="三者放在一起怎么比较">三者放在一起怎么比较</h2>
+<div class="table-wrap" role="region" aria-label="对比表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>代理</th>
+<th>VPN</th>
+<th>Tor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>覆盖范围</td>
+<td>常见是单个应用</td>
+<td>可覆盖多个应用或全局流量</td>
+<td>主要是配置正确的应用，Tor Browser 最稳妥</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>取决于线路、负载与实现</td>
+<td>取决于线路、负载与实现</td>
+<td>多跳转发通常增加延迟</td>
+</tr>
+<tr>
+<td>信任对象</td>
+<td>代理运营者</td>
+<td>VPN 服务商</td>
+<td>多个中继运营者和 Tor 网络机制</td>
+</tr>
+<tr>
+<td>主要目标</td>
+<td>转发和访问路径</td>
+<td>隧道、远程访问、网络出口变化</td>
+<td>降低单点关联和追踪风险</td>
+</tr>
+<tr>
+<td>常见误区</td>
+<td>以为所有应用都会走代理</td>
+<td>以为 VPN 等于匿名</td>
+<td>以为 Tor 能保护整台设备所有流量</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="怎么按需求思考">怎么按需求思考</h2>
+<p>如果你的问题是“某个浏览器访问不了”，代理可能是最小范围的解决思路；如果希望多种应用都通过同一条加密连接，VPN 更接近这个需求；如果重点是降低网站和本地观察者之间的直接关联，Tor 的设计目标更相关。</p>
+<p>很难脱离需求，说哪个工具“最强”。工具越复杂，需要留意的配置细节就越多，也越容易误用。Tor Project 明确提醒，Tor Browser 只保护经过正确配置的应用，不会自动保护电脑上所有程序。[3]</p>
+<p>先问自己三个问题：</p>
+<ul>
+<li>我需要改变哪一个应用的访问路径？</li>
+<li>我更在意速度、兼容性，还是隐私？</li>
+<li>我是否清楚自己把信任交给了谁？</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>[1] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Project：Tor Browser 与 Tor 网络如何工作</a></li>
+<li>[2] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Project：Tor Browser 的隐私设计与浏览器差异</a></li>
+<li>[3] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Project：匿名性限制与安全使用建议</a></li>
+<li>[4] <a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3.6">RFC 9110：HTTP CONNECT 方法</a></li>
+<li>[5] <a href="https://www.rfc-editor.org/rfc/rfc1928.html">RFC 1928：SOCKS 协议第五版</a></li>
+</ul>
+</article><div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div><nav class="article-pagination" aria-label="上一篇与下一篇"><a href="/articles/what-is-network-proxy/"><small>← 上一篇 · 01</small><strong>翻墙是什么</strong></a><a href="/about/"><small>读完以后 →</small><strong>关于本手册与内容纠错</strong></a></nav></main><aside class="toc-sidebar" aria-label="本文目录"><p class="eyebrow">ON THIS PAGE</p><h2>本文目录</h2><nav><ol><li class="toc-h2"><a href="#代理-一个中转站">代理：一个中转站</a></li><li class="toc-h2"><a href="#vpn-一条加密隧道">VPN：一条加密隧道</a></li><li class="toc-h2"><a href="#tor-多层中继网络">Tor：多层中继网络</a></li><li class="toc-h2"><a href="#三者放在一起怎么比较">三者放在一起怎么比较</a></li><li class="toc-h2"><a href="#怎么按需求思考">怎么按需求思考</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></nav><div class="toc-note">不急着换工具，<br>先弄清楚问题。</div></aside></div><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
