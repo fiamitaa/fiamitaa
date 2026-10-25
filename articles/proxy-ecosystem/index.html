@@ -1,0 +1,46 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理工具生态总览：核心、客户端、协议、配置和服务 · 科学上网入门手册</title><meta name="description" content="代理机场、Clash、V2Ray 和节点是什么关系？按客户端、核心、协议、配置与服务拆开说明，避免把装好软件误当成已经拥有连接服务。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.win/articles/proxy-ecosystem/"><meta property="og:url" content="https://ladderer.win/articles/proxy-ecosystem/"><meta property="og:title" content="代理工具生态总览：核心、客户端、协议、配置和服务"><meta property="og:description" content="代理机场、Clash、V2Ray 和节点是什么关系？按客户端、核心、协议、配置与服务拆开说明，避免把装好软件误当成已经拥有连接服务。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理工具生态总览：核心、客户端、协议、配置和服务"><meta name="twitter:description" content="代理机场、Clash、V2Ray 和节点是什么关系？按客户端、核心、协议、配置与服务拆开说明，避免把装好软件误当成已经拥有连接服务。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"代理工具生态总览：核心、客户端、协议、配置和服务","description":"代理机场、Clash、V2Ray 和节点是什么关系？按客户端、核心、协议、配置与服务拆开说明，避免把装好软件误当成已经拥有连接服务。","inLanguage":"zh-CN","dateModified":"2026-10-18","mainEntityOfPage":"https://ladderer.win/articles/proxy-ecosystem/"}</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a  href="/about/">关于</a></nav></div></header><div class="reading-progress" aria-hidden="true"><span></span></div><div class="article-shell"><aside class="series-sidebar" aria-label="系列目录"><a class="back-link" href="/#chapters">← 全部文章</a><p class="eyebrow">THE FIELD GUIDE / 3 PUBLISHED CHAPTERS</p><nav aria-label="章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a aria-current="page" href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a></div></nav></aside><main class="article-main" id="main"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">首页</a><span>/</span><a href="/#group-ecosystem">工具生态</a><span>/</span><span>第 03 篇</span></nav><header class="article-header"><p class="eyebrow">CHAPTER 03 <span> / 3</span></p><h1>代理工具生态总览：核心、客户端、协议、配置和服务</h1><p class="article-summary">把客户端、核心、协议、配置和服务拆开，不再被软件名称绕晕。</p><div class="article-meta"><span>约 4 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div></header><details class="mobile-outline"><summary>阅读导航：系列目录与本文目录</summary><nav aria-label="手机章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a aria-current="page" href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a></div></nav><p class="eyebrow">本文目录</p><ol><li class="toc-h2"><a href="#第一层-客户端">第一层：客户端</a></li><li class="toc-h2"><a href="#第二层-核心">第二层：核心</a></li><li class="toc-h2"><a href="#第三层-协议">第三层：协议</a></li><li class="toc-h2"><a href="#第四层-配置">第四层：配置</a></li><li class="toc-h2"><a href="#第五层-服务和节点">第五层：服务和节点</a></li><li class="toc-h2"><a href="#这些部分怎么配合">这些部分怎么配合</a></li><li class="toc-h2"><a href="#为什么网上教程经常讲乱">为什么网上教程经常讲乱</a></li><li class="toc-h2"><a href="#官方入口">官方入口</a></li></ol></details><article class="prose"><p>如果只记住软件名称，越学越乱。Clash、V2Ray、Xray、sing-box、v2rayN、Mihomo 经常同时出现，但它们并不是同一种东西。</p>
+<p>这些名称分别涉及客户端、核心、协议、配置和服务。判断它们负责哪一部分，才能知道安装软件后还缺什么。</p>
+<h2 id="第一层-客户端">第一层：客户端</h2>
+<p>客户端是用户直接操作的程序。它负责导入配置、切换模式、选择代理组、显示连接状态和查看日志。</p>
+<p>Clash Verge Rev、FlClash、v2rayN、v2rayNG 都更接近客户端。它们可能调用不同核心，也可能支持多个核心。</p>
+<p>所以，“我使用 v2rayN”描述的是界面和管理程序，不一定说明后台实际运行的是 V2Ray、Xray 还是其他核心。</p>
+<h2 id="第二层-核心">第二层：核心</h2>
+<p>核心负责实际连接。它解析配置，处理认证、协议、路由和流量转发。</p>
+<p>Mihomo、V2Ray、Xray、sing-box 都可以放在核心或核心生态这一层理解。核心之间可能支持不同协议、配置字段和路由能力。</p>
+<p>客户端和核心可以分别更新。客户端支持某个核心，也不代表界面能配置该核心的全部功能。有时核心文档里已经存在某个字段，客户端还没有相应选项；这时不能只看核心名称，还要核对客户端版本和配置方式。</p>
+<h2 id="第三层-协议">第三层：协议</h2>
+<p>协议规定客户端和服务端如何建立连接、认证身份、加密和传输数据。HTTP、SOCKS5、Shadowsocks、VMess、VLESS、Trojan、WireGuard 和 OpenVPN 的定位并不完全相同。</p>
+<p>协议不等于客户端，也不等于服务商。看到“支持某协议”，只能说明软件具备某种连接能力，不能直接推断速度、稳定性或隐私水平。</p>
+<h2 id="第四层-配置">第四层：配置</h2>
+<p>配置把客户端、核心、协议和服务地址组合起来。它可能包含节点、订阅、代理组、规则、DNS 和传输参数。</p>
+<p>配置格式和字段会随核心不同而变化。配置能导入，不代表每个字段都生效；显示已连接，也不代表所有应用都走了预期路径。</p>
+<h2 id="第五层-服务和节点">第五层：服务和节点</h2>
+<p>“代理机场”通常提供节点和订阅服务，与客户端配合使用。安装客户端与购买服务是两件事。</p>
+<p>节点通常指一个可以接收代理连接的远程入口。它不是客户端，也不是协议，而是实际承载连接的服务资源。</p>
+<p>节点服务商的稳定性、日志政策、带宽和运营方式，会直接影响体验和隐私。开源客户端并不能替第三方节点服务背书。</p>
+<h2 id="这些部分怎么配合">这些部分怎么配合</h2>
+<blockquote>
+<p>用户通过客户端，调用某个核心，按照某种协议，读取一份配置，连接到远程服务或节点。</p>
+</blockquote>
+<p>遇到陌生名称时，可以先对照这句话，看看它负责哪一部分。这是角色分工，不是数据包依次经过五个程序的意思；配置是参数集合，不是一台额外的中转服务器。</p>
+<h2 id="为什么网上教程经常讲乱">为什么网上教程经常讲乱</h2>
+<p>很多教程为了省事，把客户端、核心和协议都称为“工具”。于是“安装 V2Ray”“使用 Clash”“导入节点”这些说法，在不同文章里可能指不同东西。</p>
+<p>读教程时，先问四个问题：</p>
+<ol>
+<li>这是客户端还是核心？</li>
+<li>这是协议还是传输方式？</li>
+<li>这是配置文件还是远程服务？</li>
+<li>这个项目是否仍在维护？</li>
+</ol>
+<p>这样再遇到新名称，就能先判断它是换了一个界面、一个核心，还是一套配置，不必每次都从头学起。</p>
+<h2 id="官方入口">官方入口</h2>
+<ul>
+<li><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge Rev</a></li>
+<li><a href="https://github.com/MetaCubeX/mihomo">Mihomo</a></li>
+<li><a href="https://github.com/v2fly/v2ray-core">V2Fly/v2ray-core</a></li>
+<li><a href="https://github.com/XTLS/Xray-core">Xray-core</a></li>
+<li><a href="https://github.com/SagerNet/sing-box">sing-box</a></li>
+<li><a href="https://github.com/2dust/v2rayN">v2rayN</a></li>
+<li><a href="https://github.com/2dust/v2rayNG">v2rayNG</a></li>
+</ul>
+</article><section class="service-note" aria-label="机场与订阅服务"><p class="eyebrow">NEXT STEP</p><h2>需要连接服务？看看我的机场推荐。</h2><p>正在找机场订阅或翻墙梯子？我把推荐入口放在 GitHub，选购前可以先对照自己的设备、流量用量和付款周期。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="sponsored">查看翻墙梯子与机场推荐 ↗</a><p class="service-destination">前往 GitHub 查看服务信息</p></section><div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div><nav class="article-pagination" aria-label="上一篇与下一篇"><a href="/articles/proxy-vpn-tor/"><small>← 上一篇 · 02</small><strong>代理、VPN、Tor 的区别</strong></a><a href="/about/"><small>读完以后 →</small><strong>关于本手册与内容纠错</strong></a></nav></main><aside class="toc-sidebar" aria-label="本文目录"><p class="eyebrow">ON THIS PAGE</p><h2>本文目录</h2><nav><ol><li class="toc-h2"><a href="#第一层-客户端">第一层：客户端</a></li><li class="toc-h2"><a href="#第二层-核心">第二层：核心</a></li><li class="toc-h2"><a href="#第三层-协议">第三层：协议</a></li><li class="toc-h2"><a href="#第四层-配置">第四层：配置</a></li><li class="toc-h2"><a href="#第五层-服务和节点">第五层：服务和节点</a></li><li class="toc-h2"><a href="#这些部分怎么配合">这些部分怎么配合</a></li><li class="toc-h2"><a href="#为什么网上教程经常讲乱">为什么网上教程经常讲乱</a></li><li class="toc-h2"><a href="#官方入口">官方入口</a></li></ol></nav><div class="toc-note">不急着换工具，<br>先弄清楚问题。</div></aside></div><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
