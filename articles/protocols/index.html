@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理协议详解：从 HTTP、SOCKS5 到 VLESS、WireGuard · 科学上网入门手册</title><meta name="description" content="Trojan、VLESS、VMess、Shadowsocks 与 WireGuard 有什么区别？从代理协议的用途与配置条件入手，解释协议、传输和 TLS 各自负责什么。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.win/articles/protocols/"><meta property="og:url" content="https://ladderer.win/articles/protocols/"><meta property="og:title" content="代理协议详解：从 HTTP、SOCKS5 到 VLESS、WireGuard"><meta property="og:description" content="Trojan、VLESS、VMess、Shadowsocks 与 WireGuard 有什么区别？从代理协议的用途与配置条件入手，解释协议、传输和 TLS 各自负责什么。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理协议详解：从 HTTP、SOCKS5 到 VLESS、WireGuard"><meta name="twitter:description" content="Trojan、VLESS、VMess、Shadowsocks 与 WireGuard 有什么区别？从代理协议的用途与配置条件入手，解释协议、传输和 TLS 各自负责什么。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"代理协议详解：从 HTTP、SOCKS5 到 VLESS、WireGuard","description":"Trojan、VLESS、VMess、Shadowsocks 与 WireGuard 有什么区别？从代理协议的用途与配置条件入手，解释协议、传输和 TLS 各自负责什么。","inLanguage":"zh-CN","dateModified":"2026-10-18","mainEntityOfPage":"https://ladderer.win/articles/protocols/"}</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a  href="/about/">关于</a></nav></div></header><div class="reading-progress" aria-hidden="true"><span></span></div><div class="article-shell"><aside class="series-sidebar" aria-label="系列目录"><a class="back-link" href="/#chapters">← 全部文章</a><p class="eyebrow">THE FIELD GUIDE / 4 PUBLISHED CHAPTERS</p><nav aria-label="章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a  href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a><a aria-current="page" href="/articles/protocols/"><span>04</span>代理协议详解</a></div></nav></aside><main class="article-main" id="main"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">首页</a><span>/</span><a href="/#group-ecosystem">工具生态</a><span>/</span><span>第 04 篇</span></nav><header class="article-header"><p class="eyebrow">CHAPTER 04 <span> / 4</span></p><h1>代理协议详解：从 HTTP、SOCKS5 到 VLESS、WireGuard</h1><p class="article-summary">从 HTTP、SOCKS5 到 WireGuard，分清通信规则、传输与安全层。</p><div class="article-meta"><span>约 8 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div></header><details class="mobile-outline"><summary>阅读导航：系列目录与本文目录</summary><nav aria-label="手机章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a  href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a><a aria-current="page" href="/articles/protocols/"><span>04</span>代理协议详解</a></div></nav><p class="eyebrow">本文目录</p><ol><li class="toc-h2"><a href="#先把常见名称放回各自的位置">先把常见名称放回各自的位置</a></li><li class="toc-h2"><a href="#http-代理">HTTP 代理</a></li><li class="toc-h2"><a href="#socks5">SOCKS5</a></li><li class="toc-h2"><a href="#shadowsocks">Shadowsocks</a></li><li class="toc-h2"><a href="#vmess-vless-与-trojan">VMess、VLESS 与 Trojan</a></li><li class="toc-h2"><a href="#wireguard">WireGuard</a></li><li class="toc-h2"><a href="#openvpn-和-ikev2-ipsec">OpenVPN 和 IKEv2/IPsec</a></li><li class="toc-h2"><a href="#websocket-grpc-quic-不是同一种协议">WebSocket、gRPC、QUIC 不是同一种协议</a></li><li class="toc-h2"><a href="#为什么同一台设备上会同时出现-socks5-和-vless">为什么同一台设备上会同时出现 SOCKS5 和 VLESS</a></li><li class="toc-h2"><a href="#如何比较协议">如何比较协议</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></details><article class="prose"><p>机场订阅里常能看到 Shadowsocks、VMess、VLESS 或 Trojan。换一个节点，协议名称可能也变了，但名字不同，不代表其中一个一定更快、更稳定。真正容易混淆的是：这些名称并不都处在同一层。HTTP、SOCKS5、Shadowsocks、VMess、VLESS、Trojan、WireGuard、OpenVPN 常被放在一张表里，但它们的定位、覆盖范围和使用方式并不一样。</p>
+<p>区分名称时，可以对照它负责的工作：</p>
+<ul>
+<li><strong>客户端</strong>：用户操作的图形界面或命令行程序；</li>
+<li><strong>核心</strong>：真正执行连接、认证、路由和流量转发的程序；</li>
+<li><strong>协议</strong>：客户端与服务端之间遵守的通信规则；</li>
+<li><strong>传输与安全组件</strong>：TCP、UDP、QUIC 参与传输；TLS 负责安全保护；WebSocket、gRPC 等可能被用作承载方式，它们不在同一层；</li>
+<li><strong>配置</strong>：把地址、端口、密钥、规则和传输参数组合起来的文件。</li>
+</ul>
+<p>例如，Clash Verge Rev 是客户端，Mihomo 更接近核心；v2rayN 是客户端，Xray 和 V2Ray 更接近核心；WireGuard 和 OpenVPN 则更多出现在 VPN 隧道生态中。</p>
+<h2 id="先把常见名称放回各自的位置">先把常见名称放回各自的位置</h2>
+<div class="table-wrap" role="region" aria-label="对比表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>主要用途</th>
+<th>看配置时要留意什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP、SOCKS5</td>
+<td>代理请求或连接转发</td>
+<td>应用支持范围、认证、代理链路是否受保护</td>
+</tr>
+<tr>
+<td>Shadowsocks</td>
+<td>加密代理</td>
+<td>密码套件与密钥是否匹配</td>
+</tr>
+<tr>
+<td>VMess、VLESS、Trojan</td>
+<td>代理连接与认证</td>
+<td>核心版本、传输方式和安全配置</td>
+</tr>
+<tr>
+<td>WireGuard、OpenVPN</td>
+<td>VPN 隧道</td>
+<td>路由范围、密钥或证书、DNS 设置</td>
+</tr>
+</tbody>
+</table></div>
+<p>这张表用来辨认角色，不是性能排名。下面分别看它们能做什么，以及哪些事不能仅凭名称判断。</p>
+<h2 id="http-代理">HTTP 代理</h2>
+<p>HTTP 代理常用于网页请求：浏览器把请求交给代理，代理再访问目标网站并返回结果。HTTP 的 CONNECT 方法还可以建立到目标的隧道，HTTPS 访问常会用到它。能否承载某类连接，要看代理与应用的支持范围，不能只凭“HTTP”这个名字判断。[3]</p>
+<p>HTTP 代理本身不等于加密。是否安全，要看客户端到代理之间是否有保护、目标网站是否使用 HTTPS，以及代理服务商是否可信。</p>
+<h2 id="socks5">SOCKS5</h2>
+<p>SOCKS5 更像一个通用连接转发层。RFC 1928 定义了 CONNECT、BIND 和 UDP ASSOCIATE 等命令，但具体客户端或服务端未必把每项能力都实现了。浏览器、下载工具和其他网络应用是否支持，也要分别确认。[4]</p>
+<p>但它同样不自动提供匿名或端到端加密。SOCKS5 只是规定了请求如何交给代理服务器，不能单独证明代理运营者不会记录或修改数据。</p>
+<h2 id="shadowsocks">Shadowsocks</h2>
+<p>Shadowsocks 通常被归入加密代理工具。客户端和服务端需要匹配的加密参数与密钥材料，再由服务端转发请求；不同版本的密码套件和配置要求可能不同，应以项目文档为准。[5]</p>
+<p>加密代理保护的是特定通信链路，服务端仍然需要你信任。除了看协议名称，也要问清楚：配置来自谁，服务端由谁维护？</p>
+<h2 id="vmess-vless-与-trojan">VMess、VLESS 与 Trojan</h2>
+<p>VMess、VLESS 常出现在 V2Ray 或 Xray 相关配置中。它们属于代理协议；TLS 等安全组件以及 WebSocket、gRPC 等承载方式，则是另一些配置维度。哪些组合可用，需要看对应核心和版本，不能随意排列组合。</p>
+<p>VLESS 是 Xray 生态里常见的协议名称，VMess 则是 Project V 生态中较早出现的协议名称。Trojan 通常基于 TLS 建立代理连接。它们不能简单排成“从弱到强”的排行榜，因为实际结果还取决于服务端、证书、客户端、核心版本、传输方式和配置。</p>
+<p>不能把“使用 VLESS”直接当成“已经启用某种加密”的证明。Xray 官方文档会分别说明 VLESS 的加密设置和传输安全要求；旧教程中的字段解释，未必适用于当前版本。新手应核对完整配置与版本说明，不要凭协议名称猜测安全性。[6]</p>
+<p>**协议名称也不等于匿名程度。**协议可以规定如何认证和传输，但不会替你处理账号、Cookie、浏览器指纹或服务商日志。</p>
+<h2 id="wireguard">WireGuard</h2>
+<p>WireGuard 是 VPN 隧道协议和软件项目。官方文档介绍了它基于公钥的身份机制和所用的密码学组件。[1]</p>
+<p>它通常用于设备与 VPN 服务端之间建立系统级隧道，适合远程接入、保护网络传输和多应用统一转发。它不等同于 HTTP 代理或 SOCKS5，也不等同于某个商业 VPN 服务。</p>
+<p>WireGuard 协议本身可以设计得很简洁，但服务商是否可靠、密钥如何保存、哪些流量进入隧道，仍然需要单独判断。</p>
+<h2 id="openvpn-和-ikev2-ipsec">OpenVPN 和 IKEv2/IPsec</h2>
+<p>OpenVPN 是成熟的开源 VPN 项目，常使用 TLS 进行认证和密钥协商。[2] IKEv2/IPsec 则是一组常见于系统和企业网络的 VPN 技术。</p>
+<p>它们更偏向系统级隧道，平台支持、证书管理和企业部署经验比较丰富。缺点是配置项较多，新手可能遇到证书、路由、DNS 和权限问题。</p>
+<h2 id="websocket-grpc-quic-不是同一种协议">WebSocket、gRPC、QUIC 不是同一种协议</h2>
+<p>这些名称经常跟代理配置一起出现，但不能统称为代理协议：</p>
+<ul>
+<li><strong>WebSocket</strong>：支持客户端和服务器之间建立长连接；</li>
+<li><strong>gRPC</strong>：一种常见的远程调用和通信框架；</li>
+<li><strong>QUIC</strong>：基于 UDP 的现代传输协议；</li>
+<li><strong>TLS</strong>：提供身份认证和加密传输能力的安全协议。</li>
+</ul>
+<p>它们可能作为某种代理协议的承载方式。看到配置中出现这些词，不代表连接自动更快、更安全或更匿名。</p>
+<h2 id="为什么同一台设备上会同时出现-socks5-和-vless">为什么同一台设备上会同时出现 SOCKS5 和 VLESS</h2>
+<p>比如，浏览器连接电脑上的本地 SOCKS5 端口，核心再通过 VLESS 连接远程节点。这时 SOCKS5 描述浏览器与本地核心的接口，VLESS 描述核心与远程服务之间的连接，两者并不冲突。</p>
+<p>同样，客户端开启 TUN 后可以接收更多应用的流量，但远程节点仍可能使用 Shadowsocks 或 Trojan。TUN 是流量接管方式，不能据此判断远程使用了哪种协议，也不能把它直接等同于 WireGuard。</p>
+<h2 id="如何比较协议">如何比较协议</h2>
+<p>不要只问“哪个协议最好”，而要看具体需求：</p>
+<ul>
+<li>需要单个浏览器访问，还是整台设备的多应用连接？</li>
+<li>更重视速度、低延迟，还是兼容性和维护便利？</li>
+<li>服务端由谁提供，日志政策是否透明？</li>
+<li>客户端和核心是否仍在维护？</li>
+<li>配置是否来自可信来源？</li>
+</ul>
+<p>看机场推荐或比较机场节点时，也别把协议名当成线路质量证明。晚高峰负载、路由、丢包和服务端资源都会影响体验；没有具体环境和测量结果，很难只按协议名称判断哪个更稳。</p>
+<p>回头看一份配置时，可以沿着这条线理解：协议规定怎么通信，核心负责执行，客户端提供管理界面，配置把它们组合起来。这样再看那些常被并列的名称，就能分清它们各自负责什么。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>[1] <a href="https://www.wireguard.com/protocol/">WireGuard Protocol &amp; Cryptography</a></li>
+<li>[2] <a href="https://openvpn.net/community-resources/">OpenVPN Community Resources</a></li>
+<li>[3] <a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3.6">RFC 9110：HTTP CONNECT</a></li>
+<li>[4] <a href="https://www.rfc-editor.org/rfc/rfc1928.html">RFC 1928：SOCKS5</a></li>
+<li>[5] <a href="https://shadowsocks.org/doc/what-is-shadowsocks.html">Shadowsocks：官方文档</a></li>
+<li>[6] <a href="https://xtls.github.io/config/outbounds/vless.html">Xray：VLESS 出站配置与安全要求</a></li>
+<li><a href="https://github.com/v2fly/v2ray-core">V2Fly/v2ray-core</a></li>
+<li><a href="https://github.com/XTLS/Xray-core">XTLS/Xray-core</a></li>
+<li><a href="https://github.com/SagerNet/sing-box">SagerNet/sing-box</a></li>
+</ul>
+</article><section class="service-note" aria-label="机场与订阅服务"><p class="eyebrow">NEXT STEP</p><h2>需要连接服务？看看我的机场推荐。</h2><p>正在找机场订阅或翻墙梯子？我把推荐入口放在 GitHub，选购前可以先对照自己的设备、流量用量和付款周期。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="sponsored">查看翻墙梯子与机场推荐 ↗</a><p class="service-destination">前往 GitHub 查看服务信息</p></section><div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div><nav class="article-pagination" aria-label="上一篇与下一篇"><a href="/articles/proxy-ecosystem/"><small>← 上一篇 · 03</small><strong>代理工具生态总览</strong></a><a href="/about/"><small>读完以后 →</small><strong>关于本手册与内容纠错</strong></a></nav></main><aside class="toc-sidebar" aria-label="本文目录"><p class="eyebrow">ON THIS PAGE</p><h2>本文目录</h2><nav><ol><li class="toc-h2"><a href="#先把常见名称放回各自的位置">先把常见名称放回各自的位置</a></li><li class="toc-h2"><a href="#http-代理">HTTP 代理</a></li><li class="toc-h2"><a href="#socks5">SOCKS5</a></li><li class="toc-h2"><a href="#shadowsocks">Shadowsocks</a></li><li class="toc-h2"><a href="#vmess-vless-与-trojan">VMess、VLESS 与 Trojan</a></li><li class="toc-h2"><a href="#wireguard">WireGuard</a></li><li class="toc-h2"><a href="#openvpn-和-ikev2-ipsec">OpenVPN 和 IKEv2/IPsec</a></li><li class="toc-h2"><a href="#websocket-grpc-quic-不是同一种协议">WebSocket、gRPC、QUIC 不是同一种协议</a></li><li class="toc-h2"><a href="#为什么同一台设备上会同时出现-socks5-和-vless">为什么同一台设备上会同时出现 SOCKS5 和 VLESS</a></li><li class="toc-h2"><a href="#如何比较协议">如何比较协议</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></nav><div class="toc-note">不急着换工具，<br>先弄清楚问题。</div></aside></div><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
