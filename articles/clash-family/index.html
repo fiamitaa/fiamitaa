@@ -1,0 +1,95 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clash 家族到底有哪些区别：Clash、Meta、Mihomo 与客户端 · 科学上网入门手册</title><meta name="description" content="Clash、Clash Meta、Mihomo、Clash Verge Rev 和 FlClash 有什么区别？这篇文章把核心、桌面客户端、配置格式与订阅服务拆开说明，结合版本、协议支持、规则字段和系统权限，解释为什么同一份机场订阅在不同客户端里的表现可能不同，帮助新手少走弯路。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.win/articles/clash-family/"><meta property="og:url" content="https://ladderer.win/articles/clash-family/"><meta property="og:title" content="Clash 家族到底有哪些区别：Clash、Meta、Mihomo 与客户端"><meta property="og:description" content="Clash、Clash Meta、Mihomo、Clash Verge Rev 和 FlClash 有什么区别？这篇文章把核心、桌面客户端、配置格式与订阅服务拆开说明，结合版本、协议支持、规则字段和系统权限，解释为什么同一份机场订阅在不同客户端里的表现可能不同，帮助新手少走弯路。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Clash 家族到底有哪些区别：Clash、Meta、Mihomo 与客户端"><meta name="twitter:description" content="Clash、Clash Meta、Mihomo、Clash Verge Rev 和 FlClash 有什么区别？这篇文章把核心、桌面客户端、配置格式与订阅服务拆开说明，结合版本、协议支持、规则字段和系统权限，解释为什么同一份机场订阅在不同客户端里的表现可能不同，帮助新手少走弯路。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Clash 家族到底有哪些区别：Clash、Meta、Mihomo 与客户端","description":"Clash、Clash Meta、Mihomo、Clash Verge Rev 和 FlClash 有什么区别？这篇文章把核心、桌面客户端、配置格式与订阅服务拆开说明，结合版本、协议支持、规则字段和系统权限，解释为什么同一份机场订阅在不同客户端里的表现可能不同，帮助新手少走弯路。","inLanguage":"zh-CN","dateModified":"2026-10-18","mainEntityOfPage":"https://ladderer.win/articles/clash-family/"}</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a  href="/about/">关于</a></nav></div></header><div class="reading-progress" aria-hidden="true"><span></span></div><div class="article-shell"><aside class="series-sidebar" aria-label="系列目录"><a class="back-link" href="/#chapters">← 全部文章</a><p class="eyebrow">THE FIELD GUIDE / 5 PUBLISHED CHAPTERS</p><nav aria-label="章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a  href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a><a  href="/articles/protocols/"><span>04</span>代理协议详解</a><a aria-current="page" href="/articles/clash-family/"><span>05</span>Clash 家族到底有哪些区别</a></div></nav></aside><main class="article-main" id="main"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">首页</a><span>/</span><a href="/#group-ecosystem">工具生态</a><span>/</span><span>第 05 篇</span></nav><header class="article-header"><p class="eyebrow">CHAPTER 05 <span> / 5</span></p><h1>Clash 家族到底有哪些区别：Clash、Meta、Mihomo 与客户端</h1><p class="article-summary">Clash、Meta、Mihomo 和桌面客户端是什么关系？先分清核心与界面，再看订阅兼容。</p><div class="article-meta"><span>约 5 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div></header><details class="mobile-outline"><summary>阅读导航：系列目录与本文目录</summary><nav aria-label="手机章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a  href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a><a  href="/articles/protocols/"><span>04</span>代理协议详解</a><a aria-current="page" href="/articles/clash-family/"><span>05</span>Clash 家族到底有哪些区别</a></div></nav><p class="eyebrow">本文目录</p><ol><li class="toc-h2"><a href="#clash-是什么">Clash 是什么</a></li><li class="toc-h2"><a href="#名称怎么对照">名称怎么对照</a></li><li class="toc-h2"><a href="#clash-meta-和-mihomo">Clash Meta 和 Mihomo</a></li><li class="toc-h2"><a href="#clash-verge-rev-是什么">Clash Verge Rev 是什么</a></li><li class="toc-h2"><a href="#flclash-等客户端">FlClash 等客户端</a></li><li class="toc-h2"><a href="#订阅能不能用-先看这几项">订阅能不能用，先看这几项</a></li><li class="toc-h2"><a href="#为什么同名工具体验不同">为什么同名工具体验不同</a></li><li class="toc-h2"><a href="#判断一个-clash-项目的方法">判断一个 Clash 项目的方法</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></details><article class="prose"><p>“我用 Clash。”这句话很常见，但它可能指核心、客户端、配置格式，甚至只是泛指一类代理工具。真正遇到订阅导入失败或规则不生效时，先把这个称呼拆开，往往比反复换软件更快找到方向。</p>
+<p>这里需要区分的是：哪些名称指<strong>核心</strong>，哪些指<strong>客户端</strong>。</p>
+<h2 id="clash-是什么">Clash 是什么</h2>
+<p>早期 Clash 项目把代理核心、规则系统和配置生态结合起来，影响了很多后续客户端和教程。由于名称传播很广，网上仍然有大量文章直接把不同项目都叫作 Clash。</p>
+<p>但项目名称、仓库状态和社区分支会变化。看到旧教程时，不能只看标题里的“Clash”，要核对它实际调用的核心、配置格式和项目来源。</p>
+<h2 id="名称怎么对照">名称怎么对照</h2>
+<div class="table-wrap" role="region" aria-label="对比表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>更接近哪一层</th>
+<th>需要核对什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clash</td>
+<td>早期核心项目或泛称</td>
+<td>教程对应的项目与配置格式</td>
+</tr>
+<tr>
+<td>Clash Meta</td>
+<td>社区分支名称</td>
+<td>当前项目名称和版本</td>
+</tr>
+<tr>
+<td>Mihomo</td>
+<td>核心项目</td>
+<td>支持的协议、字段和规则能力</td>
+</tr>
+<tr>
+<td>Clash Verge Rev</td>
+<td>桌面客户端</td>
+<td>内置核心、系统权限和版本</td>
+</tr>
+<tr>
+<td>FlClash</td>
+<td>跨平台客户端</td>
+<td>平台支持、核心集成和配置兼容</td>
+</tr>
+</tbody>
+</table></div>
+<p>这张表只能帮助定位名词，不能替代每个项目的版本说明。</p>
+<h2 id="clash-meta-和-mihomo">Clash Meta 和 Mihomo</h2>
+<p>Clash Meta 是社区发展出来的分支名称，后来项目使用 Mihomo 这个名称。今天看到“Meta”或“Mihomo”，通常是在说同一条社区发展脉络中的核心生态。</p>
+<p>Mihomo 更接近核心，不是一个固定的桌面界面。它负责解析配置、执行规则、处理代理组和建立连接。</p>
+<p>官方仓库：</p>
+<ul>
+<li><a href="https://github.com/MetaCubeX/mihomo">MetaCubeX/mihomo</a></li>
+</ul>
+<h2 id="clash-verge-rev-是什么">Clash Verge Rev 是什么</h2>
+<p><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge Rev</a> 是桌面客户端。它提供图形界面，帮助用户管理配置、选择模式和查看连接状态。项目说明显示它内置 Mihomo 核心，并提供核心更新与版本切换功能；具体可选版本和操作入口会随客户端版本变化。</p>
+<p>把这两个名字放在一起看，关系就清楚了：</p>
+<ul>
+<li>Clash Verge Rev 是客户端；</li>
+<li>Mihomo 是该客户端内置并调用的核心；</li>
+<li>两者可以分别更新；</li>
+<li>核心更新与切换范围，以客户端当前版本文档为准；</li>
+<li>配置能否使用，取决于配置格式和核心支持范围。</li>
+</ul>
+<p>所以，把 Clash Verge Rev 直接叫作“Clash 核心”，就把管理界面和负责连接的程序混在了一起。</p>
+<h2 id="flclash-等客户端">FlClash 等客户端</h2>
+<p>FlClash 是另一个跨平台图形客户端项目。它和 Clash Verge Rev 都属于客户端层，但平台支持、界面、核心集成和维护节奏可能不同。</p>
+<p>如果是根据 Clash 机场推荐来选客户端，先核对服务提供的订阅格式。服务名称里写了“Clash”，不代表任意客户端和版本都能使用。</p>
+<p>挑选客户端时，除了界面是否顺手，还要看：</p>
+<ul>
+<li>支持哪些操作系统；</li>
+<li>调用哪些核心；</li>
+<li>是否支持目标配置；</li>
+<li>是否仍在维护；</li>
+<li>需要哪些系统权限；</li>
+<li>是否有公开文档和日志。</li>
+</ul>
+<h2 id="订阅能不能用-先看这几项">订阅能不能用，先看这几项</h2>
+<p>服务商写“支持 Clash”时，通常是在说某种配置格式或核心生态，不代表所有客户端都能直接导入。可以先看三件事：订阅是否返回目标格式，配置里是否用了当前核心不认识的字段，客户端是否按订阅链接导入，而不是把链接当作普通文本打开。</p>
+<p>如果导入后节点出现了，但代理组为空，问题可能在配置结构；如果配置能打开、连接却失败，还要看核心支持的协议、DNS、TLS 或 UDP 条件。把客户端名称、核心版本和报错日志中的敏感信息脱敏后一起描述，比只说“Clash 不能用”更有用。</p>
+<h2 id="为什么同名工具体验不同">为什么同名工具体验不同</h2>
+<p>主要有四个原因：</p>
+<ol>
+<li>后台运行的核心不同；</li>
+<li>核心和客户端版本不同；</li>
+<li>配置、规则、DNS 和代理组不同；</li>
+<li>操作系统的网络权限和代理机制不同。</li>
+</ol>
+<p>所以，别人说“这个 Clash 好用”，至少还要追问：哪个客户端？哪个核心？哪个版本？什么系统？使用的配置来自哪里？</p>
+<h2 id="判断一个-clash-项目的方法">判断一个 Clash 项目的方法</h2>
+<p>不要只看下载量和搜索结果。先看官方仓库、版本发布、文档、问题区和权限说明。项目是否开源是一项参考，实际分发包是否来自官方渠道同样重要。</p>
+<p>下载前，把项目名、客户端版本和内置核心记下来。以后遇到配置不兼容或连接异常，查对应项目的文档和问题区，才不会拿另一个“Clash”的操作说明反复尝试。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge Rev</a></li>
+<li><a href="https://github.com/MetaCubeX/mihomo">Mihomo</a></li>
+<li><a href="https://github.com/chen08209/FlClash">FlClash</a></li>
+</ul>
+</article><section class="service-note" aria-label="机场与订阅服务"><p class="eyebrow">NEXT STEP</p><h2>需要连接服务？看看我的机场推荐。</h2><p>正在找机场订阅或翻墙梯子？我把推荐入口放在 GitHub，选购前可以先对照自己的设备、流量用量和付款周期。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="sponsored">查看翻墙梯子与机场推荐 ↗</a><p class="service-destination">前往 GitHub 查看服务信息</p></section><div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div><nav class="article-pagination" aria-label="上一篇与下一篇"><a href="/articles/protocols/"><small>← 上一篇 · 04</small><strong>代理协议详解</strong></a><a href="/about/"><small>读完以后 →</small><strong>关于本手册与内容纠错</strong></a></nav></main><aside class="toc-sidebar" aria-label="本文目录"><p class="eyebrow">ON THIS PAGE</p><h2>本文目录</h2><nav><ol><li class="toc-h2"><a href="#clash-是什么">Clash 是什么</a></li><li class="toc-h2"><a href="#名称怎么对照">名称怎么对照</a></li><li class="toc-h2"><a href="#clash-meta-和-mihomo">Clash Meta 和 Mihomo</a></li><li class="toc-h2"><a href="#clash-verge-rev-是什么">Clash Verge Rev 是什么</a></li><li class="toc-h2"><a href="#flclash-等客户端">FlClash 等客户端</a></li><li class="toc-h2"><a href="#订阅能不能用-先看这几项">订阅能不能用，先看这几项</a></li><li class="toc-h2"><a href="#为什么同名工具体验不同">为什么同名工具体验不同</a></li><li class="toc-h2"><a href="#判断一个-clash-项目的方法">判断一个 Clash 项目的方法</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></nav><div class="toc-note">不急着换工具，<br>先弄清楚问题。</div></aside></div><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
