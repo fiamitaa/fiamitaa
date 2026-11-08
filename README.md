@@ -1,5 +1,5 @@
 # 🧭 科学上网入门手册
-最后更新：2026-11-08
+#### 最后更新：2026-11-08
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=fiamitaa.fiamitaa)
 机场订阅、机场节点、代理和 VPN 分别是什么？这本手册从网站为什么打不开讲起，帮助新手看懂网络工具，再了解配置、排查与隐私边界。
 
