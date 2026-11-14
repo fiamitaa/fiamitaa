@@ -1,0 +1,47 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>配置、订阅、节点与规则：看懂客户端里的那些词 · 科学上网入门手册</title><meta name="description" content="机场订阅和机场节点有什么区别？这篇文章解释配置文件、订阅链接、代理组、规则、DNS 与 TUN 各自的用途，区分全局模式和应用流量接管。导入失败、节点连不上或部分网站走错路径时，可以按对应环节检查；也说明订阅更新可能改变哪些内容，以及分享日志和配置前应隐藏哪些凭据。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.win/articles/config-subscriptions/"><meta property="og:url" content="https://ladderer.win/articles/config-subscriptions/"><meta property="og:title" content="配置、订阅、节点与规则：看懂客户端里的那些词"><meta property="og:description" content="机场订阅和机场节点有什么区别？这篇文章解释配置文件、订阅链接、代理组、规则、DNS 与 TUN 各自的用途，区分全局模式和应用流量接管。导入失败、节点连不上或部分网站走错路径时，可以按对应环节检查；也说明订阅更新可能改变哪些内容，以及分享日志和配置前应隐藏哪些凭据。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="配置、订阅、节点与规则：看懂客户端里的那些词"><meta name="twitter:description" content="机场订阅和机场节点有什么区别？这篇文章解释配置文件、订阅链接、代理组、规则、DNS 与 TUN 各自的用途，区分全局模式和应用流量接管。导入失败、节点连不上或部分网站走错路径时，可以按对应环节检查；也说明订阅更新可能改变哪些内容，以及分享日志和配置前应隐藏哪些凭据。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"配置、订阅、节点与规则：看懂客户端里的那些词","description":"机场订阅和机场节点有什么区别？这篇文章解释配置文件、订阅链接、代理组、规则、DNS 与 TUN 各自的用途，区分全局模式和应用流量接管。导入失败、节点连不上或部分网站走错路径时，可以按对应环节检查；也说明订阅更新可能改变哪些内容，以及分享日志和配置前应隐藏哪些凭据。","inLanguage":"zh-CN","dateModified":"2026-10-18","mainEntityOfPage":"https://ladderer.win/articles/config-subscriptions/"}</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a  href="/about/">关于</a></nav></div></header><div class="reading-progress" aria-hidden="true"><span></span></div><div class="article-shell"><aside class="series-sidebar" aria-label="系列目录"><a class="back-link" href="/#chapters">← 全部文章</a><p class="eyebrow">THE FIELD GUIDE / 10 PUBLISHED CHAPTERS</p><nav aria-label="章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a  href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a><a  href="/articles/protocols/"><span>04</span>代理协议详解</a><a  href="/articles/clash-family/"><span>05</span>Clash 家族到底有哪些区别</a><a  href="/articles/v2ray-xray/"><span>06</span>V2Ray、Xray 与客户端的关系</a></div><div class="sidebar-group"><p>配置与排查</p><a aria-current="page" href="/articles/config-subscriptions/"><span>07</span>配置、订阅、节点与规则</a><a  href="/articles/troubleshooting/"><span>08</span>连接后打不开网页怎么办</a></div><div class="sidebar-group"><p>安全与边界</p><a  href="/articles/tool-security/"><span>09</span>如何判断工具是否安全可靠</a><a  href="/articles/privacy-boundaries/"><span>10</span>隐私、法律与使用边界</a></div></nav></aside><main class="article-main" id="main"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">首页</a><span>/</span><a href="/#group-practice">配置与排查</a><span>/</span><span>第 07 篇</span></nav><header class="article-header"><p class="eyebrow">CHAPTER 07 <span> / 10</span></p><h1>配置、订阅、节点与规则：看懂客户端里的那些词</h1><p class="article-summary">导入订阅、选择节点和设置分流，分别改变了什么？</p><div class="article-meta"><span>约 4 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div></header><details class="mobile-outline"><summary>阅读导航：系列目录与本文目录</summary><nav aria-label="手机章节导航"><div class="sidebar-group"><p>基础认知</p><a  href="/articles/what-is-network-proxy/"><span>01</span>翻墙是什么</a><a  href="/articles/proxy-vpn-tor/"><span>02</span>代理、VPN、Tor 的区别</a></div><div class="sidebar-group"><p>工具生态</p><a  href="/articles/proxy-ecosystem/"><span>03</span>代理工具生态总览</a><a  href="/articles/protocols/"><span>04</span>代理协议详解</a><a  href="/articles/clash-family/"><span>05</span>Clash 家族到底有哪些区别</a><a  href="/articles/v2ray-xray/"><span>06</span>V2Ray、Xray 与客户端的关系</a></div><div class="sidebar-group"><p>配置与排查</p><a aria-current="page" href="/articles/config-subscriptions/"><span>07</span>配置、订阅、节点与规则</a><a  href="/articles/troubleshooting/"><span>08</span>连接后打不开网页怎么办</a></div><div class="sidebar-group"><p>安全与边界</p><a  href="/articles/tool-security/"><span>09</span>如何判断工具是否安全可靠</a><a  href="/articles/privacy-boundaries/"><span>10</span>隐私、法律与使用边界</a></div></nav><p class="eyebrow">本文目录</p><ol><li class="toc-h2"><a href="#节点是什么">节点是什么</a></li><li class="toc-h2"><a href="#配置文件是什么">配置文件是什么</a></li><li class="toc-h2"><a href="#订阅链接是什么">订阅链接是什么</a></li><li class="toc-h2"><a href="#代理组和规则">代理组和规则</a></li><li class="toc-h2"><a href="#dns-为什么会影响结果">DNS 为什么会影响结果</a></li><li class="toc-h2"><a href="#配置的安全风险">配置的安全风险</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></details><article class="prose"><p>安装客户端只是开始。真正让客户端工作的，通常是一份配置。配置里可能有服务地址、认证信息、协议参数、代理组、DNS 和分流规则。</p>
+<p>“机场订阅”通常是服务商提供的配置获取入口，“机场节点”则是配置中的具体连接条目。一份订阅可以包含多个节点；更新订阅和切换节点，也不是同一个操作。</p>
+<h2 id="节点是什么">节点是什么</h2>
+<p>节点通常指一个可以接收代理连接的远程服务入口。它可能包含地址、端口、协议、认证信息和传输参数。</p>
+<p>节点不是客户端，也不是协议。它背后通常由某个服务商、个人或组织运营。流量经过它，就需要考虑运营者的可信度、日志政策、稳定性和适用规则。</p>
+<h2 id="配置文件是什么">配置文件是什么</h2>
+<p>配置文件把客户端需要的参数组织起来，可能描述：</p>
+<ul>
+<li>核心需要的运行参数；</li>
+<li>连接哪些节点；</li>
+<li>采用什么协议；</li>
+<li>哪些域名直连；</li>
+<li>哪些流量经过代理；</li>
+<li>DNS 如何处理；</li>
+<li>代理组如何选择。</li>
+</ul>
+<p>不同核心支持的配置格式可能不同。文件能导入，只说明它被读取，不说明每个字段都生效。</p>
+<h2 id="订阅链接是什么">订阅链接是什么</h2>
+<p>订阅链接通常不是软件本体，而是获取或更新配置的地址。客户端访问订阅后，得到节点列表、规则或其他配置内容。</p>
+<p>订阅链接往往带有访问权限，不能公开发布。它可能被他人使用，也可能暴露账户信息。发现泄露时，应优先撤销、重置或更换。</p>
+<p>同一个订阅链接，下周返回的配置可能就和今天不同。自动更新省去了手动下载的步骤，却不能替你判断内容是否安全。更新前要确认来源，更新后也要留意配置是否有异常变化。</p>
+<h2 id="代理组和规则">代理组和规则</h2>
+<p>代理组把多个节点或策略放在一起管理。规则则决定一类流量直连、代理还是拒绝。</p>
+<p>常见模式包括：</p>
+<ul>
+<li><strong>直连模式</strong>：将核心接收到的流量按直连策略处理；</li>
+<li><strong>全局模式</strong>：将核心接收到的流量交给指定代理策略；</li>
+<li><strong>规则模式</strong>：对核心接收到的流量，按域名、IP 或其他条件选择路径。</li>
+</ul>
+<p>这三种模式决定的是“流量进入核心后怎么处理”，不是“哪些应用已经进入核心”。例如，浏览器使用系统代理、某个桌面应用不读取系统代理时，切到全局模式也不会自动把后者接进来。</p>
+<p>TUN 是另一层设置：它通常通过虚拟网络接口与路由接收流量，影响范围还取决于系统权限、路由和排除规则。打开 TUN 不代表可以跳过这些检查。[1]</p>
+<p>规则越复杂，排查越困难。新手最好先从简单配置开始，不要一次叠加很多第三方规则集。</p>
+<h2 id="dns-为什么会影响结果">DNS 为什么会影响结果</h2>
+<p>DNS 请求可能走本地网络、代理隧道或特定解析服务。解析路径和访问路径不一致时，可能出现域名能解析但目标连不上，或者网页能开、部分资源失败。</p>
+<p>这也是同一份订阅在不同客户端上表现不同的原因之一：客户端可能调用不同核心，使用不同 DNS 模式、缓存和规则引擎。</p>
+<h2 id="配置的安全风险">配置的安全风险</h2>
+<p>配置文件可能包含订阅链接、密钥、密码、服务器地址和个人账户标识。不要将完整配置上传到公共代码仓库，也不要把二维码和订阅链接发到公开群组。</p>
+<p>遇到陌生配置，尤其要谨慎。如果导入或使用时要求你关闭安全软件、安装不明证书、运行脚本或输入系统密码，先停下来，核实这些要求的来源和用途。</p>
+<p>排查时也按这些角色区分：导入失败，先检查格式与客户端支持；某个节点连接失败，查看对应连接日志；只有部分网站走错路径，再查规则与 DNS。不要一遇到问题就把整份配置全部换掉。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>[1] <a href="https://wiki.metacubex.one/config/inbound/tun/">Mihomo：TUN 入站配置</a></li>
+<li><a href="https://wiki.metacubex.one/config/general/">Mihomo：通用配置与运行模式</a></li>
+<li><a href="https://sing-box.sagernet.org/">sing-box Documentation</a></li>
+<li><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge Rev</a></li>
+</ul>
+</article><section class="service-note" aria-label="机场与订阅服务"><p class="eyebrow">NEXT STEP</p><h2>需要连接服务？看看我的机场推荐。</h2><p>正在找机场订阅或翻墙梯子？我把推荐入口放在 GitHub，选购前可以先对照自己的设备、流量用量和付款周期。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="sponsored">查看翻墙梯子与机场推荐 ↗</a><p class="service-destination">前往 GitHub 查看服务信息</p></section><div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div><nav class="article-pagination" aria-label="上一篇与下一篇"><a href="/articles/v2ray-xray/"><small>← 上一篇 · 06</small><strong>V2Ray、Xray 与客户端的关系</strong></a><a href="/articles/troubleshooting/"><small>下一篇 · 08 →</small><strong>连接后打不开网页怎么办</strong></a></nav></main><aside class="toc-sidebar" aria-label="本文目录"><p class="eyebrow">ON THIS PAGE</p><h2>本文目录</h2><nav><ol><li class="toc-h2"><a href="#节点是什么">节点是什么</a></li><li class="toc-h2"><a href="#配置文件是什么">配置文件是什么</a></li><li class="toc-h2"><a href="#订阅链接是什么">订阅链接是什么</a></li><li class="toc-h2"><a href="#代理组和规则">代理组和规则</a></li><li class="toc-h2"><a href="#dns-为什么会影响结果">DNS 为什么会影响结果</a></li><li class="toc-h2"><a href="#配置的安全风险">配置的安全风险</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol></nav><div class="toc-note">不急着换工具，<br>先弄清楚问题。</div></aside></div><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
