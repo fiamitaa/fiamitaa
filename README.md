@@ -29,3 +29,12 @@
 📖 [如何判断工具是否安全可靠](https://ladderer.win/articles/tool-security/)：软件来源、权限、日志政策和套餐条款，哪些值得核对？
 
 📖 [隐私、法律与使用边界](https://ladderer.win/articles/privacy-boundaries/)：换了出口 IP，哪些身份信息和使用责任仍然存在？
+
+## 入门延伸
+
+现有十篇基础文章之外，新增四篇具体问题的阅读指南：
+
+- [机场订阅、商业 VPN 和自建怎么选](https://ladderer.win/articles/choosing-proxy-service/)：从设备、应用、维护时间和信任对象，判断哪种服务适合自己。
+- [机场测速怎么看](https://ladderer.win/articles/speed-test/)：延迟、吞吐、抖动和丢包测的是什么，怎样结合实际应用比较节点？
+- [流量、有效期、续费和退款](https://ladderer.win/articles/subscription-billing/)：付款前核对计费口径、设备限制和购买渠道，读懂退款细则。
+- [订阅链接泄露了怎么办](https://ladderer.win/articles/subscription-leak/)：删掉消息之后，怎样重置链接、撤销旧凭据并安全求助？

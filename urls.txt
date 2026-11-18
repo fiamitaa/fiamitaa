@@ -9,4 +9,8 @@ https://ladderer.win/articles/config-subscriptions/
 https://ladderer.win/articles/troubleshooting/
 https://ladderer.win/articles/tool-security/
 https://ladderer.win/articles/privacy-boundaries/
+https://ladderer.win/articles/choosing-proxy-service/
+https://ladderer.win/articles/speed-test/
+https://ladderer.win/articles/subscription-billing/
+https://ladderer.win/articles/subscription-leak/
 https://ladderer.win/about/
