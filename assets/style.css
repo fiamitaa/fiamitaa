@@ -43,3 +43,12 @@
   .series-sidebar .back-link { margin-bottom: 16px; }
   .sidebar-group a { font-size: 12px; }
 }
+
+.hero h1{font-size:44px;letter-spacing:0;overflow-wrap:anywhere}
+.related-reading{margin:38px 0 26px;padding-top:20px;border-top:1px solid var(--line)}
+.related-reading h2{font-size:19px;margin:0 0 12px}
+.related-reading ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.related-reading a{color:var(--green);text-decoration:underline;text-underline-offset:3px;font-size:14px}
+.related-reading p{color:var(--muted);font-size:12px;line-height:1.7;margin:4px 0 0}
+@media (max-width:640px){.hero h1{font-size:34px}}
+@media (max-width:375px){.site-header nav{gap:10px}.header-inner{padding:0 12px}.brand{font-size:12px}.site-header nav a{white-space:nowrap}}

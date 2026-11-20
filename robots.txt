@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://ladderer.win/sitemap.xml
+Disallow: /go/
+Sitemap: https://ladderer.com/sitemap.xml
