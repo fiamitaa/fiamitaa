@@ -38,3 +38,11 @@
 - [机场测速怎么看](https://ladderer.win/articles/speed-test/)：延迟、吞吐、抖动和丢包测的是什么，怎样结合实际应用比较节点？
 - [流量、有效期、续费和退款](https://ladderer.win/articles/subscription-billing/)：付款前核对计费口径、设备限制和购买渠道，读懂退款细则。
 - [订阅链接泄露了怎么办](https://ladderer.win/articles/subscription-leak/)：删掉消息之后，怎样重置链接、撤销旧凭据并安全求助？
+
+- [订阅能更新，为什么节点还是不能用](https://ladderer.win/articles/subscription-updates-node-fails/)：从订阅下载、节点连接到实际访问，找出故障出现在哪一步。
+
+- [怎么确认某个应用真的走了代理](https://ladderer.win/articles/verify-app-proxy/)：用应用设置、连接日志和出口对照验证实际路径。
+
+- [节点、入口和出口 IP 有什么区别](https://ladderer.win/articles/node-entry-exit-ip/)：沿着一次请求分清节点配置、客户端连接地址和网站观察到的出口。
+
+- [怎样向服务商反馈连接故障](https://ladderer.win/articles/report-connection-problem/)：把时间、版本、故障范围和脱敏日志整理成一份可复制的反馈。

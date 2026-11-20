@@ -13,4 +13,8 @@ https://ladderer.win/articles/choosing-proxy-service/
 https://ladderer.win/articles/speed-test/
 https://ladderer.win/articles/subscription-billing/
 https://ladderer.win/articles/subscription-leak/
+https://ladderer.win/articles/subscription-updates-node-fails/
+https://ladderer.win/articles/verify-app-proxy/
+https://ladderer.win/articles/node-entry-exit-ip/
+https://ladderer.win/articles/report-connection-problem/
 https://ladderer.win/about/
