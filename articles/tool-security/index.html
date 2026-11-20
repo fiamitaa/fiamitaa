@@ -1,102 +1,102 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>u4ee3u7406u8ba2u9605u5b89u5168u5417uff1fu600eu6837u6838u5bf9u670du52a1u5546uff1f</title><meta name="description" content="u8bc4u4f30u4ee3u7406u8ba2u9605u548cu5ba2u6237u7aefu4e4bu524duff0cu5148u6838u5bf9u8f6fu4ef6u6765u6e90u3001u66f4u65b0u6e20u9053u3001u5e94u7528u6743u9650u3001u9690u79c1u653fu7b56u4e0eu4ed8u6b3eu6761u6b3eu3002u6587u7ae0u89e3u91cau96f6u65e5u5fd7u3001u533fu540du548cu5b89u5168u627fu8bfau5404u9700u8981u4ec0u4e48u8bc1u636euff0cu4e5fu8bf4u660eu514du8d39u8bd5u7528u4e0eu6b63u5f0fu5957u9910u53efu80fdu6709u54eau4e9bu5deeu522bu3002u628au8fd9u51e0u9879u5199u6210u81eau5df1u7684u6838u5bf9u6e05u5355uff0cu4fbfu4e8eu6bd4u8f83u4e0du540cu670du52a1u5e76u8bc6u522bu8bf4u6cd5u6a21u7ccau7684u9875u9762u3002u521du6b21u9009u8d2du65f6u4e5fu53efu9010u6761u6838u5bf9u3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/tool-security/"><meta property="og:url" content="https://ladderer.com/articles/tool-security/"><meta property="og:title" content="u4ee3u7406u8ba2u9605u5b89u5168u5417uff1fu600eu6837u6838u5bf9u670du52a1u5546uff1f"><meta property="og:description" content="u8bc4u4f30u4ee3u7406u8ba2u9605u548cu5ba2u6237u7aefu4e4bu524duff0cu5148u6838u5bf9u8f6fu4ef6u6765u6e90u3001u66f4u65b0u6e20u9053u3001u5e94u7528u6743u9650u3001u9690u79c1u653fu7b56u4e0eu4ed8u6b3eu6761u6b3eu3002u6587u7ae0u89e3u91cau96f6u65e5u5fd7u3001u533fu540du548cu5b89u5168u627fu8bfau5404u9700u8981u4ec0u4e48u8bc1u636euff0cu4e5fu8bf4u660eu514du8d39u8bd5u7528u4e0eu6b63u5f0fu5957u9910u53efu80fdu6709u54eau4e9bu5deeu522bu3002u628au8fd9u51e0u9879u5199u6210u81eau5df1u7684u6838u5bf9u6e05u5355uff0cu4fbfu4e8eu6bd4u8f83u4e0du540cu670du52a1u5e76u8bc6u522bu8bf4u6cd5u6a21u7ccau7684u9875u9762u3002u521du6b21u9009u8d2du65f6u4e5fu53efu9010u6761u6838u5bf9u3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="u4ee3u7406u8ba2u9605u5b89u5168u5417uff1fu600eu6837u6838u5bf9u670du52a1u5546uff1f"><meta name="twitter:description" content="u8bc4u4f30u4ee3u7406u8ba2u9605u548cu5ba2u6237u7aefu4e4bu524duff0cu5148u6838u5bf9u8f6fu4ef6u6765u6e90u3001u66f4u65b0u6e20u9053u3001u5e94u7528u6743u9650u3001u9690u79c1u653fu7b56u4e0eu4ed8u6b3eu6761u6b3eu3002u6587u7ae0u89e3u91cau96f6u65e5u5fd7u3001u533fu540du548cu5b89u5168u627fu8bfau5404u9700u8981u4ec0u4e48u8bc1u636euff0cu4e5fu8bf4u660eu514du8d39u8bd5u7528u4e0eu6b63u5f0fu5957u9910u53efu80fdu6709u54eau4e9bu5deeu522bu3002u628au8fd9u51e0u9879u5199u6210u81eau5df1u7684u6838u5bf9u6e05u5355uff0cu4fbfu4e8eu6bd4u8f83u4e0du540cu670du52a1u5e76u8bc6u522bu8bf4u6cd5u6a21u7ccau7684u9875u9762u3002u521du6b21u9009u8d2du65f6u4e5fu53efu9010u6761u6838u5bf9u3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"u4ee3u7406u8ba2u9605u5b89u5168u5417uff1fu600eu6837u6838u5bf9u670du52a1u5546uff1f","description":"u8bc4u4f30u4ee3u7406u8ba2u9605u548cu5ba2u6237u7aefu4e4bu524duff0cu5148u6838u5bf9u8f6fu4ef6u6765u6e90u3001u66f4u65b0u6e20u9053u3001u5e94u7528u6743u9650u3001u9690u79c1u653fu7b56u4e0eu4ed8u6b3eu6761u6b3eu3002u6587u7ae0u89e3u91cau96f6u65e5u5fd7u3001u533fu540du548cu5b89u5168u627fu8bfau5404u9700u8981u4ec0u4e48u8bc1u636euff0cu4e5fu8bf4u660eu514du8d39u8bd5u7528u4e0eu6b63u5f0fu5957u9910u53efu80fdu6709u54eau4e9bu5deeu522bu3002u628au8fd9u51e0u9879u5199u6210u81eau5df1u7684u6838u5bf9u6e05u5355uff0cu4fbfu4e8eu6bd4u8f83u4e0du540cu670du52a1u5e76u8bc6u522bu8bf4u6cd5u6a21u7ccau7684u9875u9762u3002u521du6b21u9009u8d2du65f6u4e5fu53efu9010u6761u6838u5bf9u3002","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/tool-security/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u5b89u5168u4e0eu8fb9u754c","item":"https://ladderer.com/#group-safety"},{"@type":"ListItem","position":3,"name":"u4ee3u7406u8ba2u9605u5b89u5168u5417uff1fu600eu6837u6838u5bf9u670du52a1u5546uff1f","item":"https://ladderer.com/articles/tool-security/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理订阅安全吗？怎样核对服务商？</title><meta name="description" content="评估代理订阅和客户端之前，先核对软件来源、更新渠道、应用权限、隐私政策与付款条款。文章解释零日志、匿名和安全承诺各需要什么证据，也说明免费试用与正式套餐可能有哪些差别。把这几项写成自己的核对清单，便于比较不同服务并识别说法模糊的页面。初次选购时也可逐条核对。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/tool-security/"><meta property="og:url" content="https://ladderer.com/articles/tool-security/"><meta property="og:title" content="代理订阅安全吗？怎样核对服务商？"><meta property="og:description" content="评估代理订阅和客户端之前，先核对软件来源、更新渠道、应用权限、隐私政策与付款条款。文章解释零日志、匿名和安全承诺各需要什么证据，也说明免费试用与正式套餐可能有哪些差别。把这几项写成自己的核对清单，便于比较不同服务并识别说法模糊的页面。初次选购时也可逐条核对。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理订阅安全吗？怎样核对服务商？"><meta name="twitter:description" content="评估代理订阅和客户端之前，先核对软件来源、更新渠道、应用权限、隐私政策与付款条款。文章解释零日志、匿名和安全承诺各需要什么证据，也说明免费试用与正式套餐可能有哪些差别。把这几项写成自己的核对清单，便于比较不同服务并识别说法模糊的页面。初次选购时也可逐条核对。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"代理订阅安全吗？怎样核对服务商？","description":"评估代理订阅和客户端之前，先核对软件来源、更新渠道、应用权限、隐私政策与付款条款。文章解释零日志、匿名和安全承诺各需要什么证据，也说明免费试用与正式套餐可能有哪些差别。把这几项写成自己的核对清单，便于比较不同服务并识别说法模糊的页面。初次选购时也可逐条核对。","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/tool-security/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"安全与边界","item":"https://ladderer.com/#group-safety"},{"@type":"ListItem","position":3,"name":"代理订阅安全吗？怎样核对服务商？","item":"https://ladderer.com/articles/tool-security/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
-            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-safety">u5b89u5168u4e0eu8fb9u754c</a><span aria-hidden="true">/</span>
-            <span aria-current="page">u7b2c 09 u7bc7</span>
+          <nav class="breadcrumbs" aria-label="当前位置">
+            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-safety">安全与边界</a><span aria-hidden="true">/</span>
+            <span aria-current="page">第 09 篇</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 09 <span> / 18</span></p>
-            <h1>u4ee3u7406u8ba2u9605u5b89u5168u5417uff1fu600eu6837u6838u5bf9u670du52a1u5546uff1f</h1>
-            <p class="article-summary">u8f6fu4ef6u6765u6e90u3001u6743u9650u3001u65e5u5fd7u653fu7b56u548cu5957u9910u6761u6b3euff0cu54eau4e9bu503cu5f97u6838u5bf9uff1f</p>
-            <div class="article-meta"><span>u7ea6 5 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-10-18">2026.10.18</time></span></div>
+            <h1>代理订阅安全吗？怎样核对服务商？</h1>
+            <p class="article-summary">软件来源、权限、日志政策和套餐条款，哪些值得核对？</p>
+            <div class="article-meta"><span>约 5 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
-          <ol><li class="toc-h2"><a href="#u5148u770bu8f6fu4ef6u4eceu54eau91ccu6765">u5148u770bu8f6fu4ef6u4eceu54eau91ccu6765</a></li><li class="toc-h2"><a href="#u518du770bu670du52a1u5546u662fu5426u900fu660e">u518du770bu670du52a1u5546u662fu5426u900fu660e</a></li><li class="toc-h2"><a href="#u4ed8u8d39u4e4bu524d-u5148u770bu670du52a1u8bf4u660e">u4ed8u8d39u4e4bu524duff0cu5148u770bu670du52a1u8bf4u660e</a></li><li class="toc-h2"><a href="#u914du7f6eu6587u4ef6u548cu8ba2u9605u94feu63a5u4e5fu53efu80fdu662fu51edu636e">u914du7f6eu6587u4ef6u548cu8ba2u9605u94feu63a5u4e5fu53efu80fdu662fu51edu636e</a></li><li class="toc-h2"><a href="#u89c2u5bdfu9690u79c1u548cu5b89u5168u4fe1u53f7">u89c2u5bdfu9690u79c1u548cu5b89u5168u4fe1u53f7</a></li><li class="toc-h2"><a href="#u522bu628au5b89u5168u8d23u4efbu4ea4u7ed9u5de5u5177">u522bu628au5b89u5168u8d23u4efbu4ea4u7ed9u5de5u5177</a></li><li class="toc-h2"><a href="#u4e00u4e2au5b9eu7528u7684u5224u65adu6e05u5355">u4e00u4e2au5b9eu7528u7684u5224u65adu6e05u5355</a></li><li class="toc-h2"><a href="#u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</a></li></ol>
+          <h2 id="article-toc-title">本文目录</h2>
+          <ol><li class="toc-h2"><a href="#先看软件从哪里来">先看软件从哪里来</a></li><li class="toc-h2"><a href="#再看服务商是否透明">再看服务商是否透明</a></li><li class="toc-h2"><a href="#付费之前-先看服务说明">付费之前，先看服务说明</a></li><li class="toc-h2"><a href="#配置文件和订阅链接也可能是凭据">配置文件和订阅链接也可能是凭据</a></li><li class="toc-h2"><a href="#观察隐私和安全信号">观察隐私和安全信号</a></li><li class="toc-h2"><a href="#别把安全责任交给工具">别把安全责任交给工具</a></li><li class="toc-h2"><a href="#一个实用的判断清单">一个实用的判断清单</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>u770bu673au573au8bc4u6d4bu65f6uff0cu53efu4ee5u5148u627eu80fdu72ecu7acbu6838u5bf9u7684u6750u6599uff1au5ba2u6237u7aefu662fu5426u6765u81eau5b98u65b9u6e20u9053uff0cu670du52a1u65b9u6536u96c6u4ec0u4e48u6570u636euff0cu8d39u7528u4e0eu9000u6b3eu6761u6b3eu5199u5728u54eau91ccu3002</p>
-<p>u201cu670bu53cbu8bf4u5f88u597du7528u201du53efu4ee5u4f5cu4e3au4f53u9a8cu53c2u8003uff0cu4f46u4e0du80fdu8bc1u660eu670du52a1u5c0au91cdu9690u79c1uff0cu4e5fu65e0u6cd5u4fddu8bc1u5b83u4ee5u540eu4e0du4f1au6539u53d8u8fd0u8425u65b9u5f0fu3002</p>
-<p>u770bu673au573au6d4bu8bc4u65f6uff0cu7559u610fu6d4bu8bd5u65e5u671fu3001u6240u7528u7f51u7edcu548cu6d4bu8bd5u65b9u6cd5u3002u5355u5f20u6d4bu901fu622au56feu65e0u6cd5u8bf4u660eu670du52a1u957fu671fu7a33u5b9auff0cu4e5fu65e0u6cd5u8bc1u660eu5b83u7684u9690u79c1u505au6cd5u3002u522bu4ebau8bf4u201cu597du7528u201duff0cu4ecdu9700u8981u653eu56deu5177u4f53u4f7fu7528u6761u4ef6u91ccu5224u65adu3002</p>
-<h2 id="u5148u770bu8f6fu4ef6u4eceu54eau91ccu6765">u5148u770bu8f6fu4ef6u4eceu54eau91ccu6765</h2>
-<p>u4f18u5148u4eceu9879u76eeu5b98u65b9u7f51u7ad9u3001u6b63u89c4u5e94u7528u5546u5e97u6216u53efu4ee5u9a8cu8bc1u7b7eu540du548cu53d1u5e03u8005u7684u6e20u9053u83b7u53d6u5ba2u6237u7aefu3002u641cu7d22u5f15u64ceu5e7fu544au3001u8bbau575bu9644u4ef6u3001u7f51u76d8u5206u4eabu548cu201cu7834u89e3u7248u201du4e0bu8f7du9875u90fdu53efu80fdu88abu5192u540du9876u66ffu3002</p>
-<p>u5b89u88c5u65f6u68c0u67e5u53d1u5e03u8005u3001u7248u672cu53f7u3001u66f4u65b0u65e5u671fu548cu6743u9650u8bf7u6c42u3002u4e00u4e2au53eau8d1fu8d23u7f51u7edcu8fdeu63a5u7684u5de5u5177uff0cu5982u679cu8981u6c42u8bfbu53d6u901au8bafu5f55u3001u77edu4fe1u3001u7167u7247u6216u5927u91cfu65e0u5173u6587u4ef6uff0cu5c31u503cu5f97u505cu4e0bu6765u95eeu4e00u53e5uff1au5b83u4e3au4ec0u4e48u9700u8981u8fd9u4e9bu6743u9650uff1f</p>
-<p>u5f00u6e90u662fu52a0u5206u9879uff0cu4f46u4e0du662fu81eau52a8u901au884cu8bc1u3002u6e90u7801u516cu5f00u4e0du4ee3u8868u6240u6709u5206u53d1u5305u90fdu6ca1u6709u88abu66ffu6362uff0cu4e5fu4e0du4ee3u8868u7b2cu4e09u65b9u670du52a1u5546u4f1au6309u9879u76eeu4f5cu8005u7684u65b9u5f0fu5904u7406u65e5u5fd7u3002</p>
-<h2 id="u518du770bu670du52a1u5546u662fu5426u900fu660e">u518du770bu670du52a1u5546u662fu5426u900fu660e</h2>
-<p>u81f3u5c11u8981u77e5u9053u4e09u4ef6u4e8buff1au670du52a1u7531u8c01u8fd0u8425uff0cu9047u5230u95eeu9898u627eu8c01uff0cu6570u636eu5982u4f55u5904u7406u3002</p>
-<p>u9690u79c1u653fu7b56u4e0du5e94u8be5u53eau6709u201cu6211u4eecu975eu5e38u91cdu89c6u9690u79c1u201du8fd9u79cdu53e3u53f7u3002u66f4u6709u4ef7u503cu7684u662fu5b83u662fu5426u8bf4u660eu6536u96c6u54eau4e9bu6570u636eu3001u4fddu5b58u591au4e45u3001u662fu5426u4e0eu7b2cu4e09u65b9u5171u4eabu3001u5982u4f55u54cdu5e94u6cd5u5f8bu8bf7u6c42u3001u600eu6837u5220u9664u8d26u6237u4fe1u606fu3002</p>
-<p>u201cu96f6u65e5u5fd7u201du4e5fu4e0du5e94u88abu5f53u6210u4e00u53e5u65e0u9700u9a8cu8bc1u7684u4fddu8bc1u3002u4e0du540cu670du52a1u5546u5bf9u65e5u5fd7u7684u5b9au4e49u53efu80fdu4e0du540cuff0cu6709u7684u6307u4e0du4fddu5b58u6d4fu89c8u5185u5bb9uff0cu6709u7684u6307u4e0du4fddu5b58u8fdeu63a5u8bb0u5f55uff0cu6709u7684u53eau662fu4e0du4fddu5b58u53efu8bc6u522bu7684u6d3bu52a8u65e5u5fd7u3002u8bfbu61c2u5177u4f53u8868u8ff0uff0cu6bd4u76efu7740u5ba3u4f20u6807u9898u66f4u91cdu8981u3002</p>
-<h2 id="u4ed8u8d39u4e4bu524d-u5148u770bu670du52a1u8bf4u660e">u4ed8u8d39u4e4bu524duff0cu5148u770bu670du52a1u8bf4u660e</h2>
-<p>u5bfbu627eu6027u4ef7u6bd4u673au573au6216u6bd4u8f83u6309u91cfu8ba1u8d39u673au573au65f6uff0cu5148u6838u5bf9u6d41u91cfu989du5ea6u3001u6709u6548u671fu3001u8ba1u8d39u89c4u5219u3001u8bbeu5907u9650u5236u3001u9000u6b3eu4e0eu6545u969cu53cdu9988u6e20u9053u3002u6d41u91cfu7528u4e0du5b8cu80fdu5426u4fddu7559uff0cu8d85u989du540eu662fu505cu6b62u670du52a1u8fd8u662fu7ee7u7eedu8ba1u8d39uff0cu90fdu5f71u54cdu5b9eu9645u6210u672cu3002u5957u9910u4ef7u683cu548cu5e26u5bbdu8bf4u660eu4e0du80fdu5355u72ecu8bc1u660eu9690u79c1u4e0eu5b89u5168u3002</p>
-<p>u6536u8d39u4e0du7b49u4e8eu53efu4fe1u3002u670du52a1u5546u662fu5426u8bf4u660eu65e5u5fd7u653fu7b56u3001u5982u4f55u5904u7406u6545u969cu3001u9000u6b3eu6761u4ef6u662fu4ec0u4e48uff0cu8fd9u4e9bu90fdu9700u8981u5355u72ecu6838u5bf9u3002</p>
-<p>u5c24u5176u8981u8b66u60d5u4ee5u4e0bu5ba3u4f20uff1a</p>
+          <article class="prose"><p>看机场评测时，可以先找能独立核对的材料：客户端是否来自官方渠道，服务方收集什么数据，费用与退款条款写在哪里。</p>
+<p>“朋友说很好用”可以作为体验参考，但不能证明服务尊重隐私，也无法保证它以后不会改变运营方式。</p>
+<p>看机场测评时，留意测试日期、所用网络和测试方法。单张测速截图无法说明服务长期稳定，也无法证明它的隐私做法。别人说“好用”，仍需要放回具体使用条件里判断。</p>
+<h2 id="先看软件从哪里来">先看软件从哪里来</h2>
+<p>优先从项目官方网站、正规应用商店或可以验证签名和发布者的渠道获取客户端。搜索引擎广告、论坛附件、网盘分享和“破解版”下载页都可能被冒名顶替。</p>
+<p>安装时检查发布者、版本号、更新日期和权限请求。一个只负责网络连接的工具，如果要求读取通讯录、短信、照片或大量无关文件，就值得停下来问一句：它为什么需要这些权限？</p>
+<p>开源是加分项，但不是自动通行证。源码公开不代表所有分发包都没有被替换，也不代表第三方服务商会按项目作者的方式处理日志。</p>
+<h2 id="再看服务商是否透明">再看服务商是否透明</h2>
+<p>至少要知道三件事：服务由谁运营，遇到问题找谁，数据如何处理。</p>
+<p>隐私政策不应该只有“我们非常重视隐私”这种口号。更有价值的是它是否说明收集哪些数据、保存多久、是否与第三方共享、如何响应法律请求、怎样删除账户信息。</p>
+<p>“零日志”也不应被当成一句无需验证的保证。不同服务商对日志的定义可能不同，有的指不保存浏览内容，有的指不保存连接记录，有的只是不保存可识别的活动日志。读懂具体表述，比盯着宣传标题更重要。</p>
+<h2 id="付费之前-先看服务说明">付费之前，先看服务说明</h2>
+<p>寻找性价比机场或比较按量计费机场时，先核对流量额度、有效期、计费规则、设备限制、退款与故障反馈渠道。流量用不完能否保留，超额后是停止服务还是继续计费，都影响实际成本。套餐价格和带宽说明不能单独证明隐私与安全。</p>
+<p>收费不等于可信。服务商是否说明日志政策、如何处理故障、退款条件是什么，这些都需要单独核对。</p>
+<p>尤其要警惕以下宣传：</p>
 <ul>
-<li>u7eddu5bf9u533fu540duff1b</li>
-<li>u6c38u4e45u514du8d39u4e14u65e0u9650u901fuff1b</li>
-<li>u4e00u952eu89e3u51b3u6240u6709u7f51u7edcu95eeu9898uff1b</li>
-<li>u4e0du9700u8981u4efbu4f55u6743u9650uff0cu5374u53efu4ee5u63a5u7ba1u5168u90e8u7f51u7edcuff1b</li>
-<li>u53eau8981u5b89u88c5u5c31u80fdu4fddu8bc1u8d26u53f7u4e0du88abu8ffdu8e2au3002</li>
+<li>绝对匿名；</li>
+<li>永久免费且无限速；</li>
+<li>一键解决所有网络问题；</li>
+<li>不需要任何权限，却可以接管全部网络；</li>
+<li>只要安装就能保证账号不被追踪。</li>
 </ul>
-<p>u6838u5b9eu8fd9u4e9bu627fu8bfau65f6uff0cu8981u6c42u5bf9u65b9u8bf4u660eu9002u7528u6761u4ef6u3001u9650u5236u548cu4f9du636eu3002</p>
-<h2 id="u914du7f6eu6587u4ef6u548cu8ba2u9605u94feu63a5u4e5fu53efu80fdu662fu51edu636e">u914du7f6eu6587u4ef6u548cu8ba2u9605u94feu63a5u4e5fu53efu80fdu662fu51edu636e</h2>
-<p>u5f88u591au7f51u7edcu5de5u5177u4f9du8d56u914du7f6eu6587u4ef6u3001u8ba2u9605u94feu63a5u3001u5bc6u94a5u6216u4e8cu7ef4u7801u3002u8fd9u4e9bu5185u5bb9u53efu80fdu5305u542bu670du52a1u5668u5730u5740u3001u8ba4u8bc1u4fe1u606fu548cu8bbfu95eeu6743u9650uff0cu4e0du5e94u8be5u968fu624bu516cu5f00u5230u7fa4u804au3001u8bc4u8bbau533au6216u516cu5171u4ed3u5e93u3002</p>
-<p>u964cu751fu4ebau53d1u6765u7684u914du7f6eu4e5fu4e0du80fdu53eau56e0u4e3au201cu80fdu8fdeu4e0au201du5c31u8ba4u4e3au5b89u5168u3002u914du7f6eu53efu80fdu628au6d41u91cfu5bfcu5411u672au77e5u670du52a1uff0cu4e5fu53efu80fdu5305u542bu4e0du5408u7406u7684u8defu7531u89c4u5219u3002u5bfcu5165u524du81f3u5c11u786eu8ba4u6765u6e90u3001u7528u9014u548cu6743u9650u8303u56f4u3002</p>
-<p>u5982u679cu67d0u4e2au914du7f6eu8981u6c42u5173u95edu7cfbu7edfu5b89u5168u8f6fu4ef6u3001u5b89u88c5u4e0du660eu8bc1u4e66u3001u8fd0u884cu811au672cu6216u8f93u5165u4e3bu5bc6u7801uff0cu5e94u8be5u7acbu5373u505cu6b62u3002u6b63u5e38u7684u7f51u7edcu914du7f6eu53efu80fdu9700u8981u6743u9650uff0cu4f46u4e0du5e94u901au8fc7u542bu7ccau4e0du6e05u7684u65b9u5f0fu7d22u53d6u65e0u9650u4fe1u4efbu3002</p>
-<h2 id="u89c2u5bdfu9690u79c1u548cu5b89u5168u4fe1u53f7">u89c2u5bdfu9690u79c1u548cu5b89u5168u4fe1u53f7</h2>
-<p>u53efu4ee5u4eceu51e0u4e2au7ec6u8282u5224u65adu670du52a1u662fu5426u503cu5f97u7ee7u7eedu4e86u89e3uff1a</p>
+<p>核实这些承诺时，要求对方说明适用条件、限制和依据。</p>
+<h2 id="配置文件和订阅链接也可能是凭据">配置文件和订阅链接也可能是凭据</h2>
+<p>很多网络工具依赖配置文件、订阅链接、密钥或二维码。这些内容可能包含服务器地址、认证信息和访问权限，不应该随手公开到群聊、评论区或公共仓库。</p>
+<p>陌生人发来的配置也不能只因为“能连上”就认为安全。配置可能把流量导向未知服务，也可能包含不合理的路由规则。导入前至少确认来源、用途和权限范围。</p>
+<p>如果某个配置要求关闭系统安全软件、安装不明证书、运行脚本或输入主密码，应该立即停止。正常的网络配置可能需要权限，但不应通过含糊不清的方式索取无限信任。</p>
+<h2 id="观察隐私和安全信号">观察隐私和安全信号</h2>
+<p>可以从几个细节判断服务是否值得继续了解：</p>
 <ul>
-<li>u5b98u7f51u548cu5ba2u6237u7aefu662fu5426u4f7fu7528 HTTPSuff1b</li>
-<li>u662fu5426u6709u660eu786eu7684u66f4u65b0u548cu6f0fu6d1eu4feeu590du8bb0u5f55uff1b</li>
-<li>u662fu5426u63d0u4f9bu5378u8f7du3001u6ce8u9500u548cu6570u636eu5220u9664u8bf4u660euff1b</li>
-<li>u662fu5426u89e3u91ca DNSu3001IPv6 u548cu65adu7ebfu4fddu62a4u7b49u884cu4e3auff1b</li>
-<li>u662fu5426u5141u8bb8u7528u6237u67e5u770bu57fau672cu8fdeu63a5u72b6u6001uff1b</li>
-<li>u662fu5426u6709u72ecu7acbu7684u5b89u5168u5ba1u8ba1u6216u516cu5f00u7684u6280u672fu6587u6863u3002</li>
+<li>官网和客户端是否使用 HTTPS；</li>
+<li>是否有明确的更新和漏洞修复记录；</li>
+<li>是否提供卸载、注销和数据删除说明；</li>
+<li>是否解释 DNS、IPv6 和断线保护等行为；</li>
+<li>是否允许用户查看基本连接状态；</li>
+<li>是否有独立的安全审计或公开的技术文档。</li>
 </ul>
-<p>u8fd9u4e9bu4fe1u53f7u4e0du80fdu8bc1u660eu670du52a1u7eddu5bf9u5b89u5168uff0cu4f46u80fdu5e2eu52a9u4f60u6392u9664u4e00u6279u660eu663eu4e0du900fu660eu7684u4ea7u54c1u3002</p>
-<p>u5982u679cu670du52a1u63d0u5230u201cu72ecu7acbu5ba1u8ba1u201duff0cu518du591au770bu4e00u773cuff1au8c01u505au7684u3001u4ec0u4e48u65f6u5019u505au7684u3001u68c0u67e5u7684u662fu5ba2u6237u7aefu8fd8u662fu670du52a1u7aefu3001u7ed3u8bbau662fu5426u516cu5f00u3002u51e0u5e74u524du5bf9u67d0u4e2au7ec4u4ef6u7684u5ba1u8ba1uff0cu4e0du7b49u4e8eu4ecau5929u6574u4e2au670du52a1u90fdu83b7u5f97u4e86u5b89u5168u4fddu8bc1u3002</p>
-<h2 id="u522bu628au5b89u5168u8d23u4efbu4ea4u7ed9u5de5u5177">u522bu628au5b89u5168u8d23u4efbu4ea4u7ed9u5de5u5177</h2>
-<p>u5373u4f7fu5de5u5177u672cu8eabu53efu9760uff0cu4e5fu4e0du80fdu66ffu4f60u9632u9493u9c7cu3001u5f31u5bc6u7801u3001u6076u610fu9644u4ef6u548cu8d26u53f7u590du7528u3002u91cdu8981u8d26u6237u5e94u4f7fu7528u72ecu7acbu5bc6u7801u548cu591au56e0u7d20u8ba4u8bc1u3002[1] u9047u5230u8bc1u4e66u8b66u544au3001u5f02u5e38u8df3u8f6cu548cu4e0du7b26u5408u9884u671fu7684u91cdu590du767bu5f55uff0cu5148u505cu4e0bu6765u6838u5b9eu3002</p>
-<p>u516cu5171 Wi-Fi u4e5fu4e0du610fu5473u7740 HTTPS u81eau52a8u5931u6548u3002u66f4u503cu5f97u7559u610fu7684u662fuff1au4f60u662fu5426u8bbfu95eeu4e86u6b63u786eu57dfu540du3001u8bc1u4e66u6821u9a8cu662fu5426u6b63u5e38u3001u8bbeu5907u6709u6ca1u6709u5b89u88c5u4e0du53efu4fe1u8bc1u4e66u3002u4e0du8981u56e0u4e3au5f00u7740 VPNuff0cu5c31u8df3u8fc7u8fd9u4e9bu68c0u67e5u3002</p>
-<p>u8fd8u8981u5b9au671fu6e05u7406u5931u6548u914du7f6eu548cu4e0du7528u7684u5ba2u6237u7aefu3002u7535u8111u91ccu88c5u7740u4e94u516du4e2au6765u6e90u4e0du660eu7684u7f51u7edcu5de5u5177uff0cu5e76u4e0du4f1au81eau52a8u589eu52a0u5b89u5168u6027uff0cu53cdu800cu6269u5927u653bu51fbu9762u3002</p>
-<p>u7f51u7edcu5de5u5177u53efu4ee5u7528u4e8eu5408u6cd5u7684u8fdcu7a0bu529eu516cu3001u9690u79c1u4fddu62a4u548cu8bbfu95eeu516cu5f00u8d44u6599uff0cu4f46u4e0du5e94u88abu7528u4e8eu76d7u53f7u3001u8bc8u9a97u3001u653bu51fbu3001u6076u610fu722cu53d6uff0cu6216u7ed5u8fc7u4ed8u8d39u548cu8bbfu95eeu6743u9650u3002</p>
-<h2 id="u4e00u4e2au5b9eu7528u7684u5224u65adu6e05u5355">u4e00u4e2au5b9eu7528u7684u5224u65adu6e05u5355</h2>
-<p>u5b89u88c5u524du95eeu81eau5df1uff1a</p>
+<p>这些信号不能证明服务绝对安全，但能帮助你排除一批明显不透明的产品。</p>
+<p>如果服务提到“独立审计”，再多看一眼：谁做的、什么时候做的、检查的是客户端还是服务端、结论是否公开。几年前对某个组件的审计，不等于今天整个服务都获得了安全保证。</p>
+<h2 id="别把安全责任交给工具">别把安全责任交给工具</h2>
+<p>即使工具本身可靠，也不能替你防钓鱼、弱密码、恶意附件和账号复用。重要账户应使用独立密码和多因素认证。[1] 遇到证书警告、异常跳转和不符合预期的重复登录，先停下来核实。</p>
+<p>公共 Wi-Fi 也不意味着 HTTPS 自动失效。更值得留意的是：你是否访问了正确域名、证书校验是否正常、设备有没有安装不可信证书。不要因为开着 VPN，就跳过这些检查。</p>
+<p>还要定期清理失效配置和不用的客户端。电脑里装着五六个来源不明的网络工具，并不会自动增加安全性，反而扩大攻击面。</p>
+<p>网络工具可以用于合法的远程办公、隐私保护和访问公开资料，但不应被用于盗号、诈骗、攻击、恶意爬取，或绕过付费和访问权限。</p>
+<h2 id="一个实用的判断清单">一个实用的判断清单</h2>
+<p>安装前问自己：</p>
 <ol>
-<li>u6211u77e5u9053u8f6fu4ef6u6765u81eau8c01u5417uff1f</li>
-<li>u6211u77e5u9053u670du52a1u7531u8c01u8fd0u8425u5417uff1f</li>
-<li>u5b83u9700u8981u7684u6743u9650u5408u7406u5417uff1f</li>
-<li>u9690u79c1u653fu7b56u6709u6ca1u6709u5177u4f53u5185u5bb9uff1f</li>
-<li>u8fdeu63a5u51edu636eu662fu5426u53efu80fdu6cc4u9732uff1f</li>
-<li>u51fau73b0u95eeu9898u540euff0cu6211u80fdu5426u64a4u9500u6743u9650u548cu5220u9664u914du7f6euff1f</li>
+<li>我知道软件来自谁吗？</li>
+<li>我知道服务由谁运营吗？</li>
+<li>它需要的权限合理吗？</li>
+<li>隐私政策有没有具体内容？</li>
+<li>连接凭据是否可能泄露？</li>
+<li>出现问题后，我能否撤销权限和删除配置？</li>
 </ol>
-<p>u5982u679cu5176u4e2du51e0u9879u5b8cu5168u6ca1u6709u7b54u6848uff0cu5148u4e0du8981u628au91cdu8981u8d26u53f7u548cu654fu611fu6570u636eu4ea4u7ed9u5b83u3002</p>
-<h2 id="u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</h2>
+<p>如果其中几项完全没有答案，先不要把重要账号和敏感数据交给它。</p>
+<h2 id="参考资料">参考资料</h2>
 <ul>
-<li>[1] <a href="https://www.cisa.gov/secure-our-world">CISAuff1aSecure Our Worlduff0cu5bc6u7801u3001MFA u4e0eu8f6fu4ef6u66f4u65b0u5efau8bae</a></li>
-<li>[2] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Projectuff1aTor Browser u5b89u5168u4f7fu7528u5efau8bae</a></li>
-<li>[3] <a href="https://openvpn.net/community-resources/">OpenVPNuff1au793eu533au4e0eu5b89u5168u6587u6863u5165u53e3</a></li>
-<li>[4] <a href="https://support.mozilla.org/en-US/kb/how-do-i-tell-if-my-connection-is-secure">Mozillauff1au7f51u7ad9u8fdeu63a5u5b89u5168u4e0eu8bc1u4e66u63d0u793a</a></li>
+<li>[1] <a href="https://www.cisa.gov/secure-our-world">CISA：Secure Our World，密码、MFA 与软件更新建议</a></li>
+<li>[2] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Project：Tor Browser 安全使用建议</a></li>
+<li>[3] <a href="https://openvpn.net/community-resources/">OpenVPN：社区与安全文档入口</a></li>
+<li>[4] <a href="https://support.mozilla.org/en-US/kb/how-do-i-tell-if-my-connection-is-secure">Mozilla：网站连接安全与证书提示</a></li>
 </ul>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/privacy-boundaries/">VPN u4e0eu9690u79c1u8fb9u754c</a><p>u6362u4e86u51fau53e3 IPuff0cu54eau4e9bu8eabu4efdu4fe1u606fu548cu4f7fu7528u8d23u4efbu4ecdu7136u5b58u5728uff1f</p></li><li><a href="https://ladderer.com/articles/choosing-proxy-service/">u8ba2u9605u3001VPN u4e0eu81eau5efa</a><p>u4eceu8bbeu5907u3001u5e94u7528u3001u7ef4u62a4u65f6u95f4u548cu4fe1u4efbu5bf9u8c61uff0cu5224u65adu54eau79cdu670du52a1u9002u5408u81eau5df1u3002</p></li></ul></nav>
-          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/privacy-boundaries/">VPN 与隐私边界</a><p>换了出口 IP，哪些身份信息和使用责任仍然存在？</p></li><li><a href="https://ladderer.com/articles/choosing-proxy-service/">订阅、VPN 与自建</a><p>从设备、应用、维护时间和信任对象，判断哪种服务适合自己。</p></li></ul></nav>
+          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="u672cu7ec4u6587u7ae0">
-            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
-            <div class="sidebar-group"><h2>u5b89u5168u4e0eu8fb9u754c</h2>
+          <nav aria-label="本组文章">
+            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
+            <div class="sidebar-group"><h2>安全与边界</h2>
       <a href="https://ladderer.com/articles/tool-security/" aria-current="page">
-        <span>09</span>u4ee3u7406u670du52a1u5b89u5168u68c0u67e5
+        <span>09</span>代理服务安全检查
       </a>
       <a href="https://ladderer.com/articles/privacy-boundaries/">
-        <span>10</span>VPN u4e0eu9690u79c1u8fb9u754c
+        <span>10</span>VPN 与隐私边界
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
-      <a rel="prev" href="https://ladderer.com/articles/troubleshooting/"><small>u2190 u4e0au4e00u7bc7</small><strong>u7f51u9875u6253u4e0du5f00u600eu4e48u67e5</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/privacy-boundaries/"><small>u4e0bu4e00u7bc7 u2192</small><strong>VPN u4e0eu9690u79c1u8fb9u754c</strong></a></nav>
+          <nav class="article-pagination" aria-label="上一篇与下一篇">
+      <a rel="prev" href="https://ladderer.com/articles/troubleshooting/"><small>← 上一篇</small><strong>网页打不开怎么查</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/privacy-boundaries/"><small>下一篇 →</small><strong>VPN 与隐私边界</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>

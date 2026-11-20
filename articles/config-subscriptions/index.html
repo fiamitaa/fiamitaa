@@ -1,86 +1,86 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clash u8ba2u9605u600eu4e48u7528uff1fu8282u70b9u548cu5206u6d41u89c4u5219u5165u95e8</title><meta name="description" content="u4eceu4e00u6761 Clash u8ba2u9605u8bb2u8d77uff0cu89e3u91cau914du7f6eu6587u4ef6u3001u8282u70b9u3001u4ee3u7406u7ec4u548cu5206u6d41u89c4u5219u600eu6837u914du5408uff0cu4ee5u53cau5bfcu5165u540eu8be5u770bu54eau91ccu624du80fdu77e5u9053u6d41u91cfu5b9eu9645u8d70u5411u3002u7ee7u7eedu533au5206u89c4u5219u6a21u5f0fu3001u5168u5c40u6a21u5f0fu3001DNS u4e0e TUN u7684u4f5cu7528uff0cu4e86u89e3u4e3au4ec0u4e48u66f4u65b0u6210u529fu4e0du80fdu8bc1u660eu76eeu6807u5e94u7528u5df2u7ecfu4f7fu7528u4ee3u7406uff0cu5e76u77e5u9053u9047u5230u8fdeu63a5u5f02u5e38u65f6u5e94u4f18u5148u6838u5bf9u54eau4e9bu8bbeu7f6eu3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/config-subscriptions/"><meta property="og:url" content="https://ladderer.com/articles/config-subscriptions/"><meta property="og:title" content="Clash u8ba2u9605u600eu4e48u7528uff1fu8282u70b9u548cu5206u6d41u89c4u5219u5165u95e8"><meta property="og:description" content="u4eceu4e00u6761 Clash u8ba2u9605u8bb2u8d77uff0cu89e3u91cau914du7f6eu6587u4ef6u3001u8282u70b9u3001u4ee3u7406u7ec4u548cu5206u6d41u89c4u5219u600eu6837u914du5408uff0cu4ee5u53cau5bfcu5165u540eu8be5u770bu54eau91ccu624du80fdu77e5u9053u6d41u91cfu5b9eu9645u8d70u5411u3002u7ee7u7eedu533au5206u89c4u5219u6a21u5f0fu3001u5168u5c40u6a21u5f0fu3001DNS u4e0e TUN u7684u4f5cu7528uff0cu4e86u89e3u4e3au4ec0u4e48u66f4u65b0u6210u529fu4e0du80fdu8bc1u660eu76eeu6807u5e94u7528u5df2u7ecfu4f7fu7528u4ee3u7406uff0cu5e76u77e5u9053u9047u5230u8fdeu63a5u5f02u5e38u65f6u5e94u4f18u5148u6838u5bf9u54eau4e9bu8bbeu7f6eu3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Clash u8ba2u9605u600eu4e48u7528uff1fu8282u70b9u548cu5206u6d41u89c4u5219u5165u95e8"><meta name="twitter:description" content="u4eceu4e00u6761 Clash u8ba2u9605u8bb2u8d77uff0cu89e3u91cau914du7f6eu6587u4ef6u3001u8282u70b9u3001u4ee3u7406u7ec4u548cu5206u6d41u89c4u5219u600eu6837u914du5408uff0cu4ee5u53cau5bfcu5165u540eu8be5u770bu54eau91ccu624du80fdu77e5u9053u6d41u91cfu5b9eu9645u8d70u5411u3002u7ee7u7eedu533au5206u89c4u5219u6a21u5f0fu3001u5168u5c40u6a21u5f0fu3001DNS u4e0e TUN u7684u4f5cu7528uff0cu4e86u89e3u4e3au4ec0u4e48u66f4u65b0u6210u529fu4e0du80fdu8bc1u660eu76eeu6807u5e94u7528u5df2u7ecfu4f7fu7528u4ee3u7406uff0cu5e76u77e5u9053u9047u5230u8fdeu63a5u5f02u5e38u65f6u5e94u4f18u5148u6838u5bf9u54eau4e9bu8bbeu7f6eu3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"Clash u8ba2u9605u600eu4e48u7528uff1fu8282u70b9u548cu5206u6d41u89c4u5219u5165u95e8","description":"u4eceu4e00u6761 Clash u8ba2u9605u8bb2u8d77uff0cu89e3u91cau914du7f6eu6587u4ef6u3001u8282u70b9u3001u4ee3u7406u7ec4u548cu5206u6d41u89c4u5219u600eu6837u914du5408uff0cu4ee5u53cau5bfcu5165u540eu8be5u770bu54eau91ccu624du80fdu77e5u9053u6d41u91cfu5b9eu9645u8d70u5411u3002u7ee7u7eedu533au5206u89c4u5219u6a21u5f0fu3001u5168u5c40u6a21u5f0fu3001DNS u4e0e TUN u7684u4f5cu7528uff0cu4e86u89e3u4e3au4ec0u4e48u66f4u65b0u6210u529fu4e0du80fdu8bc1u660eu76eeu6807u5e94u7528u5df2u7ecfu4f7fu7528u4ee3u7406uff0cu5e76u77e5u9053u9047u5230u8fdeu63a5u5f02u5e38u65f6u5e94u4f18u5148u6838u5bf9u54eau4e9bu8bbeu7f6eu3002","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/config-subscriptions/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u914du7f6eu4e0eu6392u67e5","item":"https://ladderer.com/#group-practice"},{"@type":"ListItem","position":3,"name":"Clash u8ba2u9605u600eu4e48u7528uff1fu8282u70b9u548cu5206u6d41u89c4u5219u5165u95e8","item":"https://ladderer.com/articles/config-subscriptions/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clash 订阅怎么用？节点和分流规则入门</title><meta name="description" content="从一条 Clash 订阅讲起，解释配置文件、节点、代理组和分流规则怎样配合，以及导入后该看哪里才能知道流量实际走向。继续区分规则模式、全局模式、DNS 与 TUN 的作用，了解为什么更新成功不能证明目标应用已经使用代理，并知道遇到连接异常时应优先核对哪些设置。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/config-subscriptions/"><meta property="og:url" content="https://ladderer.com/articles/config-subscriptions/"><meta property="og:title" content="Clash 订阅怎么用？节点和分流规则入门"><meta property="og:description" content="从一条 Clash 订阅讲起，解释配置文件、节点、代理组和分流规则怎样配合，以及导入后该看哪里才能知道流量实际走向。继续区分规则模式、全局模式、DNS 与 TUN 的作用，了解为什么更新成功不能证明目标应用已经使用代理，并知道遇到连接异常时应优先核对哪些设置。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Clash 订阅怎么用？节点和分流规则入门"><meta name="twitter:description" content="从一条 Clash 订阅讲起，解释配置文件、节点、代理组和分流规则怎样配合，以及导入后该看哪里才能知道流量实际走向。继续区分规则模式、全局模式、DNS 与 TUN 的作用，了解为什么更新成功不能证明目标应用已经使用代理，并知道遇到连接异常时应优先核对哪些设置。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"Clash 订阅怎么用？节点和分流规则入门","description":"从一条 Clash 订阅讲起，解释配置文件、节点、代理组和分流规则怎样配合，以及导入后该看哪里才能知道流量实际走向。继续区分规则模式、全局模式、DNS 与 TUN 的作用，了解为什么更新成功不能证明目标应用已经使用代理，并知道遇到连接异常时应优先核对哪些设置。","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/config-subscriptions/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"配置与排查","item":"https://ladderer.com/#group-practice"},{"@type":"ListItem","position":3,"name":"Clash 订阅怎么用？节点和分流规则入门","item":"https://ladderer.com/articles/config-subscriptions/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
-            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-practice">u914du7f6eu4e0eu6392u67e5</a><span aria-hidden="true">/</span>
-            <span aria-current="page">u7b2c 07 u7bc7</span>
+          <nav class="breadcrumbs" aria-label="当前位置">
+            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-practice">配置与排查</a><span aria-hidden="true">/</span>
+            <span aria-current="page">第 07 篇</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 07 <span> / 18</span></p>
-            <h1>Clash u8ba2u9605u600eu4e48u7528uff1fu8282u70b9u548cu5206u6d41u89c4u5219u5165u95e8</h1>
-            <p class="article-summary">u5bfcu5165u8ba2u9605u3001u9009u62e9u8282u70b9u548cu8bbeu7f6eu5206u6d41uff0cu5206u522bu6539u53d8u4e86u4ec0u4e48uff1f</p>
-            <div class="article-meta"><span>u7ea6 4 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-10-18">2026.10.18</time></span></div>
+            <h1>Clash 订阅怎么用？节点和分流规则入门</h1>
+            <p class="article-summary">导入订阅、选择节点和设置分流，分别改变了什么？</p>
+            <div class="article-meta"><span>约 4 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
-          <ol><li class="toc-h2"><a href="#u8282u70b9u662fu4ec0u4e48">u8282u70b9u662fu4ec0u4e48</a></li><li class="toc-h2"><a href="#u914du7f6eu6587u4ef6u662fu4ec0u4e48">u914du7f6eu6587u4ef6u662fu4ec0u4e48</a></li><li class="toc-h2"><a href="#u8ba2u9605u94feu63a5u662fu4ec0u4e48">u8ba2u9605u94feu63a5u662fu4ec0u4e48</a></li><li class="toc-h2"><a href="#u4ee3u7406u7ec4u548cu89c4u5219">u4ee3u7406u7ec4u548cu89c4u5219</a></li><li class="toc-h2"><a href="#dns-u4e3au4ec0u4e48u4f1au5f71u54cdu7ed3u679c">DNS u4e3au4ec0u4e48u4f1au5f71u54cdu7ed3u679c</a></li><li class="toc-h2"><a href="#u914du7f6eu7684u5b89u5168u98ceu9669">u914du7f6eu7684u5b89u5168u98ceu9669</a></li><li class="toc-h2"><a href="#u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</a></li></ol>
+          <h2 id="article-toc-title">本文目录</h2>
+          <ol><li class="toc-h2"><a href="#节点是什么">节点是什么</a></li><li class="toc-h2"><a href="#配置文件是什么">配置文件是什么</a></li><li class="toc-h2"><a href="#订阅链接是什么">订阅链接是什么</a></li><li class="toc-h2"><a href="#代理组和规则">代理组和规则</a></li><li class="toc-h2"><a href="#dns-为什么会影响结果">DNS 为什么会影响结果</a></li><li class="toc-h2"><a href="#配置的安全风险">配置的安全风险</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>u521au62ffu5230u4e00u6761u673au573au8ba2u9605u94feu63a5uff0cu5bfcu5165u540eu8fd8u8981u89e3u51b3u4e24u4e2au95eeu9898uff1au9009u54eau4e2au8282u70b9uff0cu54eau4e9bu8bf7u6c42u4f1au7ecfu8fc7u5b83u3002u8ba2u9605u3001u4ee3u7406u7ec4u548cu89c4u5219u5206u522bu51b3u5b9au8fd9u51e0u4ef6u4e8bu3002</p>
-<p>u201cu673au573au8ba2u9605u201du901au5e38u662fu670du52a1u5546u63d0u4f9bu7684u914du7f6eu83b7u53d6u5165u53e3uff0cu201cu673au573au8282u70b9u201du5219u662fu914du7f6eu4e2du7684u5177u4f53u8fdeu63a5u6761u76eeu3002u4e00u4efdu8ba2u9605u53efu4ee5u5305u542bu591au4e2au8282u70b9uff1bu66f4u65b0u8ba2u9605u548cu5207u6362u8282u70b9uff0cu4e5fu4e0du662fu540cu4e00u4e2au64cdu4f5cu3002</p>
-<h2 id="u8282u70b9u662fu4ec0u4e48">u8282u70b9u662fu4ec0u4e48</h2>
-<p>u8282u70b9u901au5e38u6307u4e00u4e2au53efu4ee5u63a5u6536u4ee3u7406u8fdeu63a5u7684u8fdcu7a0bu670du52a1u5165u53e3u3002u5b83u53efu80fdu5305u542bu5730u5740u3001u7aefu53e3u3001u534fu8baeu3001u8ba4u8bc1u4fe1u606fu548cu4f20u8f93u53c2u6570u3002</p>
-<p>u8282u70b9u4e0du662fu5ba2u6237u7aefuff0cu4e5fu4e0du662fu534fu8baeu3002u5b83u80ccu540eu901au5e38u7531u67d0u4e2au670du52a1u5546u3001u4e2au4ebau6216u7ec4u7ec7u8fd0u8425u3002u6d41u91cfu7ecfu8fc7u5b83uff0cu5c31u9700u8981u8003u8651u8fd0u8425u8005u7684u53efu4fe1u5ea6u3001u65e5u5fd7u653fu7b56u3001u7a33u5b9au6027u548cu9002u7528u89c4u5219u3002</p>
-<h2 id="u914du7f6eu6587u4ef6u662fu4ec0u4e48">u914du7f6eu6587u4ef6u662fu4ec0u4e48</h2>
-<p>u914du7f6eu6587u4ef6u628au5ba2u6237u7aefu9700u8981u7684u53c2u6570u7ec4u7ec7u8d77u6765uff0cu53efu80fdu63cfu8ff0uff1a</p>
+          <article class="prose"><p>刚拿到一条机场订阅链接，导入后还要解决两个问题：选哪个节点，哪些请求会经过它。订阅、代理组和规则分别决定这几件事。</p>
+<p>“机场订阅”通常是服务商提供的配置获取入口，“机场节点”则是配置中的具体连接条目。一份订阅可以包含多个节点；更新订阅和切换节点，也不是同一个操作。</p>
+<h2 id="节点是什么">节点是什么</h2>
+<p>节点通常指一个可以接收代理连接的远程服务入口。它可能包含地址、端口、协议、认证信息和传输参数。</p>
+<p>节点不是客户端，也不是协议。它背后通常由某个服务商、个人或组织运营。流量经过它，就需要考虑运营者的可信度、日志政策、稳定性和适用规则。</p>
+<h2 id="配置文件是什么">配置文件是什么</h2>
+<p>配置文件把客户端需要的参数组织起来，可能描述：</p>
 <ul>
-<li>u6838u5fc3u9700u8981u7684u8fd0u884cu53c2u6570uff1b</li>
-<li>u8fdeu63a5u54eau4e9bu8282u70b9uff1b</li>
-<li>u91c7u7528u4ec0u4e48u534fu8baeuff1b</li>
-<li>u54eau4e9bu57dfu540du76f4u8fdeuff1b</li>
-<li>u54eau4e9bu6d41u91cfu7ecfu8fc7u4ee3u7406uff1b</li>
-<li>DNS u5982u4f55u5904u7406uff1b</li>
-<li>u4ee3u7406u7ec4u5982u4f55u9009u62e9u3002</li>
+<li>核心需要的运行参数；</li>
+<li>连接哪些节点；</li>
+<li>采用什么协议；</li>
+<li>哪些域名直连；</li>
+<li>哪些流量经过代理；</li>
+<li>DNS 如何处理；</li>
+<li>代理组如何选择。</li>
 </ul>
-<p>u4e0du540cu6838u5fc3u652fu6301u7684u914du7f6eu683cu5f0fu53efu80fdu4e0du540cu3002u6587u4ef6u80fdu5bfcu5165uff0cu53eau8bf4u660eu5b83u88abu8bfbu53d6uff0cu4e0du8bf4u660eu6bcfu4e2au5b57u6bb5u90fdu751fu6548u3002</p>
-<h2 id="u8ba2u9605u94feu63a5u662fu4ec0u4e48">u8ba2u9605u94feu63a5u662fu4ec0u4e48</h2>
-<p>u8ba2u9605u94feu63a5u901au5e38u4e0du662fu8f6fu4ef6u672cu4f53uff0cu800cu662fu83b7u53d6u6216u66f4u65b0u914du7f6eu7684u5730u5740u3002u5ba2u6237u7aefu8bbfu95eeu8ba2u9605u540euff0cu5f97u5230u8282u70b9u5217u8868u3001u89c4u5219u6216u5176u4ed6u914du7f6eu5185u5bb9u3002</p>
-<p>u8ba2u9605u94feu63a5u5f80u5f80u5e26u6709u8bbfu95eeu6743u9650uff0cu4e0du80fdu516cu5f00u53d1u5e03u3002u5b83u53efu80fdu88abu4ed6u4ebau4f7fu7528uff0cu4e5fu53efu80fdu66b4u9732u8d26u6237u4fe1u606fu3002u53d1u73b0u6cc4u9732u65f6uff0cu5e94u4f18u5148u64a4u9500u3001u91cdu7f6eu6216u66f4u6362u3002</p>
-<p>u540cu4e00u4e2au8ba2u9605u94feu63a5uff0cu4e0bu5468u8fd4u56deu7684u914du7f6eu53efu80fdu5c31u548cu4ecau5929u4e0du540cu3002u81eau52a8u66f4u65b0u7701u53bbu4e86u624bu52a8u4e0bu8f7du7684u6b65u9aa4uff0cu5374u4e0du80fdu66ffu4f60u5224u65adu5185u5bb9u662fu5426u5b89u5168u3002u66f4u65b0u524du8981u786eu8ba4u6765u6e90uff0cu66f4u65b0u540eu4e5fu8981u7559u610fu914du7f6eu662fu5426u6709u5f02u5e38u53d8u5316u3002</p>
-<h2 id="u4ee3u7406u7ec4u548cu89c4u5219">u4ee3u7406u7ec4u548cu89c4u5219</h2>
-<p>u4ee3u7406u7ec4u628au591au4e2au8282u70b9u6216u7b56u7565u653eu5728u4e00u8d77u7ba1u7406u3002u89c4u5219u5219u51b3u5b9au4e00u7c7bu6d41u91cfu76f4u8fdeu3001u4ee3u7406u8fd8u662fu62d2u7eddu3002</p>
-<p>u5e38u89c1u6a21u5f0fu5305u62ecuff1a</p>
+<p>不同核心支持的配置格式可能不同。文件能导入，只说明它被读取，不说明每个字段都生效。</p>
+<h2 id="订阅链接是什么">订阅链接是什么</h2>
+<p>订阅链接通常不是软件本体，而是获取或更新配置的地址。客户端访问订阅后，得到节点列表、规则或其他配置内容。</p>
+<p>订阅链接往往带有访问权限，不能公开发布。它可能被他人使用，也可能暴露账户信息。发现泄露时，应优先撤销、重置或更换。</p>
+<p>同一个订阅链接，下周返回的配置可能就和今天不同。自动更新省去了手动下载的步骤，却不能替你判断内容是否安全。更新前要确认来源，更新后也要留意配置是否有异常变化。</p>
+<h2 id="代理组和规则">代理组和规则</h2>
+<p>代理组把多个节点或策略放在一起管理。规则则决定一类流量直连、代理还是拒绝。</p>
+<p>常见模式包括：</p>
 <ul>
-<li><strong>u76f4u8fdeu6a21u5f0f</strong>uff1au5c06u6838u5fc3u63a5u6536u5230u7684u6d41u91cfu6309u76f4u8fdeu7b56u7565u5904u7406uff1b</li>
-<li><strong>u5168u5c40u6a21u5f0f</strong>uff1au5c06u6838u5fc3u63a5u6536u5230u7684u6d41u91cfu4ea4u7ed9u6307u5b9au4ee3u7406u7b56u7565uff1b</li>
-<li><strong>u89c4u5219u6a21u5f0f</strong>uff1au5bf9u6838u5fc3u63a5u6536u5230u7684u6d41u91cfuff0cu6309u57dfu540du3001IP u6216u5176u4ed6u6761u4ef6u9009u62e9u8defu5f84u3002</li>
+<li><strong>直连模式</strong>：将核心接收到的流量按直连策略处理；</li>
+<li><strong>全局模式</strong>：将核心接收到的流量交给指定代理策略；</li>
+<li><strong>规则模式</strong>：对核心接收到的流量，按域名、IP 或其他条件选择路径。</li>
 </ul>
-<p>u8fd9u4e09u79cdu6a21u5f0fu51b3u5b9au7684u662fu201cu6d41u91cfu8fdbu5165u6838u5fc3u540eu600eu4e48u5904u7406u201duff0cu4e0du662fu201cu54eau4e9bu5e94u7528u5df2u7ecfu8fdbu5165u6838u5fc3u201du3002u4f8bu5982uff0cu6d4fu89c8u5668u4f7fu7528u7cfbu7edfu4ee3u7406u3001u67d0u4e2au684cu9762u5e94u7528u4e0du8bfbu53d6u7cfbu7edfu4ee3u7406u65f6uff0cu5207u5230u5168u5c40u6a21u5f0fu4e5fu4e0du4f1au81eau52a8u628au540eu8005u63a5u8fdbu6765u3002</p>
-<p>TUN u662fu53e6u4e00u5c42u8bbeu7f6euff1au5b83u901au5e38u901au8fc7u865au62dfu7f51u7edcu63a5u53e3u4e0eu8defu7531u63a5u6536u6d41u91cfuff0cu5f71u54cdu8303u56f4u8fd8u53d6u51b3u4e8eu7cfbu7edfu6743u9650u3001u8defu7531u548cu6392u9664u89c4u5219u3002u6253u5f00 TUN u4e0du4ee3u8868u53efu4ee5u8df3u8fc7u8fd9u4e9bu68c0u67e5u3002[1]</p>
-<p>u89c4u5219u8d8au590du6742uff0cu6392u67e5u8d8au56f0u96beu3002u65b0u624bu6700u597du5148u4eceu7b80u5355u914du7f6eu5f00u59cbuff0cu4e0du8981u4e00u6b21u53e0u52a0u5f88u591au7b2cu4e09u65b9u89c4u5219u96c6u3002</p>
-<h2 id="dns-u4e3au4ec0u4e48u4f1au5f71u54cdu7ed3u679c">DNS u4e3au4ec0u4e48u4f1au5f71u54cdu7ed3u679c</h2>
-<p>DNS u8bf7u6c42u53efu80fdu8d70u672cu5730u7f51u7edcu3001u4ee3u7406u96a7u9053u6216u7279u5b9au89e3u6790u670du52a1u3002u89e3u6790u8defu5f84u548cu8bbfu95eeu8defu5f84u4e0du4e00u81f4u65f6uff0cu53efu80fdu51fau73b0u57dfu540du80fdu89e3u6790u4f46u76eeu6807u8fdeu4e0du4e0auff0cu6216u8005u7f51u9875u80fdu5f00u3001u90e8u5206u8d44u6e90u5931u8d25u3002</p>
-<p>u8fd9u4e5fu662fu540cu4e00u4efdu8ba2u9605u5728u4e0du540cu5ba2u6237u7aefu4e0au8868u73b0u4e0du540cu7684u539fu56e0u4e4bu4e00uff1au5ba2u6237u7aefu53efu80fdu8c03u7528u4e0du540cu6838u5fc3uff0cu4f7fu7528u4e0du540c DNS u6a21u5f0fu3001u7f13u5b58u548cu89c4u5219u5f15u64ceu3002</p>
-<h2 id="u914du7f6eu7684u5b89u5168u98ceu9669">u914du7f6eu7684u5b89u5168u98ceu9669</h2>
-<p>u914du7f6eu6587u4ef6u53efu80fdu5305u542bu8ba2u9605u94feu63a5u3001u5bc6u94a5u3001u5bc6u7801u3001u670du52a1u5668u5730u5740u548cu4e2au4ebau8d26u6237u6807u8bc6u3002u4e0du8981u5c06u5b8cu6574u914du7f6eu4e0au4f20u5230u516cu5171u4ee3u7801u4ed3u5e93uff0cu4e5fu4e0du8981u628au4e8cu7ef4u7801u548cu8ba2u9605u94feu63a5u53d1u5230u516cu5f00u7fa4u7ec4u3002</p>
-<p>u9047u5230u964cu751fu914du7f6euff0cu5c24u5176u8981u8c28u614eu3002u5982u679cu5bfcu5165u6216u4f7fu7528u65f6u8981u6c42u4f60u5173u95edu5b89u5168u8f6fu4ef6u3001u5b89u88c5u4e0du660eu8bc1u4e66u3001u8fd0u884cu811au672cu6216u8f93u5165u7cfbu7edfu5bc6u7801uff0cu5148u505cu4e0bu6765uff0cu6838u5b9eu8fd9u4e9bu8981u6c42u7684u6765u6e90u548cu7528u9014u3002</p>
-<p>u6392u67e5u65f6u4e5fu6309u8fd9u4e9bu89d2u8272u533au5206uff1au5bfcu5165u5931u8d25uff0cu5148u68c0u67e5u683cu5f0fu4e0eu5ba2u6237u7aefu652fu6301uff1bu67d0u4e2au8282u70b9u8fdeu63a5u5931u8d25uff0cu67e5u770bu5bf9u5e94u8fdeu63a5u65e5u5fd7uff1bu53eau6709u90e8u5206u7f51u7ad9u8d70u9519u8defu5f84uff0cu518du67e5u89c4u5219u4e0e DNSu3002u4e0du8981u4e00u9047u5230u95eeu9898u5c31u628au6574u4efdu914du7f6eu5168u90e8u6362u6389u3002</p>
-<h2 id="u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</h2>
+<p>这三种模式决定的是“流量进入核心后怎么处理”，不是“哪些应用已经进入核心”。例如，浏览器使用系统代理、某个桌面应用不读取系统代理时，切到全局模式也不会自动把后者接进来。</p>
+<p>TUN 是另一层设置：它通常通过虚拟网络接口与路由接收流量，影响范围还取决于系统权限、路由和排除规则。打开 TUN 不代表可以跳过这些检查。[1]</p>
+<p>规则越复杂，排查越困难。新手最好先从简单配置开始，不要一次叠加很多第三方规则集。</p>
+<h2 id="dns-为什么会影响结果">DNS 为什么会影响结果</h2>
+<p>DNS 请求可能走本地网络、代理隧道或特定解析服务。解析路径和访问路径不一致时，可能出现域名能解析但目标连不上，或者网页能开、部分资源失败。</p>
+<p>这也是同一份订阅在不同客户端上表现不同的原因之一：客户端可能调用不同核心，使用不同 DNS 模式、缓存和规则引擎。</p>
+<h2 id="配置的安全风险">配置的安全风险</h2>
+<p>配置文件可能包含订阅链接、密钥、密码、服务器地址和个人账户标识。不要将完整配置上传到公共代码仓库，也不要把二维码和订阅链接发到公开群组。</p>
+<p>遇到陌生配置，尤其要谨慎。如果导入或使用时要求你关闭安全软件、安装不明证书、运行脚本或输入系统密码，先停下来，核实这些要求的来源和用途。</p>
+<p>排查时也按这些角色区分：导入失败，先检查格式与客户端支持；某个节点连接失败，查看对应连接日志；只有部分网站走错路径，再查规则与 DNS。不要一遇到问题就把整份配置全部换掉。</p>
+<h2 id="参考资料">参考资料</h2>
 <ul>
-<li>[1] <a href="https://wiki.metacubex.one/config/inbound/tun/">Mihomouff1aTUN u5165u7ad9u914du7f6e</a></li>
-<li><a href="https://wiki.metacubex.one/config/general/">Mihomouff1au901au7528u914du7f6eu4e0eu8fd0u884cu6a21u5f0f</a></li>
+<li>[1] <a href="https://wiki.metacubex.one/config/inbound/tun/">Mihomo：TUN 入站配置</a></li>
+<li><a href="https://wiki.metacubex.one/config/general/">Mihomo：通用配置与运行模式</a></li>
 <li><a href="https://sing-box.sagernet.org/">sing-box Documentation</a></li>
 <li><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge Rev</a></li>
 </ul>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/clash-family/">Clash u4e0e Mihomo</a><p>Clashu3001Metau3001Mihomo u548cu684cu9762u5ba2u6237u7aefu662fu4ec0u4e48u5173u7cfbuff1fu5148u5206u6e05u6838u5fc3u4e0eu754cu9762uff0cu518du770bu8ba2u9605u517cu5bb9u3002</p></li><li><a href="https://ladderer.com/articles/verify-app-proxy/">u9a8cu8bc1u5e94u7528u4ee3u7406u8defu5f84</a><p>u7528u5e94u7528u8bbeu7f6eu3001u8fdeu63a5u65e5u5fd7u548cu51fau53e3u5bf9u7167u9a8cu8bc1u5b9eu9645u8defu5f84u3002</p></li></ul></nav>
-          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/clash-family/">Clash 与 Mihomo</a><p>Clash、Meta、Mihomo 和桌面客户端是什么关系？先分清核心与界面，再看订阅兼容。</p></li><li><a href="https://ladderer.com/articles/verify-app-proxy/">验证应用代理路径</a><p>用应用设置、连接日志和出口对照验证实际路径。</p></li></ul></nav>
+          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="u672cu7ec4u6587u7ae0">
-            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
-            <div class="sidebar-group"><h2>u914du7f6eu4e0eu6392u67e5</h2>
+          <nav aria-label="本组文章">
+            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
+            <div class="sidebar-group"><h2>配置与排查</h2>
       <a href="https://ladderer.com/articles/config-subscriptions/" aria-current="page">
-        <span>07</span>u8ba2u9605u3001u8282u70b9u4e0eu89c4u5219
+        <span>07</span>订阅、节点与规则
       </a>
       <a href="https://ladderer.com/articles/troubleshooting/">
-        <span>08</span>u7f51u9875u6253u4e0du5f00u600eu4e48u67e5
+        <span>08</span>网页打不开怎么查
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
-      <a rel="prev" href="https://ladderer.com/articles/v2ray-xray/"><small>u2190 u4e0au4e00u7bc7</small><strong>V2Ray u4e0e Xray</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/troubleshooting/"><small>u4e0bu4e00u7bc7 u2192</small><strong>u7f51u9875u6253u4e0du5f00u600eu4e48u67e5</strong></a></nav>
+          <nav class="article-pagination" aria-label="上一篇与下一篇">
+      <a rel="prev" href="https://ladderer.com/articles/v2ray-xray/"><small>← 上一篇</small><strong>V2Ray 与 Xray</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/troubleshooting/"><small>下一篇 →</small><strong>网页打不开怎么查</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
