@@ -1,98 +1,97 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理已连接但网页打不开，怎么排查？</title><meta name="description" content="代理显示连接成功，网页仍然打不开？先分清故障只影响一个网站、一个应用，还是整台设备，再检查规则命中、客户端日志、DNS 与证书提示。用可复现的对照逐步缩小范围，判断问题在本地配置、远端节点还是目标站点，避免在没有线索时反复换软件或重装。正文附有排查顺序。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/troubleshooting/"><meta property="og:url" content="https://ladderer.com/articles/troubleshooting/"><meta property="og:title" content="代理已连接但网页打不开，怎么排查？"><meta property="og:description" content="代理显示连接成功，网页仍然打不开？先分清故障只影响一个网站、一个应用，还是整台设备，再检查规则命中、客户端日志、DNS 与证书提示。用可复现的对照逐步缩小范围，判断问题在本地配置、远端节点还是目标站点，避免在没有线索时反复换软件或重装。正文附有排查顺序。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理已连接但网页打不开，怎么排查？"><meta name="twitter:description" content="代理显示连接成功，网页仍然打不开？先分清故障只影响一个网站、一个应用，还是整台设备，再检查规则命中、客户端日志、DNS 与证书提示。用可复现的对照逐步缩小范围，判断问题在本地配置、远端节点还是目标站点，避免在没有线索时反复换软件或重装。正文附有排查顺序。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"代理已连接但网页打不开，怎么排查？","description":"代理显示连接成功，网页仍然打不开？先分清故障只影响一个网站、一个应用，还是整台设备，再检查规则命中、客户端日志、DNS 与证书提示。用可复现的对照逐步缩小范围，判断问题在本地配置、远端节点还是目标站点，避免在没有线索时反复换软件或重装。正文附有排查顺序。","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/troubleshooting/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"配置与排查","item":"https://ladderer.com/#group-practice"},{"@type":"ListItem","position":3,"name":"代理已连接但网页打不开，怎么排查？","item":"https://ladderer.com/articles/troubleshooting/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>u4ee3u7406u5df2u8fdeu63a5u4f46u7f51u9875u6253u4e0du5f00uff0cu600eu4e48u6392u67e5uff1f</title><meta name="description" content="u4ee3u7406u663eu793au8fdeu63a5u6210u529fuff0cu7f51u9875u4ecdu7136u6253u4e0du5f00uff1fu5148u5206u6e05u6545u969cu53eau5f71u54cdu4e00u4e2au7f51u7ad9u3001u4e00u4e2au5e94u7528uff0cu8fd8u662fu6574u53f0u8bbeu5907uff0cu518du68c0u67e5u89c4u5219u547du4e2du3001u5ba2u6237u7aefu65e5u5fd7u3001DNS u4e0eu8bc1u4e66u63d0u793au3002u7528u53efu590du73b0u7684u5bf9u7167u9010u6b65u7f29u5c0fu8303u56f4uff0cu5224u65adu95eeu9898u5728u672cu5730u914du7f6eu3001u8fdcu7aefu8282u70b9u8fd8u662fu76eeu6807u7ad9u70b9uff0cu907fu514du5728u6ca1u6709u7ebfu7d22u65f6u53cdu590du6362u8f6fu4ef6u6216u91cdu88c5u3002u6b63u6587u9644u6709u6392u67e5u987au5e8fu3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/troubleshooting/"><meta property="og:url" content="https://ladderer.com/articles/troubleshooting/"><meta property="og:title" content="u4ee3u7406u5df2u8fdeu63a5u4f46u7f51u9875u6253u4e0du5f00uff0cu600eu4e48u6392u67e5uff1f"><meta property="og:description" content="u4ee3u7406u663eu793au8fdeu63a5u6210u529fuff0cu7f51u9875u4ecdu7136u6253u4e0du5f00uff1fu5148u5206u6e05u6545u969cu53eau5f71u54cdu4e00u4e2au7f51u7ad9u3001u4e00u4e2au5e94u7528uff0cu8fd8u662fu6574u53f0u8bbeu5907uff0cu518du68c0u67e5u89c4u5219u547du4e2du3001u5ba2u6237u7aefu65e5u5fd7u3001DNS u4e0eu8bc1u4e66u63d0u793au3002u7528u53efu590du73b0u7684u5bf9u7167u9010u6b65u7f29u5c0fu8303u56f4uff0cu5224u65adu95eeu9898u5728u672cu5730u914du7f6eu3001u8fdcu7aefu8282u70b9u8fd8u662fu76eeu6807u7ad9u70b9uff0cu907fu514du5728u6ca1u6709u7ebfu7d22u65f6u53cdu590du6362u8f6fu4ef6u6216u91cdu88c5u3002u6b63u6587u9644u6709u6392u67e5u987au5e8fu3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="u4ee3u7406u5df2u8fdeu63a5u4f46u7f51u9875u6253u4e0du5f00uff0cu600eu4e48u6392u67e5uff1f"><meta name="twitter:description" content="u4ee3u7406u663eu793au8fdeu63a5u6210u529fuff0cu7f51u9875u4ecdu7136u6253u4e0du5f00uff1fu5148u5206u6e05u6545u969cu53eau5f71u54cdu4e00u4e2au7f51u7ad9u3001u4e00u4e2au5e94u7528uff0cu8fd8u662fu6574u53f0u8bbeu5907uff0cu518du68c0u67e5u89c4u5219u547du4e2du3001u5ba2u6237u7aefu65e5u5fd7u3001DNS u4e0eu8bc1u4e66u63d0u793au3002u7528u53efu590du73b0u7684u5bf9u7167u9010u6b65u7f29u5c0fu8303u56f4uff0cu5224u65adu95eeu9898u5728u672cu5730u914du7f6eu3001u8fdcu7aefu8282u70b9u8fd8u662fu76eeu6807u7ad9u70b9uff0cu907fu514du5728u6ca1u6709u7ebfu7d22u65f6u53cdu590du6362u8f6fu4ef6u6216u91cdu88c5u3002u6b63u6587u9644u6709u6392u67e5u987au5e8fu3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"u4ee3u7406u5df2u8fdeu63a5u4f46u7f51u9875u6253u4e0du5f00uff0cu600eu4e48u6392u67e5uff1f","description":"u4ee3u7406u663eu793au8fdeu63a5u6210u529fuff0cu7f51u9875u4ecdu7136u6253u4e0du5f00uff1fu5148u5206u6e05u6545u969cu53eau5f71u54cdu4e00u4e2au7f51u7ad9u3001u4e00u4e2au5e94u7528uff0cu8fd8u662fu6574u53f0u8bbeu5907uff0cu518du68c0u67e5u89c4u5219u547du4e2du3001u5ba2u6237u7aefu65e5u5fd7u3001DNS u4e0eu8bc1u4e66u63d0u793au3002u7528u53efu590du73b0u7684u5bf9u7167u9010u6b65u7f29u5c0fu8303u56f4uff0cu5224u65adu95eeu9898u5728u672cu5730u914du7f6eu3001u8fdcu7aefu8282u70b9u8fd8u662fu76eeu6807u7ad9u70b9uff0cu907fu514du5728u6ca1u6709u7ebfu7d22u65f6u53cdu590du6362u8f6fu4ef6u6216u91cdu88c5u3002u6b63u6587u9644u6709u6392u67e5u987au5e8fu3002","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/troubleshooting/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u914du7f6eu4e0eu6392u67e5","item":"https://ladderer.com/#group-practice"},{"@type":"ListItem","position":3,"name":"u4ee3u7406u5df2u8fdeu63a5u4f46u7f51u9875u6253u4e0du5f00uff0cu600eu4e48u6392u67e5uff1f","item":"https://ladderer.com/articles/troubleshooting/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="当前位置">
-            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-practice">配置与排查</a><span aria-hidden="true">/</span>
-            <span aria-current="page">第 08 篇</span>
+          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
+            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-practice">u914du7f6eu4e0eu6392u67e5</a><span aria-hidden="true">/</span>
+            <span aria-current="page">u7b2c 08 u7bc7</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 08 <span> / 18</span></p>
-            <h1>代理已连接但网页打不开，怎么排查？</h1>
-            <p class="article-summary">从问题范围、应用代理和日志开始，逐步检查 DNS 与连接。</p>
-            <div class="article-meta"><span>约 6 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div>
+            <h1>u4ee3u7406u5df2u8fdeu63a5u4f46u7f51u9875u6253u4e0du5f00uff0cu600eu4e48u6392u67e5uff1f</h1>
+            <p class="article-summary">u4eceu95eeu9898u8303u56f4u3001u5e94u7528u4ee3u7406u548cu65e5u5fd7u5f00u59cbuff0cu9010u6b65u68c0u67e5 DNS u4e0eu8fdeu63a5u3002</p>
+            <div class="article-meta"><span>u7ea6 6 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-10-18">2026.10.18</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">本文目录</h2>
-          <ol><li class="toc-h2"><a href="#第一步-确认问题范围">第一步：确认问题范围</a></li><li class="toc-h2"><a href="#第二步-确认客户端真的在工作">第二步：确认客户端真的在工作</a></li><li class="toc-h2"><a href="#第三步-区分系统代理-浏览器代理和应用代理">第三步：区分系统代理、浏览器代理和应用代理</a></li><li class="toc-h2"><a href="#第四步-检查-dns-和后续连接">第四步：检查 DNS 和后续连接</a></li><li class="toc-h2"><a href="#第五步-看速度-延迟和丢包">第五步：看速度、延迟和丢包</a></li><li class="toc-h2"><a href="#第六步-考虑网站的风控和兼容性">第六步：考虑网站的风控和兼容性</a></li><li class="toc-h2"><a href="#一份简短排查顺序">一份简短排查顺序</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
+          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
+          <ol><li class="toc-h2"><a href="#u7b2cu4e00u6b65-u786eu8ba4u95eeu9898u8303u56f4">u7b2cu4e00u6b65uff1au786eu8ba4u95eeu9898u8303u56f4</a></li><li class="toc-h2"><a href="#u7b2cu4e8cu6b65-u786eu8ba4u5ba2u6237u7aefu771fu7684u5728u5de5u4f5c">u7b2cu4e8cu6b65uff1au786eu8ba4u5ba2u6237u7aefu771fu7684u5728u5de5u4f5c</a></li><li class="toc-h2"><a href="#u7b2cu4e09u6b65-u533au5206u7cfbu7edfu4ee3u7406-u6d4fu89c8u5668u4ee3u7406u548cu5e94u7528u4ee3u7406">u7b2cu4e09u6b65uff1au533au5206u7cfbu7edfu4ee3u7406u3001u6d4fu89c8u5668u4ee3u7406u548cu5e94u7528u4ee3u7406</a></li><li class="toc-h2"><a href="#u7b2cu56dbu6b65-u68c0u67e5-dns-u548cu540eu7eedu8fdeu63a5">u7b2cu56dbu6b65uff1au68c0u67e5 DNS u548cu540eu7eedu8fdeu63a5</a></li><li class="toc-h2"><a href="#u7b2cu4e94u6b65-u770bu901fu5ea6-u5ef6u8fdfu548cu4e22u5305">u7b2cu4e94u6b65uff1au770bu901fu5ea6u3001u5ef6u8fdfu548cu4e22u5305</a></li><li class="toc-h2"><a href="#u7b2cu516du6b65-u8003u8651u7f51u7ad9u7684u98ceu63a7u548cu517cu5bb9u6027">u7b2cu516du6b65uff1au8003u8651u7f51u7ad9u7684u98ceu63a7u548cu517cu5bb9u6027</a></li><li class="toc-h2"><a href="#u4e00u4efdu7b80u77edu6392u67e5u987au5e8f">u4e00u4efdu7b80u77edu6392u67e5u987au5e8f</a></li><li class="toc-h2"><a href="#u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>客户端显示已连接却打不开网页，先找一个能复现的场景：哪些应用不能用、哪些网站受影响。记录这个范围，再去看节点和日志。</p>
-<p>遇到这种情况，先换节点、再换软件、最后重装，很容易越改越乱。浏览器没有使用代理，或者 DNS 和连接走了不同路径，都可能让问题看起来像“工具坏了”。</p>
-<p>先看看“连接成功”究竟指哪一步。不同客户端的状态含义不同：“已启动”可能只是本地核心在运行，“延迟测试成功”也可能只验证了某个测试目标。它们都不能单独证明你要访问的网站可达，更不代表所有应用都在使用这条连接。</p>
-<h2 id="第一步-确认问题范围">第一步：确认问题范围</h2>
-<p>先观察是一个网站打不开，还是所有网站都打不开。</p>
-<p>如果只有一个网站失败，可能是目标网站自身故障、域名解析问题、地区限制、账号风控或网站拒绝某类出口 IP。如果所有网站都失败，更应该检查客户端状态、系统网络、路由和 DNS。</p>
-<p>再看失败方式：</p>
+          <article class="prose"><p>u5ba2u6237u7aefu663eu793au5df2u8fdeu63a5u5374u6253u4e0du5f00u7f51u9875uff0cu5148u627eu4e00u4e2au80fdu590du73b0u7684u573au666fuff1au54eau4e9bu5e94u7528u4e0du80fdu7528u3001u54eau4e9bu7f51u7ad9u53d7u5f71u54cdu3002u8bb0u5f55u8fd9u4e2au8303u56f4uff0cu518du53bbu770bu8282u70b9u548cu65e5u5fd7u3002</p>
+<p>u9047u5230u8fd9u79cdu60c5u51b5uff0cu5148u6362u8282u70b9u3001u518du6362u8f6fu4ef6u3001u6700u540eu91cdu88c5uff0cu5f88u5bb9u6613u8d8au6539u8d8au4e71u3002u6d4fu89c8u5668u6ca1u6709u4f7fu7528u4ee3u7406uff0cu6216u8005 DNS u548cu8fdeu63a5u8d70u4e86u4e0du540cu8defu5f84uff0cu90fdu53efu80fdu8ba9u95eeu9898u770bu8d77u6765u50cfu201cu5de5u5177u574fu4e86u201du3002</p>
+<p>u5148u770bu770bu201cu8fdeu63a5u6210u529fu201du7a76u7adfu6307u54eau4e00u6b65u3002u4e0du540cu5ba2u6237u7aefu7684u72b6u6001u542bu4e49u4e0du540cuff1au201cu5df2u542fu52a8u201du53efu80fdu53eau662fu672cu5730u6838u5fc3u5728u8fd0u884cuff0cu201cu5ef6u8fdfu6d4bu8bd5u6210u529fu201du4e5fu53efu80fdu53eau9a8cu8bc1u4e86u67d0u4e2au6d4bu8bd5u76eeu6807u3002u5b83u4eecu90fdu4e0du80fdu5355u72ecu8bc1u660eu4f60u8981u8bbfu95eeu7684u7f51u7ad9u53efu8fbeuff0cu66f4u4e0du4ee3u8868u6240u6709u5e94u7528u90fdu5728u4f7fu7528u8fd9u6761u8fdeu63a5u3002</p>
+<h2 id="u7b2cu4e00u6b65-u786eu8ba4u95eeu9898u8303u56f4">u7b2cu4e00u6b65uff1au786eu8ba4u95eeu9898u8303u56f4</h2>
+<p>u5148u89c2u5bdfu662fu4e00u4e2au7f51u7ad9u6253u4e0du5f00uff0cu8fd8u662fu6240u6709u7f51u7ad9u90fdu6253u4e0du5f00u3002</p>
+<p>u5982u679cu53eau6709u4e00u4e2au7f51u7ad9u5931u8d25uff0cu53efu80fdu662fu76eeu6807u7f51u7ad9u81eau8eabu6545u969cu3001u57dfu540du89e3u6790u95eeu9898u3001u5730u533au9650u5236u3001u8d26u53f7u98ceu63a7u6216u7f51u7ad9u62d2u7eddu67d0u7c7bu51fau53e3 IPu3002u5982u679cu6240u6709u7f51u7ad9u90fdu5931u8d25uff0cu66f4u5e94u8be5u68c0u67e5u5ba2u6237u7aefu72b6u6001u3001u7cfbu7edfu7f51u7edcu3001u8defu7531u548c DNSu3002</p>
+<p>u518du770bu5931u8d25u65b9u5f0fuff1a</p>
 <ul>
-<li>立刻提示无法连接，可能是域名或端口问题；</li>
-<li>一直转圈后超时，可能是丢包、线路不通或服务器无响应；</li>
-<li>页面能开但图片和脚本失败，可能是分流、DNS 或内容域名没有走同一路径；</li>
-<li>登录后频繁验证，可能是出口变化触发了网站的安全策略；</li>
-<li>只有一个应用失败，可能是应用没有使用系统代理。</li>
+<li>u7acbu523bu63d0u793au65e0u6cd5u8fdeu63a5uff0cu53efu80fdu662fu57dfu540du6216u7aefu53e3u95eeu9898uff1b</li>
+<li>u4e00u76f4u8f6cu5708u540eu8d85u65f6uff0cu53efu80fdu662fu4e22u5305u3001u7ebfu8defu4e0du901au6216u670du52a1u5668u65e0u54cdu5e94uff1b</li>
+<li>u9875u9762u80fdu5f00u4f46u56feu7247u548cu811au672cu5931u8d25uff0cu53efu80fdu662fu5206u6d41u3001DNS u6216u5185u5bb9u57dfu540du6ca1u6709u8d70u540cu4e00u8defu5f84uff1b</li>
+<li>u767bu5f55u540eu9891u7e41u9a8cu8bc1uff0cu53efu80fdu662fu51fau53e3u53d8u5316u89e6u53d1u4e86u7f51u7ad9u7684u5b89u5168u7b56u7565uff1b</li>
+<li>u53eau6709u4e00u4e2au5e94u7528u5931u8d25uff0cu53efu80fdu662fu5e94u7528u6ca1u6709u4f7fu7528u7cfbu7edfu4ee3u7406u3002</li>
 </ul>
-<p>把具体错误提示记下来，通常比只描述“感觉不稳定”更有排查价值。</p>
-<h2 id="第二步-确认客户端真的在工作">第二步：确认客户端真的在工作</h2>
-<p>检查客户端是否显示连接成功、配置是否过期、设备时间是否正确，以及系统是否弹出过权限或网络扩展提示。有些系统级 VPN 需要用户明确允许网络扩展；权限没有生效，界面却可能仍然保留“已启动”的状态。</p>
-<p>如果客户端提供连接日志，可以看是否出现认证失败、证书错误、DNS 错误、路由冲突或反复重连。新手不必读懂每一行，只要注意重复出现的关键词。</p>
-<p>还要确认是否同时运行了多个代理工具。两个程序都试图接管系统网络时，可能互相覆盖配置，表现为连接成功但访问异常。</p>
-<p>如果需要请别人协助，可以先记录四项：系统与客户端版本、出错的应用、完整错误提示、问题发生时间。分享日志前删去订阅链接、密钥和账户信息。比起一句“连不上”，这些信息更能帮助定位问题。</p>
-<h2 id="第三步-区分系统代理-浏览器代理和应用代理">第三步：区分系统代理、浏览器代理和应用代理</h2>
-<p>代理不是一个开关，而是一组可能分散在不同位置的设置。</p>
+<p>u628au5177u4f53u9519u8befu63d0u793au8bb0u4e0bu6765uff0cu901au5e38u6bd4u53eau63cfu8ff0u201cu611fu89c9u4e0du7a33u5b9au201du66f4u6709u6392u67e5u4ef7u503cu3002</p>
+<h2 id="u7b2cu4e8cu6b65-u786eu8ba4u5ba2u6237u7aefu771fu7684u5728u5de5u4f5c">u7b2cu4e8cu6b65uff1au786eu8ba4u5ba2u6237u7aefu771fu7684u5728u5de5u4f5c</h2>
+<p>u68c0u67e5u5ba2u6237u7aefu662fu5426u663eu793au8fdeu63a5u6210u529fu3001u914du7f6eu662fu5426u8fc7u671fu3001u8bbeu5907u65f6u95f4u662fu5426u6b63u786euff0cu4ee5u53cau7cfbu7edfu662fu5426u5f39u51fau8fc7u6743u9650u6216u7f51u7edcu6269u5c55u63d0u793au3002u6709u4e9bu7cfbu7edfu7ea7 VPN u9700u8981u7528u6237u660eu786eu5141u8bb8u7f51u7edcu6269u5c55uff1bu6743u9650u6ca1u6709u751fu6548uff0cu754cu9762u5374u53efu80fdu4ecdu7136u4fddu7559u201cu5df2u542fu52a8u201du7684u72b6u6001u3002</p>
+<p>u5982u679cu5ba2u6237u7aefu63d0u4f9bu8fdeu63a5u65e5u5fd7uff0cu53efu4ee5u770bu662fu5426u51fau73b0u8ba4u8bc1u5931u8d25u3001u8bc1u4e66u9519u8befu3001DNS u9519u8befu3001u8defu7531u51b2u7a81u6216u53cdu590du91cdu8fdeu3002u65b0u624bu4e0du5fc5u8bfbu61c2u6bcfu4e00u884cuff0cu53eau8981u6ce8u610fu91cdu590du51fau73b0u7684u5173u952eu8bcdu3002</p>
+<p>u8fd8u8981u786eu8ba4u662fu5426u540cu65f6u8fd0u884cu4e86u591au4e2au4ee3u7406u5de5u5177u3002u4e24u4e2au7a0bu5e8fu90fdu8bd5u56feu63a5u7ba1u7cfbu7edfu7f51u7edcu65f6uff0cu53efu80fdu4e92u76f8u8986u76d6u914du7f6euff0cu8868u73b0u4e3au8fdeu63a5u6210u529fu4f46u8bbfu95eeu5f02u5e38u3002</p>
+<p>u5982u679cu9700u8981u8bf7u522bu4ebau534fu52a9uff0cu53efu4ee5u5148u8bb0u5f55u56dbu9879uff1au7cfbu7edfu4e0eu5ba2u6237u7aefu7248u672cu3001u51fau9519u7684u5e94u7528u3001u5b8cu6574u9519u8befu63d0u793au3001u95eeu9898u53d1u751fu65f6u95f4u3002u5206u4eabu65e5u5fd7u524du5220u53bbu8ba2u9605u94feu63a5u3001u5bc6u94a5u548cu8d26u6237u4fe1u606fu3002u6bd4u8d77u4e00u53e5u201cu8fdeu4e0du4e0au201duff0cu8fd9u4e9bu4fe1u606fu66f4u80fdu5e2eu52a9u5b9au4f4du95eeu9898u3002</p>
+<h2 id="u7b2cu4e09u6b65-u533au5206u7cfbu7edfu4ee3u7406-u6d4fu89c8u5668u4ee3u7406u548cu5e94u7528u4ee3u7406">u7b2cu4e09u6b65uff1au533au5206u7cfbu7edfu4ee3u7406u3001u6d4fu89c8u5668u4ee3u7406u548cu5e94u7528u4ee3u7406</h2>
+<p>u4ee3u7406u4e0du662fu4e00u4e2au5f00u5173uff0cu800cu662fu4e00u7ec4u53efu80fdu5206u6563u5728u4e0du540cu4f4du7f6eu7684u8bbeu7f6eu3002</p>
 <ul>
-<li>浏览器代理只影响浏览器；</li>
-<li>系统代理可能影响遵循系统设置的应用；</li>
-<li>分应用代理只让指定程序走代理；</li>
-<li>某些应用完全不读取系统代理，而是使用自己的网络栈；</li>
-<li>全局 VPN 通常影响范围更大，但也可能有排除规则。</li>
+<li>u6d4fu89c8u5668u4ee3u7406u53eau5f71u54cdu6d4fu89c8u5668uff1b</li>
+<li>u7cfbu7edfu4ee3u7406u53efu80fdu5f71u54cdu9075u5faau7cfbu7edfu8bbeu7f6eu7684u5e94u7528uff1b</li>
+<li>u5206u5e94u7528u4ee3u7406u53eau8ba9u6307u5b9au7a0bu5e8fu8d70u4ee3u7406uff1b</li>
+<li>u67d0u4e9bu5e94u7528u5b8cu5168u4e0du8bfbu53d6u7cfbu7edfu4ee3u7406uff0cu800cu662fu4f7fu7528u81eau5df1u7684u7f51u7edcu6808uff1b</li>
+<li>u5168u5c40 VPN u901au5e38u5f71u54cdu8303u56f4u66f4u5927uff0cu4f46u4e5fu53efu80fdu6709u6392u9664u89c4u5219u3002</li>
 </ul>
-<p>因此，浏览器能访问而桌面应用不能访问，并不矛盾。先确认失败的应用到底采用哪种网络设置，再决定是否需要调整配置。</p>
-<h2 id="第四步-检查-dns-和后续连接">第四步：检查 DNS 和后续连接</h2>
-<p>DNS 负责把域名转换成 IP 地址。解析错误时，网页当然无法正确连接；但 DNS 正常，也不代表后续 TCP、TLS 或应用层连接一定成功。</p>
-<p>排查时可以观察：域名是否能解析、解析结果是否频繁变化、浏览器是否提示证书错误。不要为了追求“能打开”而随便关闭证书校验或安装不明根证书。那可能绕过了一个提示，却把更大的中间人风险带进来了。</p>
-<h2 id="第五步-看速度-延迟和丢包">第五步：看速度、延迟和丢包</h2>
-<p>如果网页不是完全打不开，而是迟迟加载不完，就要把速度、延迟和丢包分开看。速度主要受带宽、服务器负载和目标网站响应影响；延迟会影响实时通信和交互；丢包则会让页面反复重传，看起来像完全打不开。</p>
-<p>做机场测速时，区分延迟测试、下载速度和目标网站的实际访问。节点延迟低，不代表高峰期下载快，也不保证某个网站允许这个出口访问。比较结果时，尽量固定设备、网络和测试目标，并记下测试时间。</p>
-<p>同一个服务在不同时间、不同地区和不同网络运营商下表现不同，并不一定说明客户端坏了。可以分别试试普通网页、静态文件、视频和实时应用，看看问题集中在哪一类。不要只用一个网站就判断整个网络。</p>
-<h2 id="第六步-考虑网站的风控和兼容性">第六步：考虑网站的风控和兼容性</h2>
-<p>网站看到异常的出口位置、频繁切换 IP 或大量并发请求时，可能触发验证码、登录验证或临时封禁。这不是网络工具一定“失效”，而是网站在保护账号和服务。</p>
-<p>遇到这种情况，不要不断切换出口，也不要关闭安全验证。先确认账号状态，按照网站提供的恢复流程处理。Tor Project 的安全说明也提醒，服务可能因出口位置变化而要求额外验证。[1]</p>
-<h2 id="一份简短排查顺序">一份简短排查顺序</h2>
-<p>可以按下面的顺序来：</p>
+<p>u56e0u6b64uff0cu6d4fu89c8u5668u80fdu8bbfu95eeu800cu684cu9762u5e94u7528u4e0du80fdu8bbfu95eeuff0cu5e76u4e0du77dbu76feu3002u5148u786eu8ba4u5931u8d25u7684u5e94u7528u5230u5e95u91c7u7528u54eau79cdu7f51u7edcu8bbeu7f6euff0cu518du51b3u5b9au662fu5426u9700u8981u8c03u6574u914du7f6eu3002</p>
+<h2 id="u7b2cu56dbu6b65-u68c0u67e5-dns-u548cu540eu7eedu8fdeu63a5">u7b2cu56dbu6b65uff1au68c0u67e5 DNS u548cu540eu7eedu8fdeu63a5</h2>
+<p>DNS u8d1fu8d23u628au57dfu540du8f6cu6362u6210 IP u5730u5740u3002u89e3u6790u9519u8befu65f6uff0cu7f51u9875u5f53u7136u65e0u6cd5u6b63u786eu8fdeu63a5uff1bu4f46 DNS u6b63u5e38uff0cu4e5fu4e0du4ee3u8868u540eu7eed TCPu3001TLS u6216u5e94u7528u5c42u8fdeu63a5u4e00u5b9au6210u529fu3002</p>
+<p>u6392u67e5u65f6u53efu4ee5u89c2u5bdfuff1au57dfu540du662fu5426u80fdu89e3u6790u3001u89e3u6790u7ed3u679cu662fu5426u9891u7e41u53d8u5316u3001u6d4fu89c8u5668u662fu5426u63d0u793au8bc1u4e66u9519u8befu3002u4e0du8981u4e3au4e86u8ffdu6c42u201cu80fdu6253u5f00u201du800cu968fu4fbfu5173u95edu8bc1u4e66u6821u9a8cu6216u5b89u88c5u4e0du660eu6839u8bc1u4e66u3002u90a3u53efu80fdu7ed5u8fc7u4e86u4e00u4e2au63d0u793auff0cu5374u628au66f4u5927u7684u4e2du95f4u4ebau98ceu9669u5e26u8fdbu6765u4e86u3002</p>
+<h2 id="u7b2cu4e94u6b65-u770bu901fu5ea6-u5ef6u8fdfu548cu4e22u5305">u7b2cu4e94u6b65uff1au770bu901fu5ea6u3001u5ef6u8fdfu548cu4e22u5305</h2>
+<p>u5982u679cu7f51u9875u4e0du662fu5b8cu5168u6253u4e0du5f00uff0cu800cu662fu8fdfu8fdfu52a0u8f7du4e0du5b8cuff0cu5c31u8981u628au901fu5ea6u3001u5ef6u8fdfu548cu4e22u5305u5206u5f00u770bu3002u901fu5ea6u4e3bu8981u53d7u5e26u5bbdu3001u670du52a1u5668u8d1fu8f7du548cu76eeu6807u7f51u7ad9u54cdu5e94u5f71u54cduff1bu5ef6u8fdfu4f1au5f71u54cdu5b9eu65f6u901au4fe1u548cu4ea4u4e92uff1bu4e22u5305u5219u4f1au8ba9u9875u9762u53cdu590du91cdu4f20uff0cu770bu8d77u6765u50cfu5b8cu5168u6253u4e0du5f00u3002</p>
+<p>u505au673au573au6d4bu901fu65f6uff0cu533au5206u5ef6u8fdfu6d4bu8bd5u3001u4e0bu8f7du901fu5ea6u548cu76eeu6807u7f51u7ad9u7684u5b9eu9645u8bbfu95eeu3002u8282u70b9u5ef6u8fdfu4f4euff0cu4e0du4ee3u8868u9ad8u5cf0u671fu4e0bu8f7du5febuff0cu4e5fu4e0du4fddu8bc1u67d0u4e2au7f51u7ad9u5141u8bb8u8fd9u4e2au51fau53e3u8bbfu95eeu3002u6bd4u8f83u7ed3u679cu65f6uff0cu5c3du91cfu56fau5b9au8bbeu5907u3001u7f51u7edcu548cu6d4bu8bd5u76eeu6807uff0cu5e76u8bb0u4e0bu6d4bu8bd5u65f6u95f4u3002</p>
+<p>u540cu4e00u4e2au670du52a1u5728u4e0du540cu65f6u95f4u3001u4e0du540cu5730u533au548cu4e0du540cu7f51u7edcu8fd0u8425u5546u4e0bu8868u73b0u4e0du540cuff0cu5e76u4e0du4e00u5b9au8bf4u660eu5ba2u6237u7aefu574fu4e86u3002u53efu4ee5u5206u522bu8bd5u8bd5u666eu901au7f51u9875u3001u9759u6001u6587u4ef6u3001u89c6u9891u548cu5b9eu65f6u5e94u7528uff0cu770bu770bu95eeu9898u96c6u4e2du5728u54eau4e00u7c7bu3002u4e0du8981u53eau7528u4e00u4e2au7f51u7ad9u5c31u5224u65adu6574u4e2au7f51u7edcu3002</p>
+<h2 id="u7b2cu516du6b65-u8003u8651u7f51u7ad9u7684u98ceu63a7u548cu517cu5bb9u6027">u7b2cu516du6b65uff1au8003u8651u7f51u7ad9u7684u98ceu63a7u548cu517cu5bb9u6027</h2>
+<p>u7f51u7ad9u770bu5230u5f02u5e38u7684u51fau53e3u4f4du7f6eu3001u9891u7e41u5207u6362 IP u6216u5927u91cfu5e76u53d1u8bf7u6c42u65f6uff0cu53efu80fdu89e6u53d1u9a8cu8bc1u7801u3001u767bu5f55u9a8cu8bc1u6216u4e34u65f6u5c01u7981u3002u8fd9u4e0du662fu7f51u7edcu5de5u5177u4e00u5b9au201cu5931u6548u201duff0cu800cu662fu7f51u7ad9u5728u4fddu62a4u8d26u53f7u548cu670du52a1u3002</p>
+<p>u9047u5230u8fd9u79cdu60c5u51b5uff0cu4e0du8981u4e0du65adu5207u6362u51fau53e3uff0cu4e5fu4e0du8981u5173u95edu5b89u5168u9a8cu8bc1u3002u5148u786eu8ba4u8d26u53f7u72b6u6001uff0cu6309u7167u7f51u7ad9u63d0u4f9bu7684u6062u590du6d41u7a0bu5904u7406u3002Tor Project u7684u5b89u5168u8bf4u660eu4e5fu63d0u9192uff0cu670du52a1u53efu80fdu56e0u51fau53e3u4f4du7f6eu53d8u5316u800cu8981u6c42u989du5916u9a8cu8bc1u3002[1]</p>
+<h2 id="u4e00u4efdu7b80u77edu6392u67e5u987au5e8f">u4e00u4efdu7b80u77edu6392u67e5u987au5e8f</h2>
+<p>u53efu4ee5u6309u4e0bu9762u7684u987au5e8fu6765uff1a</p>
 <ol>
-<li>判断是单个网站、单个应用，还是全部网络失败；</li>
-<li>查看客户端状态和日志；</li>
-<li>确认系统、浏览器和应用到底使用哪种代理；</li>
-<li>检查 DNS、证书和设备时间；</li>
-<li>区分速度、延迟、丢包和网站风控；</li>
-<li>仍然无法判断时，恢复到单一配置，避免多个工具叠加。</li>
+<li>u5224u65adu662fu5355u4e2au7f51u7ad9u3001u5355u4e2au5e94u7528uff0cu8fd8u662fu5168u90e8u7f51u7edcu5931u8d25uff1b</li>
+<li>u67e5u770bu5ba2u6237u7aefu72b6u6001u548cu65e5u5fd7uff1b</li>
+<li>u786eu8ba4u7cfbu7edfu3001u6d4fu89c8u5668u548cu5e94u7528u5230u5e95u4f7fu7528u54eau79cdu4ee3u7406uff1b</li>
+<li>u68c0u67e5 DNSu3001u8bc1u4e66u548cu8bbeu5907u65f6u95f4uff1b</li>
+<li>u533au5206u901fu5ea6u3001u5ef6u8fdfu3001u4e22u5305u548cu7f51u7ad9u98ceu63a7uff1b</li>
+<li>u4ecdu7136u65e0u6cd5u5224u65adu65f6uff0cu6062u590du5230u5355u4e00u914du7f6euff0cu907fu514du591au4e2au5de5u5177u53e0u52a0u3002</li>
 </ol>
-<p>一次只改一个变量，并记录改动前后的结果。如果同时换节点、DNS 和规则，即使恢复访问，也很难知道是哪一步起了作用。</p>
-<h2 id="参考资料">参考资料</h2>
+<p>u4e00u6b21u53eau6539u4e00u4e2au53d8u91cfuff0cu5e76u8bb0u5f55u6539u52a8u524du540eu7684u7ed3u679cu3002u5982u679cu540cu65f6u6362u8282u70b9u3001DNS u548cu89c4u5219uff0cu5373u4f7fu6062u590du8bbfu95eeuff0cu4e5fu5f88u96beu77e5u9053u662fu54eau4e00u6b65u8d77u4e86u4f5cu7528u3002</p>
+<h2 id="u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</h2>
 <ul>
-<li>[1] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Project：Tor Browser 安全使用与身份限制</a></li>
-<li>[2] <a href="https://openvpn.net/community-resources/">OpenVPN：社区文档</a></li>
-<li>[3] <a href="https://wiki.metacubex.one/config/inbound/tun/">Mihomo：TUN 路由、DNS 劫持与排除规则</a></li>
+<li>[1] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Projectuff1aTor Browser u5b89u5168u4f7fu7528u4e0eu8eabu4efdu9650u5236</a></li>
+<li>[2] <a href="https://openvpn.net/community-resources/">OpenVPNuff1au793eu533au6587u6863</a></li>
+<li>[3] <a href="https://wiki.metacubex.one/config/inbound/tun/">Mihomouff1aTUN u8defu7531u3001DNS u52abu6301u4e0eu6392u9664u89c4u5219</a></li>
 </ul>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/subscription-updates-node-fails/">订阅更新后节点不可用</a><p>从订阅下载、节点连接到实际访问，找出故障出现在哪一步。</p></li><li><a href="https://ladderer.com/articles/report-connection-problem/">连接故障反馈</a><p>把时间、版本、故障范围和脱敏日志整理成一份可复制的反馈。</p></li></ul></nav>
-          <section class="service-note" aria-label="订阅服务选购参考"><p class="eyebrow">NEXT STEP</p><h2>订阅服务选购参考</h2><p>如果换网络对照后仍只有原线路失败，可以从清单挑一条备用线路，在同样的条件下复测。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">查看 GitHub 服务评测清单 ↗</a><p class="service-destination">外部推荐清单 · GitHub</p></section>
-          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/subscription-updates-node-fails/">u8ba2u9605u66f4u65b0u540eu8282u70b9u4e0du53efu7528</a><p>u4eceu8ba2u9605u4e0bu8f7du3001u8282u70b9u8fdeu63a5u5230u5b9eu9645u8bbfu95eeuff0cu627eu51fau6545u969cu51fau73b0u5728u54eau4e00u6b65u3002</p></li><li><a href="https://ladderer.com/articles/report-connection-problem/">u8fdeu63a5u6545u969cu53cdu9988</a><p>u628au65f6u95f4u3001u7248u672cu3001u6545u969cu8303u56f4u548cu8131u654fu65e5u5fd7u6574u7406u6210u4e00u4efdu53efu590du5236u7684u53cdu9988u3002</p></li></ul></nav>
+          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="本组文章">
-            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
-            <div class="sidebar-group"><h2>配置与排查</h2>
+          <nav aria-label="u672cu7ec4u6587u7ae0">
+            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
+            <div class="sidebar-group"><h2>u914du7f6eu4e0eu6392u67e5</h2>
       <a href="https://ladderer.com/articles/config-subscriptions/">
-        <span>07</span>订阅、节点与规则
+        <span>07</span>u8ba2u9605u3001u8282u70b9u4e0eu89c4u5219
       </a>
       <a href="https://ladderer.com/articles/troubleshooting/" aria-current="page">
-        <span>08</span>网页打不开怎么查
+        <span>08</span>u7f51u9875u6253u4e0du5f00u600eu4e48u67e5
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="上一篇与下一篇">
-      <a rel="prev" href="https://ladderer.com/articles/config-subscriptions/"><small>← 上一篇</small><strong>订阅、节点与规则</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/tool-security/"><small>下一篇 →</small><strong>代理服务安全检查</strong></a></nav>
+          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
+      <a rel="prev" href="https://ladderer.com/articles/config-subscriptions/"><small>u2190 u4e0au4e00u7bc7</small><strong>u8ba2u9605u3001u8282u70b9u4e0eu89c4u5219</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/tool-security/"><small>u4e0bu4e00u7bc7 u2192</small><strong>u4ee3u7406u670du52a1u5b89u5168u68c0u67e5</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>

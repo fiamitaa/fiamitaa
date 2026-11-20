@@ -1,99 +1,98 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>订阅更新成功，代理节点为何连不上？</title><meta name="description" content="代理订阅可以更新，节点却显示超时或访问失败？把订阅下载、节点健康检查和目标站点访问分开验证，再从不兼容的协议、证书、网络限制和已失效的配置中缩小范围。文中还给出单次失败日志的核对思路，方便你复现问题、保留线索并减少频繁重装客户端。每次只调整一个变量。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/subscription-updates-node-fails/"><meta property="og:url" content="https://ladderer.com/articles/subscription-updates-node-fails/"><meta property="og:title" content="订阅更新成功，代理节点为何连不上？"><meta property="og:description" content="代理订阅可以更新，节点却显示超时或访问失败？把订阅下载、节点健康检查和目标站点访问分开验证，再从不兼容的协议、证书、网络限制和已失效的配置中缩小范围。文中还给出单次失败日志的核对思路，方便你复现问题、保留线索并减少频繁重装客户端。每次只调整一个变量。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="订阅更新成功，代理节点为何连不上？"><meta name="twitter:description" content="代理订阅可以更新，节点却显示超时或访问失败？把订阅下载、节点健康检查和目标站点访问分开验证，再从不兼容的协议、证书、网络限制和已失效的配置中缩小范围。文中还给出单次失败日志的核对思路，方便你复现问题、保留线索并减少频繁重装客户端。每次只调整一个变量。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"订阅更新成功，代理节点为何连不上？","description":"代理订阅可以更新，节点却显示超时或访问失败？把订阅下载、节点健康检查和目标站点访问分开验证，再从不兼容的协议、证书、网络限制和已失效的配置中缩小范围。文中还给出单次失败日志的核对思路，方便你复现问题、保留线索并减少频繁重装客户端。每次只调整一个变量。","inLanguage":"zh-CN","datePublished":"2026-11-20","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/subscription-updates-node-fails/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"入门延伸","item":"https://ladderer.com/#group-next-steps"},{"@type":"ListItem","position":3,"name":"订阅更新成功，代理节点为何连不上？","item":"https://ladderer.com/articles/subscription-updates-node-fails/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>u8ba2u9605u66f4u65b0u6210u529fuff0cu4ee3u7406u8282u70b9u4e3au4f55u8fdeu4e0du4e0auff1f</title><meta name="description" content="u4ee3u7406u8ba2u9605u53efu4ee5u66f4u65b0uff0cu8282u70b9u5374u663eu793au8d85u65f6u6216u8bbfu95eeu5931u8d25uff1fu628au8ba2u9605u4e0bu8f7du3001u8282u70b9u5065u5eb7u68c0u67e5u548cu76eeu6807u7ad9u70b9u8bbfu95eeu5206u5f00u9a8cu8bc1uff0cu518du4eceu4e0du517cu5bb9u7684u534fu8baeu3001u8bc1u4e66u3001u7f51u7edcu9650u5236u548cu5df2u5931u6548u7684u914du7f6eu4e2du7f29u5c0fu8303u56f4u3002u6587u4e2du8fd8u7ed9u51fau5355u6b21u5931u8d25u65e5u5fd7u7684u6838u5bf9u601du8defuff0cu65b9u4fbfu4f60u590du73b0u95eeu9898u3001u4fddu7559u7ebfu7d22u5e76u51cfu5c11u9891u7e41u91cdu88c5u5ba2u6237u7aefu3002u6bcfu6b21u53eau8c03u6574u4e00u4e2au53d8u91cfu3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/subscription-updates-node-fails/"><meta property="og:url" content="https://ladderer.com/articles/subscription-updates-node-fails/"><meta property="og:title" content="u8ba2u9605u66f4u65b0u6210u529fuff0cu4ee3u7406u8282u70b9u4e3au4f55u8fdeu4e0du4e0auff1f"><meta property="og:description" content="u4ee3u7406u8ba2u9605u53efu4ee5u66f4u65b0uff0cu8282u70b9u5374u663eu793au8d85u65f6u6216u8bbfu95eeu5931u8d25uff1fu628au8ba2u9605u4e0bu8f7du3001u8282u70b9u5065u5eb7u68c0u67e5u548cu76eeu6807u7ad9u70b9u8bbfu95eeu5206u5f00u9a8cu8bc1uff0cu518du4eceu4e0du517cu5bb9u7684u534fu8baeu3001u8bc1u4e66u3001u7f51u7edcu9650u5236u548cu5df2u5931u6548u7684u914du7f6eu4e2du7f29u5c0fu8303u56f4u3002u6587u4e2du8fd8u7ed9u51fau5355u6b21u5931u8d25u65e5u5fd7u7684u6838u5bf9u601du8defuff0cu65b9u4fbfu4f60u590du73b0u95eeu9898u3001u4fddu7559u7ebfu7d22u5e76u51cfu5c11u9891u7e41u91cdu88c5u5ba2u6237u7aefu3002u6bcfu6b21u53eau8c03u6574u4e00u4e2au53d8u91cfu3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="u8ba2u9605u66f4u65b0u6210u529fuff0cu4ee3u7406u8282u70b9u4e3au4f55u8fdeu4e0du4e0auff1f"><meta name="twitter:description" content="u4ee3u7406u8ba2u9605u53efu4ee5u66f4u65b0uff0cu8282u70b9u5374u663eu793au8d85u65f6u6216u8bbfu95eeu5931u8d25uff1fu628au8ba2u9605u4e0bu8f7du3001u8282u70b9u5065u5eb7u68c0u67e5u548cu76eeu6807u7ad9u70b9u8bbfu95eeu5206u5f00u9a8cu8bc1uff0cu518du4eceu4e0du517cu5bb9u7684u534fu8baeu3001u8bc1u4e66u3001u7f51u7edcu9650u5236u548cu5df2u5931u6548u7684u914du7f6eu4e2du7f29u5c0fu8303u56f4u3002u6587u4e2du8fd8u7ed9u51fau5355u6b21u5931u8d25u65e5u5fd7u7684u6838u5bf9u601du8defuff0cu65b9u4fbfu4f60u590du73b0u95eeu9898u3001u4fddu7559u7ebfu7d22u5e76u51cfu5c11u9891u7e41u91cdu88c5u5ba2u6237u7aefu3002u6bcfu6b21u53eau8c03u6574u4e00u4e2au53d8u91cfu3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"u8ba2u9605u66f4u65b0u6210u529fuff0cu4ee3u7406u8282u70b9u4e3au4f55u8fdeu4e0du4e0auff1f","description":"u4ee3u7406u8ba2u9605u53efu4ee5u66f4u65b0uff0cu8282u70b9u5374u663eu793au8d85u65f6u6216u8bbfu95eeu5931u8d25uff1fu628au8ba2u9605u4e0bu8f7du3001u8282u70b9u5065u5eb7u68c0u67e5u548cu76eeu6807u7ad9u70b9u8bbfu95eeu5206u5f00u9a8cu8bc1uff0cu518du4eceu4e0du517cu5bb9u7684u534fu8baeu3001u8bc1u4e66u3001u7f51u7edcu9650u5236u548cu5df2u5931u6548u7684u914du7f6eu4e2du7f29u5c0fu8303u56f4u3002u6587u4e2du8fd8u7ed9u51fau5355u6b21u5931u8d25u65e5u5fd7u7684u6838u5bf9u601du8defuff0cu65b9u4fbfu4f60u590du73b0u95eeu9898u3001u4fddu7559u7ebfu7d22u5e76u51cfu5c11u9891u7e41u91cdu88c5u5ba2u6237u7aefu3002u6bcfu6b21u53eau8c03u6574u4e00u4e2au53d8u91cfu3002","inLanguage":"zh-CN","datePublished":"2026-11-20","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/subscription-updates-node-fails/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u5165u95e8u5ef6u4f38","item":"https://ladderer.com/#group-next-steps"},{"@type":"ListItem","position":3,"name":"u8ba2u9605u66f4u65b0u6210u529fuff0cu4ee3u7406u8282u70b9u4e3au4f55u8fdeu4e0du4e0auff1f","item":"https://ladderer.com/articles/subscription-updates-node-fails/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="当前位置">
-            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-next-steps">入门延伸</a><span aria-hidden="true">/</span>
-            <span aria-current="page">第 15 篇</span>
+          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
+            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-next-steps">u5165u95e8u5ef6u4f38</a><span aria-hidden="true">/</span>
+            <span aria-current="page">u7b2c 15 u7bc7</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 15 <span> / 18</span></p>
-            <h1>订阅更新成功，代理节点为何连不上？</h1>
-            <p class="article-summary">从订阅下载、节点连接到实际访问，找出故障出现在哪一步。</p>
-            <div class="article-meta"><span>约 3 分钟阅读</span><span>内容复核 <time datetime="2026-11-20">2026.11.20</time></span></div>
+            <h1>u8ba2u9605u66f4u65b0u6210u529fuff0cu4ee3u7406u8282u70b9u4e3au4f55u8fdeu4e0du4e0auff1f</h1>
+            <p class="article-summary">u4eceu8ba2u9605u4e0bu8f7du3001u8282u70b9u8fdeu63a5u5230u5b9eu9645u8bbfu95eeuff0cu627eu51fau6545u969cu51fau73b0u5728u54eau4e00u6b65u3002</p>
+            <div class="article-meta"><span>u7ea6 3 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-11-20">2026.11.20</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">本文目录</h2>
-          <ol><li class="toc-h2"><a href="#先看这次更新究竟做了什么">先看这次更新究竟做了什么</a></li><li class="toc-h2"><a href="#用一个节点-一个目标缩小范围">用一个节点、一个目标缩小范围</a></li><li class="toc-h2"><a href="#带着结果去查账户或问客服">带着结果去查账户或问客服</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
+          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
+          <ol><li class="toc-h2"><a href="#u5148u770bu8fd9u6b21u66f4u65b0u7a76u7adfu505au4e86u4ec0u4e48">u5148u770bu8fd9u6b21u66f4u65b0u7a76u7adfu505au4e86u4ec0u4e48</a></li><li class="toc-h2"><a href="#u7528u4e00u4e2au8282u70b9-u4e00u4e2au76eeu6807u7f29u5c0fu8303u56f4">u7528u4e00u4e2au8282u70b9u3001u4e00u4e2au76eeu6807u7f29u5c0fu8303u56f4</a></li><li class="toc-h2"><a href="#u5e26u7740u7ed3u679cu53bbu67e5u8d26u6237u6216u95eeu5ba2u670d">u5e26u7740u7ed3u679cu53bbu67e5u8d26u6237u6216u95eeu5ba2u670d</a></li><li class="toc-h2"><a href="#u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>订阅能更新，说明客户端拿到了配置。节点仍连不上时，分别测试订阅下载、节点连接和目标网站访问，看失败发生在哪一步。</p>
-<h2 id="先看这次更新究竟做了什么">先看这次更新究竟做了什么</h2>
-<p>打开客户端的订阅详情，确认你更新的是当前正在用的那份配置。记下更新时间，再看有没有下载或解析错误。有些客户端会保留上一次成功下载的配置，列表还在时，仍要看本次更新日志。</p>
-<p>如果日志显示下载或解析失败，就先查订阅状态、配置格式和客户端版本。若更新成功，再确认当前选中的节点来自刚更新的配置。保留原配置，方便对照更新前后的节点名称和类型。</p>
-<h2 id="用一个节点-一个目标缩小范围">用一个节点、一个目标缩小范围</h2>
-<p>选一个节点，打开客户端日志，然后重新访问一个你平时能用的网站。记下时间，看看日志有没有这次请求、选了哪个节点、报错出现在什么时候。Mihomo 的节点配置包含服务器地址、端口和类型，这些字段关系到节点连接能否建立。[2]</p>
-<div class="table-wrap" role="region" aria-label="对比表格，可横向滚动" tabindex="0"><table>
+          <article class="prose"><p>u8ba2u9605u80fdu66f4u65b0uff0cu8bf4u660eu5ba2u6237u7aefu62ffu5230u4e86u914du7f6eu3002u8282u70b9u4ecdu8fdeu4e0du4e0au65f6uff0cu5206u522bu6d4bu8bd5u8ba2u9605u4e0bu8f7du3001u8282u70b9u8fdeu63a5u548cu76eeu6807u7f51u7ad9u8bbfu95eeuff0cu770bu5931u8d25u53d1u751fu5728u54eau4e00u6b65u3002</p>
+<h2 id="u5148u770bu8fd9u6b21u66f4u65b0u7a76u7adfu505au4e86u4ec0u4e48">u5148u770bu8fd9u6b21u66f4u65b0u7a76u7adfu505au4e86u4ec0u4e48</h2>
+<p>u6253u5f00u5ba2u6237u7aefu7684u8ba2u9605u8be6u60c5uff0cu786eu8ba4u4f60u66f4u65b0u7684u662fu5f53u524du6b63u5728u7528u7684u90a3u4efdu914du7f6eu3002u8bb0u4e0bu66f4u65b0u65f6u95f4uff0cu518du770bu6709u6ca1u6709u4e0bu8f7du6216u89e3u6790u9519u8befu3002u6709u4e9bu5ba2u6237u7aefu4f1au4fddu7559u4e0au4e00u6b21u6210u529fu4e0bu8f7du7684u914du7f6euff0cu5217u8868u8fd8u5728u65f6uff0cu4ecdu8981u770bu672cu6b21u66f4u65b0u65e5u5fd7u3002</p>
+<p>u5982u679cu65e5u5fd7u663eu793au4e0bu8f7du6216u89e3u6790u5931u8d25uff0cu5c31u5148u67e5u8ba2u9605u72b6u6001u3001u914du7f6eu683cu5f0fu548cu5ba2u6237u7aefu7248u672cu3002u82e5u66f4u65b0u6210u529fuff0cu518du786eu8ba4u5f53u524du9009u4e2du7684u8282u70b9u6765u81eau521au66f4u65b0u7684u914du7f6eu3002u4fddu7559u539fu914du7f6euff0cu65b9u4fbfu5bf9u7167u66f4u65b0u524du540eu7684u8282u70b9u540du79f0u548cu7c7bu578bu3002</p>
+<h2 id="u7528u4e00u4e2au8282u70b9-u4e00u4e2au76eeu6807u7f29u5c0fu8303u56f4">u7528u4e00u4e2au8282u70b9u3001u4e00u4e2au76eeu6807u7f29u5c0fu8303u56f4</h2>
+<p>u9009u4e00u4e2au8282u70b9uff0cu6253u5f00u5ba2u6237u7aefu65e5u5fd7uff0cu7136u540eu91cdu65b0u8bbfu95eeu4e00u4e2au4f60u5e73u65f6u80fdu7528u7684u7f51u7ad9u3002u8bb0u4e0bu65f6u95f4uff0cu770bu770bu65e5u5fd7u6709u6ca1u6709u8fd9u6b21u8bf7u6c42u3001u9009u4e86u54eau4e2au8282u70b9u3001u62a5u9519u51fau73b0u5728u4ec0u4e48u65f6u5019u3002Mihomo u7684u8282u70b9u914du7f6eu5305u542bu670du52a1u5668u5730u5740u3001u7aefu53e3u548cu7c7bu578buff0cu8fd9u4e9bu5b57u6bb5u5173u7cfbu5230u8282u70b9u8fdeu63a5u80fdu5426u5efau7acbu3002[2]</p>
+<div class="table-wrap" role="region" aria-label="u5bf9u6bd4u8868u683cuff0cu53efu6a2au5411u6edau52a8" tabindex="0"><table>
 <thead>
 <tr>
-<th>看到的现象</th>
-<th>下一步</th>
+<th>u770bu5230u7684u73b0u8c61</th>
+<th>u4e0bu4e00u6b65</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>日志里没有这次请求</td>
-<td>核对应用是否使用了当前客户端，以及日志是否记录这类连接</td>
+<td>u65e5u5fd7u91ccu6ca1u6709u8fd9u6b21u8bf7u6c42</td>
+<td>u6838u5bf9u5e94u7528u662fu5426u4f7fu7528u4e86u5f53u524du5ba2u6237u7aefuff0cu4ee5u53cau65e5u5fd7u662fu5426u8bb0u5f55u8fd9u7c7bu8fdeu63a5</td>
 </tr>
 <tr>
-<td>同一目标换另一个节点就能访问</td>
-<td>保持应用和网络一致，对照两个节点的错误和状态</td>
+<td>u540cu4e00u76eeu6807u6362u53e6u4e00u4e2au8282u70b9u5c31u80fdu8bbfu95ee</td>
+<td>u4fddu6301u5e94u7528u548cu7f51u7edcu4e00u81f4uff0cu5bf9u7167u4e24u4e2au8282u70b9u7684u9519u8befu548cu72b6u6001</td>
 </tr>
 <tr>
-<td>客户端健康检查正常，只有某个网站失败</td>
-<td>查看该网站对应的分流规则、解析和连接记录</td>
+<td>u5ba2u6237u7aefu5065u5eb7u68c0u67e5u6b63u5e38uff0cu53eau6709u67d0u4e2au7f51u7ad9u5931u8d25</td>
+<td>u67e5u770bu8be5u7f51u7ad9u5bf9u5e94u7684u5206u6d41u89c4u5219u3001u89e3u6790u548cu8fdeu63a5u8bb0u5f55</td>
 </tr>
 <tr>
-<td>多个节点在同一网络下都超时</td>
-<td>先核对服务公告、套餐状态和本地连接。有条件时换一张网络做对照</td>
+<td>u591au4e2au8282u70b9u5728u540cu4e00u7f51u7edcu4e0bu90fdu8d85u65f6</td>
+<td>u5148u6838u5bf9u670du52a1u516cu544au3001u5957u9910u72b6u6001u548cu672cu5730u8fdeu63a5u3002u6709u6761u4ef6u65f6u6362u4e00u5f20u7f51u7edcu505au5bf9u7167</td>
 </tr>
 </tbody>
 </table></div>
-<p>健康检查访问的是指定地址。一次成功可以作为当时那条探测路径的证据，实际网站仍要单独访问。若换了节点又换了网络，即使恢复，也很难知道哪个改动起了作用。</p>
-<h2 id="带着结果去查账户或问客服">带着结果去查账户或问客服</h2>
-<p>如果几台设备在不同网络下都遇到同样的错误，可以查看是否到期、额度是否耗尽，或服务商有没有发布变更通知。反馈时提供一次失败的时间、客户端版本、脱敏节点名和错误原文。写清“订阅已更新，访问时连接超时”比只说“用不了”更便于定位。</p>
-<h2 id="参考资料">参考资料</h2>
+<p>u5065u5eb7u68c0u67e5u8bbfu95eeu7684u662fu6307u5b9au5730u5740u3002u4e00u6b21u6210u529fu53efu4ee5u4f5cu4e3au5f53u65f6u90a3u6761u63a2u6d4bu8defu5f84u7684u8bc1u636euff0cu5b9eu9645u7f51u7ad9u4ecdu8981u5355u72ecu8bbfu95eeu3002u82e5u6362u4e86u8282u70b9u53c8u6362u4e86u7f51u7edcuff0cu5373u4f7fu6062u590duff0cu4e5fu5f88u96beu77e5u9053u54eau4e2au6539u52a8u8d77u4e86u4f5cu7528u3002</p>
+<h2 id="u5e26u7740u7ed3u679cu53bbu67e5u8d26u6237u6216u95eeu5ba2u670d">u5e26u7740u7ed3u679cu53bbu67e5u8d26u6237u6216u95eeu5ba2u670d</h2>
+<p>u5982u679cu51e0u53f0u8bbeu5907u5728u4e0du540cu7f51u7edcu4e0bu90fdu9047u5230u540cu6837u7684u9519u8befuff0cu53efu4ee5u67e5u770bu662fu5426u5230u671fu3001u989du5ea6u662fu5426u8017u5c3duff0cu6216u670du52a1u5546u6709u6ca1u6709u53d1u5e03u53d8u66f4u901au77e5u3002u53cdu9988u65f6u63d0u4f9bu4e00u6b21u5931u8d25u7684u65f6u95f4u3001u5ba2u6237u7aefu7248u672cu3001u8131u654fu8282u70b9u540du548cu9519u8befu539fu6587u3002u5199u6e05u201cu8ba2u9605u5df2u66f4u65b0uff0cu8bbfu95eeu65f6u8fdeu63a5u8d85u65f6u201du6bd4u53eau8bf4u201cu7528u4e0du4e86u201du66f4u4fbfu4e8eu5b9au4f4du3002</p>
+<h2 id="u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</h2>
 <ul>
-<li>[1] <a href="https://wiki.metacubex.one/config/proxy-providers/">Mihomo：代理集合配置</a></li>
-<li>[2] <a href="https://wiki.metacubex.one/config/proxies/">Mihomo：出站代理通用字段</a></li>
+<li>[1] <a href="https://wiki.metacubex.one/config/proxy-providers/">Mihomouff1au4ee3u7406u96c6u5408u914du7f6e</a></li>
+<li>[2] <a href="https://wiki.metacubex.one/config/proxies/">Mihomouff1au51fau7ad9u4ee3u7406u901au7528u5b57u6bb5</a></li>
 </ul>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/troubleshooting/">网页打不开怎么查</a><p>从问题范围、应用代理和日志开始，逐步检查 DNS 与连接。</p></li><li><a href="https://ladderer.com/articles/protocols/">常见代理协议</a><p>从 HTTP、SOCKS5 到 WireGuard，分清通信规则、传输与安全层。</p></li><li><a href="https://ladderer.com/articles/report-connection-problem/">连接故障反馈</a><p>把时间、版本、故障范围和脱敏日志整理成一份可复制的反馈。</p></li></ul></nav>
-          <section class="service-note" aria-label="订阅服务选购参考"><p class="eyebrow">NEXT STEP</p><h2>订阅服务选购参考</h2><p>确认配置能下载、只是原节点连接失败后，可以用候选线路做对照。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">查看 GitHub 服务评测清单 ↗</a><p class="service-destination">外部推荐清单 · GitHub</p></section>
-          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/troubleshooting/">u7f51u9875u6253u4e0du5f00u600eu4e48u67e5</a><p>u4eceu95eeu9898u8303u56f4u3001u5e94u7528u4ee3u7406u548cu65e5u5fd7u5f00u59cbuff0cu9010u6b65u68c0u67e5 DNS u4e0eu8fdeu63a5u3002</p></li><li><a href="https://ladderer.com/articles/protocols/">u5e38u89c1u4ee3u7406u534fu8bae</a><p>u4ece HTTPu3001SOCKS5 u5230 WireGuarduff0cu5206u6e05u901au4fe1u89c4u5219u3001u4f20u8f93u4e0eu5b89u5168u5c42u3002</p></li><li><a href="https://ladderer.com/articles/report-connection-problem/">u8fdeu63a5u6545u969cu53cdu9988</a><p>u628au65f6u95f4u3001u7248u672cu3001u6545u969cu8303u56f4u548cu8131u654fu65e5u5fd7u6574u7406u6210u4e00u4efdu53efu590du5236u7684u53cdu9988u3002</p></li></ul></nav>
+          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="本组文章">
-            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
-            <div class="sidebar-group"><h2>入门延伸</h2>
+          <nav aria-label="u672cu7ec4u6587u7ae0">
+            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
+            <div class="sidebar-group"><h2>u5165u95e8u5ef6u4f38</h2>
       <a href="https://ladderer.com/articles/choosing-proxy-service/">
-        <span>11</span>订阅、VPN 与自建
+        <span>11</span>u8ba2u9605u3001VPN u4e0eu81eau5efa
       </a>
       <a href="https://ladderer.com/articles/speed-test/">
-        <span>12</span>代理节点测速
+        <span>12</span>u4ee3u7406u8282u70b9u6d4bu901f
       </a>
       <a href="https://ladderer.com/articles/subscription-billing/">
-        <span>13</span>订阅计费与退款
+        <span>13</span>u8ba2u9605u8ba1u8d39u4e0eu9000u6b3e
       </a>
       <a href="https://ladderer.com/articles/subscription-leak/">
-        <span>14</span>订阅链接泄露
+        <span>14</span>u8ba2u9605u94feu63a5u6cc4u9732
       </a>
       <a href="https://ladderer.com/articles/subscription-updates-node-fails/" aria-current="page">
-        <span>15</span>订阅更新后节点不可用
+        <span>15</span>u8ba2u9605u66f4u65b0u540eu8282u70b9u4e0du53efu7528
       </a>
       <a href="https://ladderer.com/articles/verify-app-proxy/">
-        <span>16</span>验证应用代理路径
+        <span>16</span>u9a8cu8bc1u5e94u7528u4ee3u7406u8defu5f84
       </a>
       <a href="https://ladderer.com/articles/node-entry-exit-ip/">
-        <span>17</span>节点入口与出口 IP
+        <span>17</span>u8282u70b9u5165u53e3u4e0eu51fau53e3 IP
       </a>
       <a href="https://ladderer.com/articles/report-connection-problem/">
-        <span>18</span>连接故障反馈
+        <span>18</span>u8fdeu63a5u6545u969cu53cdu9988
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="上一篇与下一篇">
-      <a rel="prev" href="https://ladderer.com/articles/subscription-leak/"><small>← 上一篇</small><strong>订阅链接泄露</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/verify-app-proxy/"><small>下一篇 →</small><strong>验证应用代理路径</strong></a></nav>
+          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
+      <a rel="prev" href="https://ladderer.com/articles/subscription-leak/"><small>u2190 u4e0au4e00u7bc7</small><strong>u8ba2u9605u94feu63a5u6cc4u9732</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/verify-app-proxy/"><small>u4e0bu4e00u7bc7 u2192</small><strong>u9a8cu8bc1u5e94u7528u4ee3u7406u8defu5f84</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>

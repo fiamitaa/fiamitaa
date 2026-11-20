@@ -1,59 +1,59 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理客户端和核心有什么区别？</title><meta name="description" content="从客户端、核心、协议、配置到远端节点，逐层说明一次代理连接里各个部件做什么。用 Clash、Mihomo、V2Ray、Xray 和 sing-box 举例，帮助你读懂下载页、订阅说明与出错日志。遇到能导入却连不上的配置，也可以用这套分工判断应该检查哪一层。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/proxy-ecosystem/"><meta property="og:url" content="https://ladderer.com/articles/proxy-ecosystem/"><meta property="og:title" content="代理客户端和核心有什么区别？"><meta property="og:description" content="从客户端、核心、协议、配置到远端节点，逐层说明一次代理连接里各个部件做什么。用 Clash、Mihomo、V2Ray、Xray 和 sing-box 举例，帮助你读懂下载页、订阅说明与出错日志。遇到能导入却连不上的配置，也可以用这套分工判断应该检查哪一层。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理客户端和核心有什么区别？"><meta name="twitter:description" content="从客户端、核心、协议、配置到远端节点，逐层说明一次代理连接里各个部件做什么。用 Clash、Mihomo、V2Ray、Xray 和 sing-box 举例，帮助你读懂下载页、订阅说明与出错日志。遇到能导入却连不上的配置，也可以用这套分工判断应该检查哪一层。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"代理客户端和核心有什么区别？","description":"从客户端、核心、协议、配置到远端节点，逐层说明一次代理连接里各个部件做什么。用 Clash、Mihomo、V2Ray、Xray 和 sing-box 举例，帮助你读懂下载页、订阅说明与出错日志。遇到能导入却连不上的配置，也可以用这套分工判断应该检查哪一层。","inLanguage":"zh-CN","datePublished":"2026-10-25","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/proxy-ecosystem/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"工具生态","item":"https://ladderer.com/#group-ecosystem"},{"@type":"ListItem","position":3,"name":"代理客户端和核心有什么区别？","item":"https://ladderer.com/articles/proxy-ecosystem/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>u4ee3u7406u5ba2u6237u7aefu548cu6838u5fc3u6709u4ec0u4e48u533au522buff1f</title><meta name="description" content="u4eceu5ba2u6237u7aefu3001u6838u5fc3u3001u534fu8baeu3001u914du7f6eu5230u8fdcu7aefu8282u70b9uff0cu9010u5c42u8bf4u660eu4e00u6b21u4ee3u7406u8fdeu63a5u91ccu5404u4e2au90e8u4ef6u505au4ec0u4e48u3002u7528 Clashu3001Mihomou3001V2Rayu3001Xray u548c sing-box u4e3eu4f8buff0cu5e2eu52a9u4f60u8bfbu61c2u4e0bu8f7du9875u3001u8ba2u9605u8bf4u660eu4e0eu51fau9519u65e5u5fd7u3002u9047u5230u80fdu5bfcu5165u5374u8fdeu4e0du4e0au7684u914du7f6euff0cu4e5fu53efu4ee5u7528u8fd9u5957u5206u5de5u5224u65adu5e94u8be5u68c0u67e5u54eau4e00u5c42u3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/proxy-ecosystem/"><meta property="og:url" content="https://ladderer.com/articles/proxy-ecosystem/"><meta property="og:title" content="u4ee3u7406u5ba2u6237u7aefu548cu6838u5fc3u6709u4ec0u4e48u533au522buff1f"><meta property="og:description" content="u4eceu5ba2u6237u7aefu3001u6838u5fc3u3001u534fu8baeu3001u914du7f6eu5230u8fdcu7aefu8282u70b9uff0cu9010u5c42u8bf4u660eu4e00u6b21u4ee3u7406u8fdeu63a5u91ccu5404u4e2au90e8u4ef6u505au4ec0u4e48u3002u7528 Clashu3001Mihomou3001V2Rayu3001Xray u548c sing-box u4e3eu4f8buff0cu5e2eu52a9u4f60u8bfbu61c2u4e0bu8f7du9875u3001u8ba2u9605u8bf4u660eu4e0eu51fau9519u65e5u5fd7u3002u9047u5230u80fdu5bfcu5165u5374u8fdeu4e0du4e0au7684u914du7f6euff0cu4e5fu53efu4ee5u7528u8fd9u5957u5206u5de5u5224u65adu5e94u8be5u68c0u67e5u54eau4e00u5c42u3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="u4ee3u7406u5ba2u6237u7aefu548cu6838u5fc3u6709u4ec0u4e48u533au522buff1f"><meta name="twitter:description" content="u4eceu5ba2u6237u7aefu3001u6838u5fc3u3001u534fu8baeu3001u914du7f6eu5230u8fdcu7aefu8282u70b9uff0cu9010u5c42u8bf4u660eu4e00u6b21u4ee3u7406u8fdeu63a5u91ccu5404u4e2au90e8u4ef6u505au4ec0u4e48u3002u7528 Clashu3001Mihomou3001V2Rayu3001Xray u548c sing-box u4e3eu4f8buff0cu5e2eu52a9u4f60u8bfbu61c2u4e0bu8f7du9875u3001u8ba2u9605u8bf4u660eu4e0eu51fau9519u65e5u5fd7u3002u9047u5230u80fdu5bfcu5165u5374u8fdeu4e0du4e0au7684u914du7f6euff0cu4e5fu53efu4ee5u7528u8fd9u5957u5206u5de5u5224u65adu5e94u8be5u68c0u67e5u54eau4e00u5c42u3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"u4ee3u7406u5ba2u6237u7aefu548cu6838u5fc3u6709u4ec0u4e48u533au522buff1f","description":"u4eceu5ba2u6237u7aefu3001u6838u5fc3u3001u534fu8baeu3001u914du7f6eu5230u8fdcu7aefu8282u70b9uff0cu9010u5c42u8bf4u660eu4e00u6b21u4ee3u7406u8fdeu63a5u91ccu5404u4e2au90e8u4ef6u505au4ec0u4e48u3002u7528 Clashu3001Mihomou3001V2Rayu3001Xray u548c sing-box u4e3eu4f8buff0cu5e2eu52a9u4f60u8bfbu61c2u4e0bu8f7du9875u3001u8ba2u9605u8bf4u660eu4e0eu51fau9519u65e5u5fd7u3002u9047u5230u80fdu5bfcu5165u5374u8fdeu4e0du4e0au7684u914du7f6euff0cu4e5fu53efu4ee5u7528u8fd9u5957u5206u5de5u5224u65adu5e94u8be5u68c0u67e5u54eau4e00u5c42u3002","inLanguage":"zh-CN","datePublished":"2026-10-25","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/proxy-ecosystem/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u5de5u5177u751fu6001","item":"https://ladderer.com/#group-ecosystem"},{"@type":"ListItem","position":3,"name":"u4ee3u7406u5ba2u6237u7aefu548cu6838u5fc3u6709u4ec0u4e48u533au522buff1f","item":"https://ladderer.com/articles/proxy-ecosystem/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="当前位置">
-            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-ecosystem">工具生态</a><span aria-hidden="true">/</span>
-            <span aria-current="page">第 03 篇</span>
+          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
+            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-ecosystem">u5de5u5177u751fu6001</a><span aria-hidden="true">/</span>
+            <span aria-current="page">u7b2c 03 u7bc7</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 03 <span> / 18</span></p>
-            <h1>代理客户端和核心有什么区别？</h1>
-            <p class="article-summary">把客户端、核心、协议、配置和服务拆开，不再被软件名称绕晕。</p>
-            <div class="article-meta"><span>约 4 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div>
+            <h1>u4ee3u7406u5ba2u6237u7aefu548cu6838u5fc3u6709u4ec0u4e48u533au522buff1f</h1>
+            <p class="article-summary">u628au5ba2u6237u7aefu3001u6838u5fc3u3001u534fu8baeu3001u914du7f6eu548cu670du52a1u62c6u5f00uff0cu4e0du518du88abu8f6fu4ef6u540du79f0u7ed5u6655u3002</p>
+            <div class="article-meta"><span>u7ea6 4 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-10-18">2026.10.18</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">本文目录</h2>
-          <ol><li class="toc-h2"><a href="#第一层-客户端">第一层：客户端</a></li><li class="toc-h2"><a href="#第二层-核心">第二层：核心</a></li><li class="toc-h2"><a href="#第三层-协议">第三层：协议</a></li><li class="toc-h2"><a href="#第四层-配置">第四层：配置</a></li><li class="toc-h2"><a href="#第五层-服务和节点">第五层：服务和节点</a></li><li class="toc-h2"><a href="#这些部分怎么配合">这些部分怎么配合</a></li><li class="toc-h2"><a href="#为什么网上教程经常讲乱">为什么网上教程经常讲乱</a></li><li class="toc-h2"><a href="#官方入口">官方入口</a></li></ol>
+          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
+          <ol><li class="toc-h2"><a href="#u7b2cu4e00u5c42-u5ba2u6237u7aef">u7b2cu4e00u5c42uff1au5ba2u6237u7aef</a></li><li class="toc-h2"><a href="#u7b2cu4e8cu5c42-u6838u5fc3">u7b2cu4e8cu5c42uff1au6838u5fc3</a></li><li class="toc-h2"><a href="#u7b2cu4e09u5c42-u534fu8bae">u7b2cu4e09u5c42uff1au534fu8bae</a></li><li class="toc-h2"><a href="#u7b2cu56dbu5c42-u914du7f6e">u7b2cu56dbu5c42uff1au914du7f6e</a></li><li class="toc-h2"><a href="#u7b2cu4e94u5c42-u670du52a1u548cu8282u70b9">u7b2cu4e94u5c42uff1au670du52a1u548cu8282u70b9</a></li><li class="toc-h2"><a href="#u8fd9u4e9bu90e8u5206u600eu4e48u914du5408">u8fd9u4e9bu90e8u5206u600eu4e48u914du5408</a></li><li class="toc-h2"><a href="#u4e3au4ec0u4e48u7f51u4e0au6559u7a0bu7ecfu5e38u8bb2u4e71">u4e3au4ec0u4e48u7f51u4e0au6559u7a0bu7ecfu5e38u8bb2u4e71</a></li><li class="toc-h2"><a href="#u5b98u65b9u5165u53e3">u5b98u65b9u5165u53e3</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>同一款代理工具的下载页，可能同时列出客户端、核心和配置。先分清每一层做什么，才能判断自己缺的是软件、协议支持，还是一份可用配置。</p>
-<p>这些名称分别涉及客户端、核心、协议、配置和服务。判断它们负责哪一部分，才能知道安装软件后还缺什么。</p>
-<h2 id="第一层-客户端">第一层：客户端</h2>
-<p>客户端是用户直接操作的程序。它负责导入配置、切换模式、选择代理组、显示连接状态和查看日志。</p>
-<p>Clash Verge Rev、FlClash、v2rayN、v2rayNG 都更接近客户端。它们可能调用不同核心，也可能支持多个核心。</p>
-<p>所以，“我使用 v2rayN”描述的是界面和管理程序，不一定说明后台实际运行的是 V2Ray、Xray 还是其他核心。</p>
-<h2 id="第二层-核心">第二层：核心</h2>
-<p>核心负责实际连接。它解析配置，处理认证、协议、路由和流量转发。</p>
-<p>Mihomo、V2Ray、Xray、sing-box 都可以放在核心或核心生态这一层理解。核心之间可能支持不同协议、配置字段和路由能力。</p>
-<p>客户端和核心可以分别更新。客户端支持某个核心，也不代表界面能配置该核心的全部功能。有时核心文档里已经存在某个字段，客户端还没有相应选项；这时不能只看核心名称，还要核对客户端版本和配置方式。</p>
-<h2 id="第三层-协议">第三层：协议</h2>
-<p>协议规定客户端和服务端如何建立连接、认证身份、加密和传输数据。HTTP、SOCKS5、Shadowsocks、VMess、VLESS、Trojan、WireGuard 和 OpenVPN 的定位并不完全相同。</p>
-<p>协议不等于客户端，也不等于服务商。看到“支持某协议”，只能说明软件具备某种连接能力，不能直接推断速度、稳定性或隐私水平。</p>
-<h2 id="第四层-配置">第四层：配置</h2>
-<p>配置把客户端、核心、协议和服务地址组合起来。它可能包含节点、订阅、代理组、规则、DNS 和传输参数。</p>
-<p>配置格式和字段会随核心不同而变化。配置能导入，不代表每个字段都生效；显示已连接，也不代表所有应用都走了预期路径。</p>
-<h2 id="第五层-服务和节点">第五层：服务和节点</h2>
-<p>“代理机场”通常提供节点和订阅服务，与客户端配合使用。安装客户端与购买服务是两件事。</p>
-<p>节点通常指一个可以接收代理连接的远程入口。它不是客户端，也不是协议，而是实际承载连接的服务资源。</p>
-<p>节点服务商的稳定性、日志政策、带宽和运营方式，会直接影响体验和隐私。开源客户端并不能替第三方节点服务背书。</p>
-<h2 id="这些部分怎么配合">这些部分怎么配合</h2>
+          <article class="prose"><p>u540cu4e00u6b3eu4ee3u7406u5de5u5177u7684u4e0bu8f7du9875uff0cu53efu80fdu540cu65f6u5217u51fau5ba2u6237u7aefu3001u6838u5fc3u548cu914du7f6eu3002u5148u5206u6e05u6bcfu4e00u5c42u505au4ec0u4e48uff0cu624du80fdu5224u65adu81eau5df1u7f3au7684u662fu8f6fu4ef6u3001u534fu8baeu652fu6301uff0cu8fd8u662fu4e00u4efdu53efu7528u914du7f6eu3002</p>
+<p>u8fd9u4e9bu540du79f0u5206u522bu6d89u53cau5ba2u6237u7aefu3001u6838u5fc3u3001u534fu8baeu3001u914du7f6eu548cu670du52a1u3002u5224u65adu5b83u4eecu8d1fu8d23u54eau4e00u90e8u5206uff0cu624du80fdu77e5u9053u5b89u88c5u8f6fu4ef6u540eu8fd8u7f3au4ec0u4e48u3002</p>
+<h2 id="u7b2cu4e00u5c42-u5ba2u6237u7aef">u7b2cu4e00u5c42uff1au5ba2u6237u7aef</h2>
+<p>u5ba2u6237u7aefu662fu7528u6237u76f4u63a5u64cdu4f5cu7684u7a0bu5e8fu3002u5b83u8d1fu8d23u5bfcu5165u914du7f6eu3001u5207u6362u6a21u5f0fu3001u9009u62e9u4ee3u7406u7ec4u3001u663eu793au8fdeu63a5u72b6u6001u548cu67e5u770bu65e5u5fd7u3002</p>
+<p>Clash Verge Revu3001FlClashu3001v2rayNu3001v2rayNG u90fdu66f4u63a5u8fd1u5ba2u6237u7aefu3002u5b83u4eecu53efu80fdu8c03u7528u4e0du540cu6838u5fc3uff0cu4e5fu53efu80fdu652fu6301u591au4e2au6838u5fc3u3002</p>
+<p>u6240u4ee5uff0cu201cu6211u4f7fu7528 v2rayNu201du63cfu8ff0u7684u662fu754cu9762u548cu7ba1u7406u7a0bu5e8fuff0cu4e0du4e00u5b9au8bf4u660eu540eu53f0u5b9eu9645u8fd0u884cu7684u662f V2Rayu3001Xray u8fd8u662fu5176u4ed6u6838u5fc3u3002</p>
+<h2 id="u7b2cu4e8cu5c42-u6838u5fc3">u7b2cu4e8cu5c42uff1au6838u5fc3</h2>
+<p>u6838u5fc3u8d1fu8d23u5b9eu9645u8fdeu63a5u3002u5b83u89e3u6790u914du7f6euff0cu5904u7406u8ba4u8bc1u3001u534fu8baeu3001u8defu7531u548cu6d41u91cfu8f6cu53d1u3002</p>
+<p>Mihomou3001V2Rayu3001Xrayu3001sing-box u90fdu53efu4ee5u653eu5728u6838u5fc3u6216u6838u5fc3u751fu6001u8fd9u4e00u5c42u7406u89e3u3002u6838u5fc3u4e4bu95f4u53efu80fdu652fu6301u4e0du540cu534fu8baeu3001u914du7f6eu5b57u6bb5u548cu8defu7531u80fdu529bu3002</p>
+<p>u5ba2u6237u7aefu548cu6838u5fc3u53efu4ee5u5206u522bu66f4u65b0u3002u5ba2u6237u7aefu652fu6301u67d0u4e2au6838u5fc3uff0cu4e5fu4e0du4ee3u8868u754cu9762u80fdu914du7f6eu8be5u6838u5fc3u7684u5168u90e8u529fu80fdu3002u6709u65f6u6838u5fc3u6587u6863u91ccu5df2u7ecfu5b58u5728u67d0u4e2au5b57u6bb5uff0cu5ba2u6237u7aefu8fd8u6ca1u6709u76f8u5e94u9009u9879uff1bu8fd9u65f6u4e0du80fdu53eau770bu6838u5fc3u540du79f0uff0cu8fd8u8981u6838u5bf9u5ba2u6237u7aefu7248u672cu548cu914du7f6eu65b9u5f0fu3002</p>
+<h2 id="u7b2cu4e09u5c42-u534fu8bae">u7b2cu4e09u5c42uff1au534fu8bae</h2>
+<p>u534fu8baeu89c4u5b9au5ba2u6237u7aefu548cu670du52a1u7aefu5982u4f55u5efau7acbu8fdeu63a5u3001u8ba4u8bc1u8eabu4efdu3001u52a0u5bc6u548cu4f20u8f93u6570u636eu3002HTTPu3001SOCKS5u3001Shadowsocksu3001VMessu3001VLESSu3001Trojanu3001WireGuard u548c OpenVPN u7684u5b9au4f4du5e76u4e0du5b8cu5168u76f8u540cu3002</p>
+<p>u534fu8baeu4e0du7b49u4e8eu5ba2u6237u7aefuff0cu4e5fu4e0du7b49u4e8eu670du52a1u5546u3002u770bu5230u201cu652fu6301u67d0u534fu8baeu201duff0cu53eau80fdu8bf4u660eu8f6fu4ef6u5177u5907u67d0u79cdu8fdeu63a5u80fdu529buff0cu4e0du80fdu76f4u63a5u63a8u65adu901fu5ea6u3001u7a33u5b9au6027u6216u9690u79c1u6c34u5e73u3002</p>
+<h2 id="u7b2cu56dbu5c42-u914du7f6e">u7b2cu56dbu5c42uff1au914du7f6e</h2>
+<p>u914du7f6eu628au5ba2u6237u7aefu3001u6838u5fc3u3001u534fu8baeu548cu670du52a1u5730u5740u7ec4u5408u8d77u6765u3002u5b83u53efu80fdu5305u542bu8282u70b9u3001u8ba2u9605u3001u4ee3u7406u7ec4u3001u89c4u5219u3001DNS u548cu4f20u8f93u53c2u6570u3002</p>
+<p>u914du7f6eu683cu5f0fu548cu5b57u6bb5u4f1au968fu6838u5fc3u4e0du540cu800cu53d8u5316u3002u914du7f6eu80fdu5bfcu5165uff0cu4e0du4ee3u8868u6bcfu4e2au5b57u6bb5u90fdu751fu6548uff1bu663eu793au5df2u8fdeu63a5uff0cu4e5fu4e0du4ee3u8868u6240u6709u5e94u7528u90fdu8d70u4e86u9884u671fu8defu5f84u3002</p>
+<h2 id="u7b2cu4e94u5c42-u670du52a1u548cu8282u70b9">u7b2cu4e94u5c42uff1au670du52a1u548cu8282u70b9</h2>
+<p>u201cu4ee3u7406u673au573au201du901au5e38u63d0u4f9bu8282u70b9u548cu8ba2u9605u670du52a1uff0cu4e0eu5ba2u6237u7aefu914du5408u4f7fu7528u3002u5b89u88c5u5ba2u6237u7aefu4e0eu8d2du4e70u670du52a1u662fu4e24u4ef6u4e8bu3002</p>
+<p>u8282u70b9u901au5e38u6307u4e00u4e2au53efu4ee5u63a5u6536u4ee3u7406u8fdeu63a5u7684u8fdcu7a0bu5165u53e3u3002u5b83u4e0du662fu5ba2u6237u7aefuff0cu4e5fu4e0du662fu534fu8baeuff0cu800cu662fu5b9eu9645u627fu8f7du8fdeu63a5u7684u670du52a1u8d44u6e90u3002</p>
+<p>u8282u70b9u670du52a1u5546u7684u7a33u5b9au6027u3001u65e5u5fd7u653fu7b56u3001u5e26u5bbdu548cu8fd0u8425u65b9u5f0fuff0cu4f1au76f4u63a5u5f71u54cdu4f53u9a8cu548cu9690u79c1u3002u5f00u6e90u5ba2u6237u7aefu5e76u4e0du80fdu66ffu7b2cu4e09u65b9u8282u70b9u670du52a1u80ccu4e66u3002</p>
+<h2 id="u8fd9u4e9bu90e8u5206u600eu4e48u914du5408">u8fd9u4e9bu90e8u5206u600eu4e48u914du5408</h2>
 <blockquote>
-<p>用户通过客户端，调用某个核心，按照某种协议，读取一份配置，连接到远程服务或节点。</p>
+<p>u7528u6237u901au8fc7u5ba2u6237u7aefuff0cu8c03u7528u67d0u4e2au6838u5fc3uff0cu6309u7167u67d0u79cdu534fu8baeuff0cu8bfbu53d6u4e00u4efdu914du7f6euff0cu8fdeu63a5u5230u8fdcu7a0bu670du52a1u6216u8282u70b9u3002</p>
 </blockquote>
-<p>遇到陌生名称时，可以先对照这句话，看看它负责哪一部分。这是角色分工，不是数据包依次经过五个程序的意思；配置是参数集合，不是一台额外的中转服务器。</p>
-<h2 id="为什么网上教程经常讲乱">为什么网上教程经常讲乱</h2>
-<p>很多教程为了省事，把客户端、核心和协议都称为“工具”。于是“安装 V2Ray”“使用 Clash”“导入节点”这些说法，在不同文章里可能指不同东西。</p>
-<p>读教程时，先问四个问题：</p>
+<p>u9047u5230u964cu751fu540du79f0u65f6uff0cu53efu4ee5u5148u5bf9u7167u8fd9u53e5u8bdduff0cu770bu770bu5b83u8d1fu8d23u54eau4e00u90e8u5206u3002u8fd9u662fu89d2u8272u5206u5de5uff0cu4e0du662fu6570u636eu5305u4f9du6b21u7ecfu8fc7u4e94u4e2au7a0bu5e8fu7684u610fu601duff1bu914du7f6eu662fu53c2u6570u96c6u5408uff0cu4e0du662fu4e00u53f0u989du5916u7684u4e2du8f6cu670du52a1u5668u3002</p>
+<h2 id="u4e3au4ec0u4e48u7f51u4e0au6559u7a0bu7ecfu5e38u8bb2u4e71">u4e3au4ec0u4e48u7f51u4e0au6559u7a0bu7ecfu5e38u8bb2u4e71</h2>
+<p>u5f88u591au6559u7a0bu4e3au4e86u7701u4e8buff0cu628au5ba2u6237u7aefu3001u6838u5fc3u548cu534fu8baeu90fdu79f0u4e3au201cu5de5u5177u201du3002u4e8eu662fu201cu5b89u88c5 V2Rayu201du201cu4f7fu7528 Clashu201du201cu5bfcu5165u8282u70b9u201du8fd9u4e9bu8bf4u6cd5uff0cu5728u4e0du540cu6587u7ae0u91ccu53efu80fdu6307u4e0du540cu4e1cu897fu3002</p>
+<p>u8bfbu6559u7a0bu65f6uff0cu5148u95eeu56dbu4e2au95eeu9898uff1a</p>
 <ol>
-<li>这是客户端还是核心？</li>
-<li>这是协议还是传输方式？</li>
-<li>这是配置文件还是远程服务？</li>
-<li>这个项目是否仍在维护？</li>
+<li>u8fd9u662fu5ba2u6237u7aefu8fd8u662fu6838u5fc3uff1f</li>
+<li>u8fd9u662fu534fu8baeu8fd8u662fu4f20u8f93u65b9u5f0fuff1f</li>
+<li>u8fd9u662fu914du7f6eu6587u4ef6u8fd8u662fu8fdcu7a0bu670du52a1uff1f</li>
+<li>u8fd9u4e2au9879u76eeu662fu5426u4ecdu5728u7ef4u62a4uff1f</li>
 </ol>
-<p>这样再遇到新名称，就能先判断它是换了一个界面、一个核心，还是一套配置，不必每次都从头学起。</p>
-<h2 id="官方入口">官方入口</h2>
+<p>u8fd9u6837u518du9047u5230u65b0u540du79f0uff0cu5c31u80fdu5148u5224u65adu5b83u662fu6362u4e86u4e00u4e2au754cu9762u3001u4e00u4e2au6838u5fc3uff0cu8fd8u662fu4e00u5957u914du7f6euff0cu4e0du5fc5u6bcfu6b21u90fdu4eceu5934u5b66u8d77u3002</p>
+<h2 id="u5b98u65b9u5165u53e3">u5b98u65b9u5165u53e3</h2>
 <ul>
 <li><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge Rev</a></li>
 <li><a href="https://github.com/MetaCubeX/mihomo">Mihomo</a></li>
@@ -64,29 +64,28 @@
 <li><a href="https://github.com/2dust/v2rayNG">v2rayNG</a></li>
 </ul>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/clash-family/">Clash 与 Mihomo</a><p>Clash、Meta、Mihomo 和桌面客户端是什么关系？先分清核心与界面，再看订阅兼容。</p></li><li><a href="https://ladderer.com/articles/v2ray-xray/">V2Ray 与 Xray</a><p>核心与管理界面如何配合，怎样核对平台和配置支持。</p></li></ul></nav>
-          <section class="service-note" aria-label="订阅服务选购参考"><p class="eyebrow">NEXT STEP</p><h2>订阅服务选购参考</h2><p>客户端和核心已经选好？按软件支持的配置格式筛选订阅服务。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">查看 GitHub 服务评测清单 ↗</a><p class="service-destination">外部推荐清单 · GitHub</p></section>
-          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/clash-family/">Clash u4e0e Mihomo</a><p>Clashu3001Metau3001Mihomo u548cu684cu9762u5ba2u6237u7aefu662fu4ec0u4e48u5173u7cfbuff1fu5148u5206u6e05u6838u5fc3u4e0eu754cu9762uff0cu518du770bu8ba2u9605u517cu5bb9u3002</p></li><li><a href="https://ladderer.com/articles/v2ray-xray/">V2Ray u4e0e Xray</a><p>u6838u5fc3u4e0eu7ba1u7406u754cu9762u5982u4f55u914du5408uff0cu600eu6837u6838u5bf9u5e73u53f0u548cu914du7f6eu652fu6301u3002</p></li></ul></nav>
+          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="本组文章">
-            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
-            <div class="sidebar-group"><h2>工具生态</h2>
+          <nav aria-label="u672cu7ec4u6587u7ae0">
+            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
+            <div class="sidebar-group"><h2>u5de5u5177u751fu6001</h2>
       <a href="https://ladderer.com/articles/proxy-ecosystem/" aria-current="page">
-        <span>03</span>客户端与核心
+        <span>03</span>u5ba2u6237u7aefu4e0eu6838u5fc3
       </a>
       <a href="https://ladderer.com/articles/protocols/">
-        <span>04</span>常见代理协议
+        <span>04</span>u5e38u89c1u4ee3u7406u534fu8bae
       </a>
       <a href="https://ladderer.com/articles/clash-family/">
-        <span>05</span>Clash 与 Mihomo
+        <span>05</span>Clash u4e0e Mihomo
       </a>
       <a href="https://ladderer.com/articles/v2ray-xray/">
-        <span>06</span>V2Ray 与 Xray
+        <span>06</span>V2Ray u4e0e Xray
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="上一篇与下一篇">
-      <a rel="prev" href="https://ladderer.com/articles/proxy-vpn-tor/"><small>← 上一篇</small><strong>代理、VPN 与 Tor</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/protocols/"><small>下一篇 →</small><strong>常见代理协议</strong></a></nav>
+          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
+      <a rel="prev" href="https://ladderer.com/articles/proxy-vpn-tor/"><small>u2190 u4e0au4e00u7bc7</small><strong>u4ee3u7406u3001VPN u4e0e Tor</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/protocols/"><small>u4e0bu4e00u7bc7 u2192</small><strong>u5e38u89c1u4ee3u7406u534fu8bae</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>

@@ -1,107 +1,106 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理节点入口和出口 IP 为什么不同？</title><meta name="description" content="从一次代理请求分清节点配置、客户端连接的入口地址，以及目标网站观察到的出口 IP。了解为什么切换节点后出口地址可能保持不变、节点显示的地区也未必对应每个网络环节。文中给出可复核的连接路径，帮助你读懂节点列表、出口查询、测速信息和服务商的线路说明。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/node-entry-exit-ip/"><meta property="og:url" content="https://ladderer.com/articles/node-entry-exit-ip/"><meta property="og:title" content="代理节点入口和出口 IP 为什么不同？"><meta property="og:description" content="从一次代理请求分清节点配置、客户端连接的入口地址，以及目标网站观察到的出口 IP。了解为什么切换节点后出口地址可能保持不变、节点显示的地区也未必对应每个网络环节。文中给出可复核的连接路径，帮助你读懂节点列表、出口查询、测速信息和服务商的线路说明。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理节点入口和出口 IP 为什么不同？"><meta name="twitter:description" content="从一次代理请求分清节点配置、客户端连接的入口地址，以及目标网站观察到的出口 IP。了解为什么切换节点后出口地址可能保持不变、节点显示的地区也未必对应每个网络环节。文中给出可复核的连接路径，帮助你读懂节点列表、出口查询、测速信息和服务商的线路说明。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"代理节点入口和出口 IP 为什么不同？","description":"从一次代理请求分清节点配置、客户端连接的入口地址，以及目标网站观察到的出口 IP。了解为什么切换节点后出口地址可能保持不变、节点显示的地区也未必对应每个网络环节。文中给出可复核的连接路径，帮助你读懂节点列表、出口查询、测速信息和服务商的线路说明。","inLanguage":"zh-CN","datePublished":"2026-11-20","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/node-entry-exit-ip/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"入门延伸","item":"https://ladderer.com/#group-next-steps"},{"@type":"ListItem","position":3,"name":"代理节点入口和出口 IP 为什么不同？","item":"https://ladderer.com/articles/node-entry-exit-ip/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>u4ee3u7406u8282u70b9u5165u53e3u548cu51fau53e3 IP u4e3au4ec0u4e48u4e0du540cuff1f</title><meta name="description" content="u4eceu4e00u6b21u4ee3u7406u8bf7u6c42u5206u6e05u8282u70b9u914du7f6eu3001u5ba2u6237u7aefu8fdeu63a5u7684u5165u53e3u5730u5740uff0cu4ee5u53cau76eeu6807u7f51u7ad9u89c2u5bdfu5230u7684u51fau53e3 IPu3002u4e86u89e3u4e3au4ec0u4e48u5207u6362u8282u70b9u540eu51fau53e3u5730u5740u53efu80fdu4fddu6301u4e0du53d8u3001u8282u70b9u663eu793au7684u5730u533au4e5fu672au5fc5u5bf9u5e94u6bcfu4e2au7f51u7edcu73afu8282u3002u6587u4e2du7ed9u51fau53efu590du6838u7684u8fdeu63a5u8defu5f84uff0cu5e2eu52a9u4f60u8bfbu61c2u8282u70b9u5217u8868u3001u51fau53e3u67e5u8be2u3001u6d4bu901fu4fe1u606fu548cu670du52a1u5546u7684u7ebfu8defu8bf4u660eu3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/node-entry-exit-ip/"><meta property="og:url" content="https://ladderer.com/articles/node-entry-exit-ip/"><meta property="og:title" content="u4ee3u7406u8282u70b9u5165u53e3u548cu51fau53e3 IP u4e3au4ec0u4e48u4e0du540cuff1f"><meta property="og:description" content="u4eceu4e00u6b21u4ee3u7406u8bf7u6c42u5206u6e05u8282u70b9u914du7f6eu3001u5ba2u6237u7aefu8fdeu63a5u7684u5165u53e3u5730u5740uff0cu4ee5u53cau76eeu6807u7f51u7ad9u89c2u5bdfu5230u7684u51fau53e3 IPu3002u4e86u89e3u4e3au4ec0u4e48u5207u6362u8282u70b9u540eu51fau53e3u5730u5740u53efu80fdu4fddu6301u4e0du53d8u3001u8282u70b9u663eu793au7684u5730u533au4e5fu672au5fc5u5bf9u5e94u6bcfu4e2au7f51u7edcu73afu8282u3002u6587u4e2du7ed9u51fau53efu590du6838u7684u8fdeu63a5u8defu5f84uff0cu5e2eu52a9u4f60u8bfbu61c2u8282u70b9u5217u8868u3001u51fau53e3u67e5u8be2u3001u6d4bu901fu4fe1u606fu548cu670du52a1u5546u7684u7ebfu8defu8bf4u660eu3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="u4ee3u7406u8282u70b9u5165u53e3u548cu51fau53e3 IP u4e3au4ec0u4e48u4e0du540cuff1f"><meta name="twitter:description" content="u4eceu4e00u6b21u4ee3u7406u8bf7u6c42u5206u6e05u8282u70b9u914du7f6eu3001u5ba2u6237u7aefu8fdeu63a5u7684u5165u53e3u5730u5740uff0cu4ee5u53cau76eeu6807u7f51u7ad9u89c2u5bdfu5230u7684u51fau53e3 IPu3002u4e86u89e3u4e3au4ec0u4e48u5207u6362u8282u70b9u540eu51fau53e3u5730u5740u53efu80fdu4fddu6301u4e0du53d8u3001u8282u70b9u663eu793au7684u5730u533au4e5fu672au5fc5u5bf9u5e94u6bcfu4e2au7f51u7edcu73afu8282u3002u6587u4e2du7ed9u51fau53efu590du6838u7684u8fdeu63a5u8defu5f84uff0cu5e2eu52a9u4f60u8bfbu61c2u8282u70b9u5217u8868u3001u51fau53e3u67e5u8be2u3001u6d4bu901fu4fe1u606fu548cu670du52a1u5546u7684u7ebfu8defu8bf4u660eu3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"u4ee3u7406u8282u70b9u5165u53e3u548cu51fau53e3 IP u4e3au4ec0u4e48u4e0du540cuff1f","description":"u4eceu4e00u6b21u4ee3u7406u8bf7u6c42u5206u6e05u8282u70b9u914du7f6eu3001u5ba2u6237u7aefu8fdeu63a5u7684u5165u53e3u5730u5740uff0cu4ee5u53cau76eeu6807u7f51u7ad9u89c2u5bdfu5230u7684u51fau53e3 IPu3002u4e86u89e3u4e3au4ec0u4e48u5207u6362u8282u70b9u540eu51fau53e3u5730u5740u53efu80fdu4fddu6301u4e0du53d8u3001u8282u70b9u663eu793au7684u5730u533au4e5fu672au5fc5u5bf9u5e94u6bcfu4e2au7f51u7edcu73afu8282u3002u6587u4e2du7ed9u51fau53efu590du6838u7684u8fdeu63a5u8defu5f84uff0cu5e2eu52a9u4f60u8bfbu61c2u8282u70b9u5217u8868u3001u51fau53e3u67e5u8be2u3001u6d4bu901fu4fe1u606fu548cu670du52a1u5546u7684u7ebfu8defu8bf4u660eu3002","inLanguage":"zh-CN","datePublished":"2026-11-20","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/node-entry-exit-ip/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u5165u95e8u5ef6u4f38","item":"https://ladderer.com/#group-next-steps"},{"@type":"ListItem","position":3,"name":"u4ee3u7406u8282u70b9u5165u53e3u548cu51fau53e3 IP u4e3au4ec0u4e48u4e0du540cuff1f","item":"https://ladderer.com/articles/node-entry-exit-ip/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="当前位置">
-            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-next-steps">入门延伸</a><span aria-hidden="true">/</span>
-            <span aria-current="page">第 17 篇</span>
+          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
+            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-next-steps">u5165u95e8u5ef6u4f38</a><span aria-hidden="true">/</span>
+            <span aria-current="page">u7b2c 17 u7bc7</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 17 <span> / 18</span></p>
-            <h1>代理节点入口和出口 IP 为什么不同？</h1>
-            <p class="article-summary">沿着一次请求分清节点配置、客户端连接地址和网站观察到的出口。</p>
-            <div class="article-meta"><span>约 3 分钟阅读</span><span>内容复核 <time datetime="2026-11-20">2026.11.20</time></span></div>
+            <h1>u4ee3u7406u8282u70b9u5165u53e3u548cu51fau53e3 IP u4e3au4ec0u4e48u4e0du540cuff1f</h1>
+            <p class="article-summary">u6cbfu7740u4e00u6b21u8bf7u6c42u5206u6e05u8282u70b9u914du7f6eu3001u5ba2u6237u7aefu8fdeu63a5u5730u5740u548cu7f51u7ad9u89c2u5bdfu5230u7684u51fau53e3u3002</p>
+            <div class="article-meta"><span>u7ea6 3 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-11-20">2026.11.20</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">本文目录</h2>
-          <ol><li class="toc-h2"><a href="#顺着一次访问看三个位置">顺着一次访问看三个位置</a></li><li class="toc-h2"><a href="#为什么换节点以后-出口可能没变">为什么换节点以后，出口可能没变</a></li><li class="toc-h2"><a href="#用出口查询回答对应的问题">用出口查询回答对应的问题</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
+          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
+          <ol><li class="toc-h2"><a href="#u987au7740u4e00u6b21u8bbfu95eeu770bu4e09u4e2au4f4du7f6e">u987au7740u4e00u6b21u8bbfu95eeu770bu4e09u4e2au4f4du7f6e</a></li><li class="toc-h2"><a href="#u4e3au4ec0u4e48u6362u8282u70b9u4ee5u540e-u51fau53e3u53efu80fdu6ca1u53d8">u4e3au4ec0u4e48u6362u8282u70b9u4ee5u540euff0cu51fau53e3u53efu80fdu6ca1u53d8</a></li><li class="toc-h2"><a href="#u7528u51fau53e3u67e5u8be2u56deu7b54u5bf9u5e94u7684u95eeu9898">u7528u51fau53e3u67e5u8be2u56deu7b54u5bf9u5e94u7684u95eeu9898</a></li><li class="toc-h2"><a href="#u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>订阅列表里的节点名称、客户端实际连接的地址、网站看到的出口 IP，有时是三件不同的事。可以沿着一次请求把它们区分开。</p>
-<h2 id="顺着一次访问看三个位置">顺着一次访问看三个位置</h2>
-<pre><code class="language-text">应用 → 本地客户端 → 服务入口 → 可能的内部转发 → 出口 → 目标网站
+          <article class="prose"><p>u8ba2u9605u5217u8868u91ccu7684u8282u70b9u540du79f0u3001u5ba2u6237u7aefu5b9eu9645u8fdeu63a5u7684u5730u5740u3001u7f51u7ad9u770bu5230u7684u51fau53e3 IPuff0cu6709u65f6u662fu4e09u4ef6u4e0du540cu7684u4e8bu3002u53efu4ee5u6cbfu7740u4e00u6b21u8bf7u6c42u628au5b83u4eecu533au5206u5f00u3002</p>
+<h2 id="u987au7740u4e00u6b21u8bbfu95eeu770bu4e09u4e2au4f4du7f6e">u987au7740u4e00u6b21u8bbfu95eeu770bu4e09u4e2au4f4du7f6e</h2>
+<pre><code class="language-text">u5e94u7528 u2192 u672cu5730u5ba2u6237u7aef u2192 u670du52a1u5165u53e3 u2192 u53efu80fdu7684u5185u90e8u8f6cu53d1 u2192 u51fau53e3 u2192 u76eeu6807u7f51u7ad9
 </code></pre>
-<p>这是一种路径示意。服务只有一台转发服务器时，入口和出口可能在同一台机器上，仍可能使用不同地址。有些服务会把接收客户端连接和访问目标网站交给不同机器。</p>
-<div class="table-wrap" role="region" aria-label="对比表格，可横向滚动" tabindex="0"><table>
+<p>u8fd9u662fu4e00u79cdu8defu5f84u793au610fu3002u670du52a1u53eau6709u4e00u53f0u8f6cu53d1u670du52a1u5668u65f6uff0cu5165u53e3u548cu51fau53e3u53efu80fdu5728u540cu4e00u53f0u673au5668u4e0auff0cu4ecdu53efu80fdu4f7fu7528u4e0du540cu5730u5740u3002u6709u4e9bu670du52a1u4f1au628au63a5u6536u5ba2u6237u7aefu8fdeu63a5u548cu8bbfu95eeu76eeu6807u7f51u7ad9u4ea4u7ed9u4e0du540cu673au5668u3002</p>
+<div class="table-wrap" role="region" aria-label="u5bf9u6bd4u8868u683cuff0cu53efu6a2au5411u6edau52a8" tabindex="0"><table>
 <thead>
 <tr>
-<th>名称</th>
-<th>在哪里看</th>
-<th>能说明什么</th>
+<th>u540du79f0</th>
+<th>u5728u54eau91ccu770b</th>
+<th>u80fdu8bf4u660eu4ec0u4e48</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>节点</td>
-<td>客户端的配置或选择列表</td>
-<td>一组连接参数，包括名称、服务器和端口等</td>
+<td>u8282u70b9</td>
+<td>u5ba2u6237u7aefu7684u914du7f6eu6216u9009u62e9u5217u8868</td>
+<td>u4e00u7ec4u8fdeu63a5u53c2u6570uff0cu5305u62ecu540du79f0u3001u670du52a1u5668u548cu7aefu53e3u7b49</td>
 </tr>
 <tr>
-<td>入口</td>
-<td>客户端建立远端连接的位置</td>
-<td>当前连接使用哪个服务地址</td>
+<td>u5165u53e3</td>
+<td>u5ba2u6237u7aefu5efau7acbu8fdcu7aefu8fdeu63a5u7684u4f4du7f6e</td>
+<td>u5f53u524du8fdeu63a5u4f7fu7528u54eau4e2au670du52a1u5730u5740</td>
 </tr>
 <tr>
-<td>落地</td>
-<td>服务说明或内部拓扑</td>
-<td>通常指负责后段转发的机器或环节，具体含义由运营方定义</td>
+<td>u843du5730</td>
+<td>u670du52a1u8bf4u660eu6216u5185u90e8u62d3u6251</td>
+<td>u901au5e38u6307u8d1fu8d23u540eu6bb5u8f6cu53d1u7684u673au5668u6216u73afu8282uff0cu5177u4f53u542bu4e49u7531u8fd0u8425u65b9u5b9au4e49</td>
 </tr>
 <tr>
-<td>出口 IP</td>
-<td>目标网站看到的连接来源地址</td>
-<td>这次请求抵达目标时使用的网络地址</td>
+<td>u51fau53e3 IP</td>
+<td>u76eeu6807u7f51u7ad9u770bu5230u7684u8fdeu63a5u6765u6e90u5730u5740</td>
+<td>u8fd9u6b21u8bf7u6c42u62b5u8fbeu76eeu6807u65f6u4f7fu7528u7684u7f51u7edcu5730u5740</td>
 </tr>
 </tbody>
 </table></div>
-<p>Mihomo 官方文档分别定义了节点的名称、服务器域名或 IP、端口，也支持经由另一出站建立连接。[1] 因此，配置里看到的服务器地址和实际目标看到的来源地址，可能指向路径上的不同位置。</p>
-<h2 id="为什么换节点以后-出口可能没变">为什么换节点以后，出口可能没变</h2>
-<p>可以设想两条线路使用不同入口，最后经由同一个出口访问网站。客户端切换了节点，网站仍会看到相同的出口。另一种情况是查询页命中了直连规则，切换代理组时，这个页面的路径没有变化。</p>
-<p>想分清这两种情况，可以固定设备、网络和查询目标，依次选中候选节点。每次发起新请求，并确认日志里记录的规则和出站。若查看的是之前就已建立的连接，先确认应用确实发起了新的连接，再比地址。</p>
-<h2 id="用出口查询回答对应的问题">用出口查询回答对应的问题</h2>
-<p>查询页适合回答“这个网站这次看到什么地址”。它通常看不到服务内部的转发位置。页面显示的地区也需要结合服务商的说明理解，节点名称和查询标签都不足以单独证明服务器的物理位置。</p>
-<p>同一个地址也只代表这次连接的可见来源。部分 HTTP 代理可以通过转发头附带客户端信息，网站也能根据登录状态识别账号。[2] 如果你要解决的是“为什么某网站表现不同”，先把应用、目标、命中规则和时间记下来，出口 IP 可以和这些信息一起比较。</p>
-<h2 id="参考资料">参考资料</h2>
+<p>Mihomo u5b98u65b9u6587u6863u5206u522bu5b9au4e49u4e86u8282u70b9u7684u540du79f0u3001u670du52a1u5668u57dfu540du6216 IPu3001u7aefu53e3uff0cu4e5fu652fu6301u7ecfu7531u53e6u4e00u51fau7ad9u5efau7acbu8fdeu63a5u3002[1] u56e0u6b64uff0cu914du7f6eu91ccu770bu5230u7684u670du52a1u5668u5730u5740u548cu5b9eu9645u76eeu6807u770bu5230u7684u6765u6e90u5730u5740uff0cu53efu80fdu6307u5411u8defu5f84u4e0au7684u4e0du540cu4f4du7f6eu3002</p>
+<h2 id="u4e3au4ec0u4e48u6362u8282u70b9u4ee5u540e-u51fau53e3u53efu80fdu6ca1u53d8">u4e3au4ec0u4e48u6362u8282u70b9u4ee5u540euff0cu51fau53e3u53efu80fdu6ca1u53d8</h2>
+<p>u53efu4ee5u8bbeu60f3u4e24u6761u7ebfu8defu4f7fu7528u4e0du540cu5165u53e3uff0cu6700u540eu7ecfu7531u540cu4e00u4e2au51fau53e3u8bbfu95eeu7f51u7ad9u3002u5ba2u6237u7aefu5207u6362u4e86u8282u70b9uff0cu7f51u7ad9u4ecdu4f1au770bu5230u76f8u540cu7684u51fau53e3u3002u53e6u4e00u79cdu60c5u51b5u662fu67e5u8be2u9875u547du4e2du4e86u76f4u8fdeu89c4u5219uff0cu5207u6362u4ee3u7406u7ec4u65f6uff0cu8fd9u4e2au9875u9762u7684u8defu5f84u6ca1u6709u53d8u5316u3002</p>
+<p>u60f3u5206u6e05u8fd9u4e24u79cdu60c5u51b5uff0cu53efu4ee5u56fau5b9au8bbeu5907u3001u7f51u7edcu548cu67e5u8be2u76eeu6807uff0cu4f9du6b21u9009u4e2du5019u9009u8282u70b9u3002u6bcfu6b21u53d1u8d77u65b0u8bf7u6c42uff0cu5e76u786eu8ba4u65e5u5fd7u91ccu8bb0u5f55u7684u89c4u5219u548cu51fau7ad9u3002u82e5u67e5u770bu7684u662fu4e4bu524du5c31u5df2u5efau7acbu7684u8fdeu63a5uff0cu5148u786eu8ba4u5e94u7528u786eu5b9eu53d1u8d77u4e86u65b0u7684u8fdeu63a5uff0cu518du6bd4u5730u5740u3002</p>
+<h2 id="u7528u51fau53e3u67e5u8be2u56deu7b54u5bf9u5e94u7684u95eeu9898">u7528u51fau53e3u67e5u8be2u56deu7b54u5bf9u5e94u7684u95eeu9898</h2>
+<p>u67e5u8be2u9875u9002u5408u56deu7b54u201cu8fd9u4e2au7f51u7ad9u8fd9u6b21u770bu5230u4ec0u4e48u5730u5740u201du3002u5b83u901au5e38u770bu4e0du5230u670du52a1u5185u90e8u7684u8f6cu53d1u4f4du7f6eu3002u9875u9762u663eu793au7684u5730u533au4e5fu9700u8981u7ed3u5408u670du52a1u5546u7684u8bf4u660eu7406u89e3uff0cu8282u70b9u540du79f0u548cu67e5u8be2u6807u7b7eu90fdu4e0du8db3u4ee5u5355u72ecu8bc1u660eu670du52a1u5668u7684u7269u7406u4f4du7f6eu3002</p>
+<p>u540cu4e00u4e2au5730u5740u4e5fu53eau4ee3u8868u8fd9u6b21u8fdeu63a5u7684u53efu89c1u6765u6e90u3002u90e8u5206 HTTP u4ee3u7406u53efu4ee5u901au8fc7u8f6cu53d1u5934u9644u5e26u5ba2u6237u7aefu4fe1u606fuff0cu7f51u7ad9u4e5fu80fdu6839u636eu767bu5f55u72b6u6001u8bc6u522bu8d26u53f7u3002[2] u5982u679cu4f60u8981u89e3u51b3u7684u662fu201cu4e3au4ec0u4e48u67d0u7f51u7ad9u8868u73b0u4e0du540cu201duff0cu5148u628au5e94u7528u3001u76eeu6807u3001u547du4e2du89c4u5219u548cu65f6u95f4u8bb0u4e0bu6765uff0cu51fau53e3 IP u53efu4ee5u548cu8fd9u4e9bu4fe1u606fu4e00u8d77u6bd4u8f83u3002</p>
+<h2 id="u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</h2>
 <ul>
-<li>[1] <a href="https://wiki.metacubex.one/config/proxies/">Mihomo：出站代理通用字段</a></li>
-<li>[2] <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling">MDN：代理服务器与隧道</a></li>
+<li>[1] <a href="https://wiki.metacubex.one/config/proxies/">Mihomouff1au51fau7ad9u4ee3u7406u901au7528u5b57u6bb5</a></li>
+<li>[2] <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling">MDNuff1au4ee3u7406u670du52a1u5668u4e0eu96a7u9053</a></li>
 </ul>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/verify-app-proxy/">验证应用代理路径</a><p>用应用设置、连接日志和出口对照验证实际路径。</p></li><li><a href="https://ladderer.com/articles/speed-test/">代理节点测速</a><p>延迟、吞吐、抖动和丢包测的是什么，怎样结合实际应用比较节点？</p></li></ul></nav>
-          <section class="service-note" aria-label="订阅服务选购参考"><p class="eyebrow">NEXT STEP</p><h2>订阅服务选购参考</h2><p>如果应用对出口地区有要求，选购前先核对线路说明，并用目标应用验证出口表现。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">查看 GitHub 服务评测清单 ↗</a><p class="service-destination">外部推荐清单 · GitHub</p></section>
-          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/verify-app-proxy/">u9a8cu8bc1u5e94u7528u4ee3u7406u8defu5f84</a><p>u7528u5e94u7528u8bbeu7f6eu3001u8fdeu63a5u65e5u5fd7u548cu51fau53e3u5bf9u7167u9a8cu8bc1u5b9eu9645u8defu5f84u3002</p></li><li><a href="https://ladderer.com/articles/speed-test/">u4ee3u7406u8282u70b9u6d4bu901f</a><p>u5ef6u8fdfu3001u541eu5410u3001u6296u52a8u548cu4e22u5305u6d4bu7684u662fu4ec0u4e48uff0cu600eu6837u7ed3u5408u5b9eu9645u5e94u7528u6bd4u8f83u8282u70b9uff1f</p></li></ul></nav>
+          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="本组文章">
-            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
-            <div class="sidebar-group"><h2>入门延伸</h2>
+          <nav aria-label="u672cu7ec4u6587u7ae0">
+            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
+            <div class="sidebar-group"><h2>u5165u95e8u5ef6u4f38</h2>
       <a href="https://ladderer.com/articles/choosing-proxy-service/">
-        <span>11</span>订阅、VPN 与自建
+        <span>11</span>u8ba2u9605u3001VPN u4e0eu81eau5efa
       </a>
       <a href="https://ladderer.com/articles/speed-test/">
-        <span>12</span>代理节点测速
+        <span>12</span>u4ee3u7406u8282u70b9u6d4bu901f
       </a>
       <a href="https://ladderer.com/articles/subscription-billing/">
-        <span>13</span>订阅计费与退款
+        <span>13</span>u8ba2u9605u8ba1u8d39u4e0eu9000u6b3e
       </a>
       <a href="https://ladderer.com/articles/subscription-leak/">
-        <span>14</span>订阅链接泄露
+        <span>14</span>u8ba2u9605u94feu63a5u6cc4u9732
       </a>
       <a href="https://ladderer.com/articles/subscription-updates-node-fails/">
-        <span>15</span>订阅更新后节点不可用
+        <span>15</span>u8ba2u9605u66f4u65b0u540eu8282u70b9u4e0du53efu7528
       </a>
       <a href="https://ladderer.com/articles/verify-app-proxy/">
-        <span>16</span>验证应用代理路径
+        <span>16</span>u9a8cu8bc1u5e94u7528u4ee3u7406u8defu5f84
       </a>
       <a href="https://ladderer.com/articles/node-entry-exit-ip/" aria-current="page">
-        <span>17</span>节点入口与出口 IP
+        <span>17</span>u8282u70b9u5165u53e3u4e0eu51fau53e3 IP
       </a>
       <a href="https://ladderer.com/articles/report-connection-problem/">
-        <span>18</span>连接故障反馈
+        <span>18</span>u8fdeu63a5u6545u969cu53cdu9988
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="上一篇与下一篇">
-      <a rel="prev" href="https://ladderer.com/articles/verify-app-proxy/"><small>← 上一篇</small><strong>验证应用代理路径</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/report-connection-problem/"><small>下一篇 →</small><strong>连接故障反馈</strong></a></nav>
+          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
+      <a rel="prev" href="https://ladderer.com/articles/verify-app-proxy/"><small>u2190 u4e0au4e00u7bc7</small><strong>u9a8cu8bc1u5e94u7528u4ee3u7406u8defu5f84</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/report-connection-problem/"><small>u4e0bu4e00u7bc7 u2192</small><strong>u8fdeu63a5u6545u969cu53cdu9988</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>

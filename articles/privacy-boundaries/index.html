@@ -1,90 +1,89 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>用了 VPN，网站还能识别账号吗？</title><meta name="description" content="换了 VPN 或代理出口，网站还能认出你吗？从账号登录、Cookie、浏览器信息和服务方可见数据入手，分清更换 IP 与保护身份的关系。了解公开网络、单位设备和个人账号上的授权边界，再决定哪些设置值得调整，哪些风险应依靠设备、凭据和账号本身的保护措施解决。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/privacy-boundaries/"><meta property="og:url" content="https://ladderer.com/articles/privacy-boundaries/"><meta property="og:title" content="用了 VPN，网站还能识别账号吗？"><meta property="og:description" content="换了 VPN 或代理出口，网站还能认出你吗？从账号登录、Cookie、浏览器信息和服务方可见数据入手，分清更换 IP 与保护身份的关系。了解公开网络、单位设备和个人账号上的授权边界，再决定哪些设置值得调整，哪些风险应依靠设备、凭据和账号本身的保护措施解决。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="用了 VPN，网站还能识别账号吗？"><meta name="twitter:description" content="换了 VPN 或代理出口，网站还能认出你吗？从账号登录、Cookie、浏览器信息和服务方可见数据入手，分清更换 IP 与保护身份的关系。了解公开网络、单位设备和个人账号上的授权边界，再决定哪些设置值得调整，哪些风险应依靠设备、凭据和账号本身的保护措施解决。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"用了 VPN，网站还能识别账号吗？","description":"换了 VPN 或代理出口，网站还能认出你吗？从账号登录、Cookie、浏览器信息和服务方可见数据入手，分清更换 IP 与保护身份的关系。了解公开网络、单位设备和个人账号上的授权边界，再决定哪些设置值得调整，哪些风险应依靠设备、凭据和账号本身的保护措施解决。","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/privacy-boundaries/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"安全与边界","item":"https://ladderer.com/#group-safety"},{"@type":"ListItem","position":3,"name":"用了 VPN，网站还能识别账号吗？","item":"https://ladderer.com/articles/privacy-boundaries/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>u7528u4e86 VPNuff0cu7f51u7ad9u8fd8u80fdu8bc6u522bu8d26u53f7u5417uff1f</title><meta name="description" content="u6362u4e86 VPN u6216u4ee3u7406u51fau53e3uff0cu7f51u7ad9u8fd8u80fdu8ba4u51fau4f60u5417uff1fu4eceu8d26u53f7u767bu5f55u3001Cookieu3001u6d4fu89c8u5668u4fe1u606fu548cu670du52a1u65b9u53efu89c1u6570u636eu5165u624buff0cu5206u6e05u66f4u6362 IP u4e0eu4fddu62a4u8eabu4efdu7684u5173u7cfbu3002u4e86u89e3u516cu5f00u7f51u7edcu3001u5355u4f4du8bbeu5907u548cu4e2au4ebau8d26u53f7u4e0au7684u6388u6743u8fb9u754cuff0cu518du51b3u5b9au54eau4e9bu8bbeu7f6eu503cu5f97u8c03u6574uff0cu54eau4e9bu98ceu9669u5e94u4f9du9760u8bbeu5907u3001u51edu636eu548cu8d26u53f7u672cu8eabu7684u4fddu62a4u63aau65bdu89e3u51b3u3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/privacy-boundaries/"><meta property="og:url" content="https://ladderer.com/articles/privacy-boundaries/"><meta property="og:title" content="u7528u4e86 VPNuff0cu7f51u7ad9u8fd8u80fdu8bc6u522bu8d26u53f7u5417uff1f"><meta property="og:description" content="u6362u4e86 VPN u6216u4ee3u7406u51fau53e3uff0cu7f51u7ad9u8fd8u80fdu8ba4u51fau4f60u5417uff1fu4eceu8d26u53f7u767bu5f55u3001Cookieu3001u6d4fu89c8u5668u4fe1u606fu548cu670du52a1u65b9u53efu89c1u6570u636eu5165u624buff0cu5206u6e05u66f4u6362 IP u4e0eu4fddu62a4u8eabu4efdu7684u5173u7cfbu3002u4e86u89e3u516cu5f00u7f51u7edcu3001u5355u4f4du8bbeu5907u548cu4e2au4ebau8d26u53f7u4e0au7684u6388u6743u8fb9u754cuff0cu518du51b3u5b9au54eau4e9bu8bbeu7f6eu503cu5f97u8c03u6574uff0cu54eau4e9bu98ceu9669u5e94u4f9du9760u8bbeu5907u3001u51edu636eu548cu8d26u53f7u672cu8eabu7684u4fddu62a4u63aau65bdu89e3u51b3u3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="u7528u4e86 VPNuff0cu7f51u7ad9u8fd8u80fdu8bc6u522bu8d26u53f7u5417uff1f"><meta name="twitter:description" content="u6362u4e86 VPN u6216u4ee3u7406u51fau53e3uff0cu7f51u7ad9u8fd8u80fdu8ba4u51fau4f60u5417uff1fu4eceu8d26u53f7u767bu5f55u3001Cookieu3001u6d4fu89c8u5668u4fe1u606fu548cu670du52a1u65b9u53efu89c1u6570u636eu5165u624buff0cu5206u6e05u66f4u6362 IP u4e0eu4fddu62a4u8eabu4efdu7684u5173u7cfbu3002u4e86u89e3u516cu5f00u7f51u7edcu3001u5355u4f4du8bbeu5907u548cu4e2au4ebau8d26u53f7u4e0au7684u6388u6743u8fb9u754cuff0cu518du51b3u5b9au54eau4e9bu8bbeu7f6eu503cu5f97u8c03u6574uff0cu54eau4e9bu98ceu9669u5e94u4f9du9760u8bbeu5907u3001u51edu636eu548cu8d26u53f7u672cu8eabu7684u4fddu62a4u63aau65bdu89e3u51b3u3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"u7528u4e86 VPNuff0cu7f51u7ad9u8fd8u80fdu8bc6u522bu8d26u53f7u5417uff1f","description":"u6362u4e86 VPN u6216u4ee3u7406u51fau53e3uff0cu7f51u7ad9u8fd8u80fdu8ba4u51fau4f60u5417uff1fu4eceu8d26u53f7u767bu5f55u3001Cookieu3001u6d4fu89c8u5668u4fe1u606fu548cu670du52a1u65b9u53efu89c1u6570u636eu5165u624buff0cu5206u6e05u66f4u6362 IP u4e0eu4fddu62a4u8eabu4efdu7684u5173u7cfbu3002u4e86u89e3u516cu5f00u7f51u7edcu3001u5355u4f4du8bbeu5907u548cu4e2au4ebau8d26u53f7u4e0au7684u6388u6743u8fb9u754cuff0cu518du51b3u5b9au54eau4e9bu8bbeu7f6eu503cu5f97u8c03u6574uff0cu54eau4e9bu98ceu9669u5e94u4f9du9760u8bbeu5907u3001u51edu636eu548cu8d26u53f7u672cu8eabu7684u4fddu62a4u63aau65bdu89e3u51b3u3002","inLanguage":"zh-CN","datePublished":"2026-11-14","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/privacy-boundaries/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u5b89u5168u4e0eu8fb9u754c","item":"https://ladderer.com/#group-safety"},{"@type":"ListItem","position":3,"name":"u7528u4e86 VPNuff0cu7f51u7ad9u8fd8u80fdu8bc6u522bu8d26u53f7u5417uff1f","item":"https://ladderer.com/articles/privacy-boundaries/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="当前位置">
-            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-safety">安全与边界</a><span aria-hidden="true">/</span>
-            <span aria-current="page">第 10 篇</span>
+          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
+            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-safety">u5b89u5168u4e0eu8fb9u754c</a><span aria-hidden="true">/</span>
+            <span aria-current="page">u7b2c 10 u7bc7</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 10 <span> / 18</span></p>
-            <h1>用了 VPN，网站还能识别账号吗？</h1>
-            <p class="article-summary">换了出口 IP，哪些身份信息和使用责任仍然存在？</p>
-            <div class="article-meta"><span>约 5 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div>
+            <h1>u7528u4e86 VPNuff0cu7f51u7ad9u8fd8u80fdu8bc6u522bu8d26u53f7u5417uff1f</h1>
+            <p class="article-summary">u6362u4e86u51fau53e3 IPuff0cu54eau4e9bu8eabu4efdu4fe1u606fu548cu4f7fu7528u8d23u4efbu4ecdu7136u5b58u5728uff1f</p>
+            <div class="article-meta"><span>u7ea6 5 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-10-18">2026.10.18</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">本文目录</h2>
-          <ol><li class="toc-h2"><a href="#隐私不是一个开关">隐私不是一个开关</a></li><li class="toc-h2"><a href="#登录会改变匿名边界">登录会改变匿名边界</a></li><li class="toc-h2"><a href="#不同地区的规则不同">不同地区的规则不同</a></li><li class="toc-h2"><a href="#工具合法-不代表行为合法">工具合法，不代表行为合法</a></li><li class="toc-h2"><a href="#保护隐私时-先做低成本的事情">保护隐私时，先做低成本的事情</a></li><li class="toc-h2"><a href="#给新手的一条底线">给新手的一条底线</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
+          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
+          <ol><li class="toc-h2"><a href="#u9690u79c1u4e0du662fu4e00u4e2au5f00u5173">u9690u79c1u4e0du662fu4e00u4e2au5f00u5173</a></li><li class="toc-h2"><a href="#u767bu5f55u4f1au6539u53d8u533fu540du8fb9u754c">u767bu5f55u4f1au6539u53d8u533fu540du8fb9u754c</a></li><li class="toc-h2"><a href="#u4e0du540cu5730u533au7684u89c4u5219u4e0du540c">u4e0du540cu5730u533au7684u89c4u5219u4e0du540c</a></li><li class="toc-h2"><a href="#u5de5u5177u5408u6cd5-u4e0du4ee3u8868u884cu4e3au5408u6cd5">u5de5u5177u5408u6cd5uff0cu4e0du4ee3u8868u884cu4e3au5408u6cd5</a></li><li class="toc-h2"><a href="#u4fddu62a4u9690u79c1u65f6-u5148u505au4f4eu6210u672cu7684u4e8bu60c5">u4fddu62a4u9690u79c1u65f6uff0cu5148u505au4f4eu6210u672cu7684u4e8bu60c5</a></li><li class="toc-h2"><a href="#u7ed9u65b0u624bu7684u4e00u6761u5e95u7ebf">u7ed9u65b0u624bu7684u4e00u6761u5e95u7ebf</a></li><li class="toc-h2"><a href="#u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>更换 VPN 出口会改变网站看到的 IP。只要仍在同一个账号里，或浏览器继续发送此前的 Cookie，网站就可能把请求关联到同一用户。</p>
-<p>网络工具只是改变了部分通信路径。它不会替你决定什么行为合法，也不会替你承担账号泄露、数据丢失或误用工具的后果。</p>
-<h2 id="隐私不是一个开关">隐私不是一个开关</h2>
-<p>隐私保护需要考虑本地网络观察者、网络服务提供商，以及目标网站和应用。不同工具只能减少其中一部分信息暴露。</p>
-<p>VPN 可能让本地网络更难直接看到你访问了哪些服务，但 VPN 服务商本身会接触到连接元数据。Tor 通过多个中继降低单点关联，但网站仍可能通过登录信息、Cookie、浏览器指纹和主动提交的资料识别用户。</p>
-<p>HTTPS 保护的是传输过程中的内容完整性和保密性。它很重要，却不代表网站看不到你发送给它的账号、搜索内容或订单信息。一个网站知道“这是你的账户”，和它知道“你的网络出口在哪里”，是两件不同的事。</p>
-<h2 id="登录会改变匿名边界">登录会改变匿名边界</h2>
-<p>如果你使用普通账号登录邮箱、社交平台或工作系统，服务方当然可以把当前活动和账号关联起来。Tor Project 的说明也指出，使用 Tor 并不妨碍网站通过你主动填写的信息确认身份。[1]</p>
-<p>这不一定是坏事。匿名和身份认证本来就是不同需求。问题在于，用户要知道自己正在做哪一件事，不要以为换了 IP 就能抹掉登录行为。</p>
-<p>同样，下载文件、打开外部应用、安装插件和复制个人资料，也可能把浏览行为重新和真实身份连接起来。Tor Project 特别提醒，额外插件可能破坏浏览器的隐私保护和指纹一致性。[2]</p>
-<h2 id="不同地区的规则不同">不同地区的规则不同</h2>
-<p>VPN、代理、加密工具和跨境网络访问在不同国家和地区的法律地位可能不同，规定也可能随着时间变化。企业、学校、图书馆和公共 Wi-Fi 还可能有额外的使用政策。</p>
-<p>因此，不能用一句“VPN 在某地合法”推断它在任何地方、任何用途下都没有问题。使用前应查看所在地的官方规定，也要遵守工作单位、学校和服务提供商的网络条款。</p>
-<p>文章只能提供一般性科普，不能替代律师针对具体情况给出的法律意见。特别是涉及工作数据、出口管制、版权、未成年人保护、金融账户或跨境业务时，不能只凭网络论坛里的经验判断。</p>
-<p>本文不对某个国家或地区的具体使用行为作合法性结论。需要核实时，把所在地、使用场景、数据类型和适用组织政策一并说清楚；只有一个工具名称，通常不足以判断边界。</p>
-<h2 id="工具合法-不代表行为合法">工具合法，不代表行为合法</h2>
-<p>网络工具本身和使用行为需要分开看。一个工具可以用于远程办公、保护公共 Wi-Fi 下的通信、访问公开资料，也可能被人用于盗号、诈骗、攻击、恶意爬取或绕过付费权限。</p>
-<p>判断行为是否合适，可以先问三个问题：</p>
+          <article class="prose"><p>u66f4u6362 VPN u51fau53e3u4f1au6539u53d8u7f51u7ad9u770bu5230u7684 IPu3002u53eau8981u4ecdu5728u540cu4e00u4e2au8d26u53f7u91ccuff0cu6216u6d4fu89c8u5668u7ee7u7eedu53d1u9001u6b64u524du7684 Cookieuff0cu7f51u7ad9u5c31u53efu80fdu628au8bf7u6c42u5173u8054u5230u540cu4e00u7528u6237u3002</p>
+<p>u7f51u7edcu5de5u5177u53eau662fu6539u53d8u4e86u90e8u5206u901au4fe1u8defu5f84u3002u5b83u4e0du4f1au66ffu4f60u51b3u5b9au4ec0u4e48u884cu4e3au5408u6cd5uff0cu4e5fu4e0du4f1au66ffu4f60u627fu62c5u8d26u53f7u6cc4u9732u3001u6570u636eu4e22u5931u6216u8befu7528u5de5u5177u7684u540eu679cu3002</p>
+<h2 id="u9690u79c1u4e0du662fu4e00u4e2au5f00u5173">u9690u79c1u4e0du662fu4e00u4e2au5f00u5173</h2>
+<p>u9690u79c1u4fddu62a4u9700u8981u8003u8651u672cu5730u7f51u7edcu89c2u5bdfu8005u3001u7f51u7edcu670du52a1u63d0u4f9bu5546uff0cu4ee5u53cau76eeu6807u7f51u7ad9u548cu5e94u7528u3002u4e0du540cu5de5u5177u53eau80fdu51cfu5c11u5176u4e2du4e00u90e8u5206u4fe1u606fu66b4u9732u3002</p>
+<p>VPN u53efu80fdu8ba9u672cu5730u7f51u7edcu66f4u96beu76f4u63a5u770bu5230u4f60u8bbfu95eeu4e86u54eau4e9bu670du52a1uff0cu4f46 VPN u670du52a1u5546u672cu8eabu4f1au63a5u89e6u5230u8fdeu63a5u5143u6570u636eu3002Tor u901au8fc7u591au4e2au4e2du7ee7u964du4f4eu5355u70b9u5173u8054uff0cu4f46u7f51u7ad9u4ecdu53efu80fdu901au8fc7u767bu5f55u4fe1u606fu3001Cookieu3001u6d4fu89c8u5668u6307u7eb9u548cu4e3bu52a8u63d0u4ea4u7684u8d44u6599u8bc6u522bu7528u6237u3002</p>
+<p>HTTPS u4fddu62a4u7684u662fu4f20u8f93u8fc7u7a0bu4e2du7684u5185u5bb9u5b8cu6574u6027u548cu4fddu5bc6u6027u3002u5b83u5f88u91cdu8981uff0cu5374u4e0du4ee3u8868u7f51u7ad9u770bu4e0du5230u4f60u53d1u9001u7ed9u5b83u7684u8d26u53f7u3001u641cu7d22u5185u5bb9u6216u8ba2u5355u4fe1u606fu3002u4e00u4e2au7f51u7ad9u77e5u9053u201cu8fd9u662fu4f60u7684u8d26u6237u201duff0cu548cu5b83u77e5u9053u201cu4f60u7684u7f51u7edcu51fau53e3u5728u54eau91ccu201duff0cu662fu4e24u4ef6u4e0du540cu7684u4e8bu3002</p>
+<h2 id="u767bu5f55u4f1au6539u53d8u533fu540du8fb9u754c">u767bu5f55u4f1au6539u53d8u533fu540du8fb9u754c</h2>
+<p>u5982u679cu4f60u4f7fu7528u666eu901au8d26u53f7u767bu5f55u90aeu7bb1u3001u793eu4ea4u5e73u53f0u6216u5de5u4f5cu7cfbu7edfuff0cu670du52a1u65b9u5f53u7136u53efu4ee5u628au5f53u524du6d3bu52a8u548cu8d26u53f7u5173u8054u8d77u6765u3002Tor Project u7684u8bf4u660eu4e5fu6307u51fauff0cu4f7fu7528 Tor u5e76u4e0du59a8u788du7f51u7ad9u901au8fc7u4f60u4e3bu52a8u586bu5199u7684u4fe1u606fu786eu8ba4u8eabu4efdu3002[1]</p>
+<p>u8fd9u4e0du4e00u5b9au662fu574fu4e8bu3002u533fu540du548cu8eabu4efdu8ba4u8bc1u672cu6765u5c31u662fu4e0du540cu9700u6c42u3002u95eeu9898u5728u4e8euff0cu7528u6237u8981u77e5u9053u81eau5df1u6b63u5728u505au54eau4e00u4ef6u4e8buff0cu4e0du8981u4ee5u4e3au6362u4e86 IP u5c31u80fdu62b9u6389u767bu5f55u884cu4e3au3002</p>
+<p>u540cu6837uff0cu4e0bu8f7du6587u4ef6u3001u6253u5f00u5916u90e8u5e94u7528u3001u5b89u88c5u63d2u4ef6u548cu590du5236u4e2au4ebau8d44u6599uff0cu4e5fu53efu80fdu628au6d4fu89c8u884cu4e3au91cdu65b0u548cu771fu5b9eu8eabu4efdu8fdeu63a5u8d77u6765u3002Tor Project u7279u522bu63d0u9192uff0cu989du5916u63d2u4ef6u53efu80fdu7834u574fu6d4fu89c8u5668u7684u9690u79c1u4fddu62a4u548cu6307u7eb9u4e00u81f4u6027u3002[2]</p>
+<h2 id="u4e0du540cu5730u533au7684u89c4u5219u4e0du540c">u4e0du540cu5730u533au7684u89c4u5219u4e0du540c</h2>
+<p>VPNu3001u4ee3u7406u3001u52a0u5bc6u5de5u5177u548cu8de8u5883u7f51u7edcu8bbfu95eeu5728u4e0du540cu56fdu5bb6u548cu5730u533au7684u6cd5u5f8bu5730u4f4du53efu80fdu4e0du540cuff0cu89c4u5b9au4e5fu53efu80fdu968fu7740u65f6u95f4u53d8u5316u3002u4f01u4e1au3001u5b66u6821u3001u56feu4e66u9986u548cu516cu5171 Wi-Fi u8fd8u53efu80fdu6709u989du5916u7684u4f7fu7528u653fu7b56u3002</p>
+<p>u56e0u6b64uff0cu4e0du80fdu7528u4e00u53e5u201cVPN u5728u67d0u5730u5408u6cd5u201du63a8u65adu5b83u5728u4efbu4f55u5730u65b9u3001u4efbu4f55u7528u9014u4e0bu90fdu6ca1u6709u95eeu9898u3002u4f7fu7528u524du5e94u67e5u770bu6240u5728u5730u7684u5b98u65b9u89c4u5b9auff0cu4e5fu8981u9075u5b88u5de5u4f5cu5355u4f4du3001u5b66u6821u548cu670du52a1u63d0u4f9bu5546u7684u7f51u7edcu6761u6b3eu3002</p>
+<p>u6587u7ae0u53eau80fdu63d0u4f9bu4e00u822cu6027u79d1u666euff0cu4e0du80fdu66ffu4ee3u5f8bu5e08u9488u5bf9u5177u4f53u60c5u51b5u7ed9u51fau7684u6cd5u5f8bu610fu89c1u3002u7279u522bu662fu6d89u53cau5de5u4f5cu6570u636eu3001u51fau53e3u7ba1u5236u3001u7248u6743u3001u672au6210u5e74u4ebau4fddu62a4u3001u91d1u878du8d26u6237u6216u8de8u5883u4e1au52a1u65f6uff0cu4e0du80fdu53eau51edu7f51u7edcu8bbau575bu91ccu7684u7ecfu9a8cu5224u65adu3002</p>
+<p>u672cu6587u4e0du5bf9u67d0u4e2au56fdu5bb6u6216u5730u533au7684u5177u4f53u4f7fu7528u884cu4e3au4f5cu5408u6cd5u6027u7ed3u8bbau3002u9700u8981u6838u5b9eu65f6uff0cu628au6240u5728u5730u3001u4f7fu7528u573au666fu3001u6570u636eu7c7bu578bu548cu9002u7528u7ec4u7ec7u653fu7b56u4e00u5e76u8bf4u6e05u695auff1bu53eau6709u4e00u4e2au5de5u5177u540du79f0uff0cu901au5e38u4e0du8db3u4ee5u5224u65adu8fb9u754cu3002</p>
+<h2 id="u5de5u5177u5408u6cd5-u4e0du4ee3u8868u884cu4e3au5408u6cd5">u5de5u5177u5408u6cd5uff0cu4e0du4ee3u8868u884cu4e3au5408u6cd5</h2>
+<p>u7f51u7edcu5de5u5177u672cu8eabu548cu4f7fu7528u884cu4e3au9700u8981u5206u5f00u770bu3002u4e00u4e2au5de5u5177u53efu4ee5u7528u4e8eu8fdcu7a0bu529eu516cu3001u4fddu62a4u516cu5171 Wi-Fi u4e0bu7684u901au4fe1u3001u8bbfu95eeu516cu5f00u8d44u6599uff0cu4e5fu53efu80fdu88abu4ebau7528u4e8eu76d7u53f7u3001u8bc8u9a97u3001u653bu51fbu3001u6076u610fu722cu53d6u6216u7ed5u8fc7u4ed8u8d39u6743u9650u3002</p>
+<p>u5224u65adu884cu4e3au662fu5426u5408u9002uff0cu53efu4ee5u5148u95eeu4e09u4e2au95eeu9898uff1a</p>
 <ul>
-<li>我是否拥有访问这个账户、系统或资料的权限？</li>
-<li>我是否违反了所在地区、组织或服务商的规则？</li>
-<li>如果这次操作留下完整日志，我是否能解释它的目的和授权来源？</li>
+<li>u6211u662fu5426u62e5u6709u8bbfu95eeu8fd9u4e2au8d26u6237u3001u7cfbu7edfu6216u8d44u6599u7684u6743u9650uff1f</li>
+<li>u6211u662fu5426u8fddu53cdu4e86u6240u5728u5730u533au3001u7ec4u7ec7u6216u670du52a1u5546u7684u89c4u5219uff1f</li>
+<li>u5982u679cu8fd9u6b21u64cdu4f5cu7559u4e0bu5b8cu6574u65e5u5fd7uff0cu6211u662fu5426u80fdu89e3u91cau5b83u7684u76eeu7684u548cu6388u6743u6765u6e90uff1f</li>
 </ul>
-<p>如果无法确认权限或规则，先核实再操作；技术上能够访问，不代表已经获得授权。</p>
-<h2 id="保护隐私时-先做低成本的事情">保护隐私时，先做低成本的事情</h2>
-<p>很多人一谈隐私，就开始研究复杂协议，结果忽略了更基础的安全措施：</p>
+<p>u5982u679cu65e0u6cd5u786eu8ba4u6743u9650u6216u89c4u5219uff0cu5148u6838u5b9eu518du64cdu4f5cuff1bu6280u672fu4e0au80fdu591fu8bbfu95eeuff0cu4e0du4ee3u8868u5df2u7ecfu83b7u5f97u6388u6743u3002</p>
+<h2 id="u4fddu62a4u9690u79c1u65f6-u5148u505au4f4eu6210u672cu7684u4e8bu60c5">u4fddu62a4u9690u79c1u65f6uff0cu5148u505au4f4eu6210u672cu7684u4e8bu60c5</h2>
+<p>u5f88u591au4ebau4e00u8c08u9690u79c1uff0cu5c31u5f00u59cbu7814u7a76u590du6742u534fu8baeuff0cu7ed3u679cu5ffdu7565u4e86u66f4u57fau7840u7684u5b89u5168u63aau65bduff1a</p>
 <ul>
-<li>为重要账户使用独立密码；</li>
-<li>开启多因素认证；</li>
-<li>及时更新操作系统、浏览器和客户端；</li>
-<li>不安装来源不明的软件和浏览器插件；</li>
-<li>不在公共设备上保存密码；</li>
-<li>不公开分享配置文件、订阅链接和访问凭据；</li>
-<li>处理敏感事务时，先确认连接、域名和证书是否正常。</li>
+<li>u4e3au91cdu8981u8d26u6237u4f7fu7528u72ecu7acbu5bc6u7801uff1b</li>
+<li>u5f00u542fu591au56e0u7d20u8ba4u8bc1uff1b</li>
+<li>u53cau65f6u66f4u65b0u64cdu4f5cu7cfbu7edfu3001u6d4fu89c8u5668u548cu5ba2u6237u7aefuff1b</li>
+<li>u4e0du5b89u88c5u6765u6e90u4e0du660eu7684u8f6fu4ef6u548cu6d4fu89c8u5668u63d2u4ef6uff1b</li>
+<li>u4e0du5728u516cu5171u8bbeu5907u4e0au4fddu5b58u5bc6u7801uff1b</li>
+<li>u4e0du516cu5f00u5206u4eabu914du7f6eu6587u4ef6u3001u8ba2u9605u94feu63a5u548cu8bbfu95eeu51edu636euff1b</li>
+<li>u5904u7406u654fu611fu4e8bu52a1u65f6uff0cu5148u786eu8ba4u8fdeu63a5u3001u57dfu540du548cu8bc1u4e66u662fu5426u6b63u5e38u3002</li>
 </ul>
-<p>更换网络工具不会补上弱密码、过期软件或凭据泄露留下的问题，这些基础措施仍需单独做好。</p>
-<h2 id="给新手的一条底线">给新手的一条底线</h2>
-<p>如果一项操作需要你关闭安全软件、安装陌生证书、输入主密码、运行不明脚本，或者把全部账号交给没有身份说明的第三方，先暂停。</p>
-<p>如果一项服务承诺绝对匿名、永不记录、永久免费、任何地区都能稳定使用，也先暂停。网络世界里，真正可靠的说明通常会写清楚限制，而不是只写保证。</p>
-<p>选择工具前，先写清楚自己的需求。你可能只是需要保护公共 Wi-Fi 下的通信，也可能是在做远程办公、访问公开研究资料，或者学习网络原理。需求不同，需要防范的风险和适用的边界也可能不同。</p>
-<p>检查时，把账号、设备、服务商和适用规则一起考虑。无法确认谁能接触资料，或是否有权进行某项操作时，先停下来核实。</p>
-<h2 id="参考资料">参考资料</h2>
+<p>u66f4u6362u7f51u7edcu5de5u5177u4e0du4f1au8865u4e0au5f31u5bc6u7801u3001u8fc7u671fu8f6fu4ef6u6216u51edu636eu6cc4u9732u7559u4e0bu7684u95eeu9898uff0cu8fd9u4e9bu57fau7840u63aau65bdu4ecdu9700u5355u72ecu505au597du3002</p>
+<h2 id="u7ed9u65b0u624bu7684u4e00u6761u5e95u7ebf">u7ed9u65b0u624bu7684u4e00u6761u5e95u7ebf</h2>
+<p>u5982u679cu4e00u9879u64cdu4f5cu9700u8981u4f60u5173u95edu5b89u5168u8f6fu4ef6u3001u5b89u88c5u964cu751fu8bc1u4e66u3001u8f93u5165u4e3bu5bc6u7801u3001u8fd0u884cu4e0du660eu811au672cuff0cu6216u8005u628au5168u90e8u8d26u53f7u4ea4u7ed9u6ca1u6709u8eabu4efdu8bf4u660eu7684u7b2cu4e09u65b9uff0cu5148u6682u505cu3002</p>
+<p>u5982u679cu4e00u9879u670du52a1u627fu8bfau7eddu5bf9u533fu540du3001u6c38u4e0du8bb0u5f55u3001u6c38u4e45u514du8d39u3001u4efbu4f55u5730u533au90fdu80fdu7a33u5b9au4f7fu7528uff0cu4e5fu5148u6682u505cu3002u7f51u7edcu4e16u754cu91ccuff0cu771fu6b63u53efu9760u7684u8bf4u660eu901au5e38u4f1au5199u6e05u695au9650u5236uff0cu800cu4e0du662fu53eau5199u4fddu8bc1u3002</p>
+<p>u9009u62e9u5de5u5177u524duff0cu5148u5199u6e05u695au81eau5df1u7684u9700u6c42u3002u4f60u53efu80fdu53eau662fu9700u8981u4fddu62a4u516cu5171 Wi-Fi u4e0bu7684u901au4fe1uff0cu4e5fu53efu80fdu662fu5728u505au8fdcu7a0bu529eu516cu3001u8bbfu95eeu516cu5f00u7814u7a76u8d44u6599uff0cu6216u8005u5b66u4e60u7f51u7edcu539fu7406u3002u9700u6c42u4e0du540cuff0cu9700u8981u9632u8303u7684u98ceu9669u548cu9002u7528u7684u8fb9u754cu4e5fu53efu80fdu4e0du540cu3002</p>
+<p>u68c0u67e5u65f6uff0cu628au8d26u53f7u3001u8bbeu5907u3001u670du52a1u5546u548cu9002u7528u89c4u5219u4e00u8d77u8003u8651u3002u65e0u6cd5u786eu8ba4u8c01u80fdu63a5u89e6u8d44u6599uff0cu6216u662fu5426u6709u6743u8fdbu884cu67d0u9879u64cdu4f5cu65f6uff0cu5148u505cu4e0bu6765u6838u5b9eu3002</p>
+<h2 id="u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</h2>
 <ul>
-<li>[1] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Project：身份关联与安全使用</a></li>
-<li>[2] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Project：Tor Browser 的浏览器保护设计</a></li>
-<li>[3] <a href="https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history">Mozilla：隐私浏览的作用与限制</a></li>
-<li>[4] <a href="https://www.cisa.gov/secure-our-world">CISA：账户与设备的基础安全措施</a></li>
+<li>[1] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Projectuff1au8eabu4efdu5173u8054u4e0eu5b89u5168u4f7fu7528</a></li>
+<li>[2] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Projectuff1aTor Browser u7684u6d4fu89c8u5668u4fddu62a4u8bbeu8ba1</a></li>
+<li>[3] <a href="https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history">Mozillauff1au9690u79c1u6d4fu89c8u7684u4f5cu7528u4e0eu9650u5236</a></li>
+<li>[4] <a href="https://www.cisa.gov/secure-our-world">CISAuff1au8d26u6237u4e0eu8bbeu5907u7684u57fau7840u5b89u5168u63aau65bd</a></li>
 </ul>
-<p>以上是技术与账户安全资料，不是具体司法辖区的法律依据。法律问题应另查所在地官方规定，并在需要时寻求专业意见。</p>
+<p>u4ee5u4e0au662fu6280u672fu4e0eu8d26u6237u5b89u5168u8d44u6599uff0cu4e0du662fu5177u4f53u53f8u6cd5u8f96u533au7684u6cd5u5f8bu4f9du636eu3002u6cd5u5f8bu95eeu9898u5e94u53e6u67e5u6240u5728u5730u5b98u65b9u89c4u5b9auff0cu5e76u5728u9700u8981u65f6u5bfbu6c42u4e13u4e1au610fu89c1u3002</p>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/tool-security/">代理服务安全检查</a><p>软件来源、权限、日志政策和套餐条款，哪些值得核对？</p></li><li><a href="https://ladderer.com/articles/proxy-vpn-tor/">代理、VPN 与 Tor</a><p>从覆盖范围、信任关系与隐私目标，理解三种不同的网络工具。</p></li></ul></nav>
-          <section class="service-note" aria-label="订阅服务选购参考"><p class="eyebrow">NEXT STEP</p><h2>订阅服务选购参考</h2><p>对服务方可见的数据有疑问时，先从清单找到候选服务，再逐个核对隐私条款。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">查看 GitHub 服务评测清单 ↗</a><p class="service-destination">外部推荐清单 · GitHub</p></section>
-          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/tool-security/">u4ee3u7406u670du52a1u5b89u5168u68c0u67e5</a><p>u8f6fu4ef6u6765u6e90u3001u6743u9650u3001u65e5u5fd7u653fu7b56u548cu5957u9910u6761u6b3euff0cu54eau4e9bu503cu5f97u6838u5bf9uff1f</p></li><li><a href="https://ladderer.com/articles/proxy-vpn-tor/">u4ee3u7406u3001VPN u4e0e Tor</a><p>u4eceu8986u76d6u8303u56f4u3001u4fe1u4efbu5173u7cfbu4e0eu9690u79c1u76eeu6807uff0cu7406u89e3u4e09u79cdu4e0du540cu7684u7f51u7edcu5de5u5177u3002</p></li></ul></nav>
+          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="本组文章">
-            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
-            <div class="sidebar-group"><h2>安全与边界</h2>
+          <nav aria-label="u672cu7ec4u6587u7ae0">
+            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
+            <div class="sidebar-group"><h2>u5b89u5168u4e0eu8fb9u754c</h2>
       <a href="https://ladderer.com/articles/tool-security/">
-        <span>09</span>代理服务安全检查
+        <span>09</span>u4ee3u7406u670du52a1u5b89u5168u68c0u67e5
       </a>
       <a href="https://ladderer.com/articles/privacy-boundaries/" aria-current="page">
-        <span>10</span>VPN 与隐私边界
+        <span>10</span>VPN u4e0eu9690u79c1u8fb9u754c
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="上一篇与下一篇">
-      <a rel="prev" href="https://ladderer.com/articles/tool-security/"><small>← 上一篇</small><strong>代理服务安全检查</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/choosing-proxy-service/"><small>下一篇 →</small><strong>订阅、VPN 与自建</strong></a></nav>
+          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
+      <a rel="prev" href="https://ladderer.com/articles/tool-security/"><small>u2190 u4e0au4e00u7bc7</small><strong>u4ee3u7406u670du52a1u5b89u5168u68c0u67e5</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/choosing-proxy-service/"><small>u4e0bu4e00u7bc7 u2192</small><strong>u8ba2u9605u3001VPN u4e0eu81eau5efa</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>

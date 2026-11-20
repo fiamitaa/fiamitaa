@@ -1,120 +1,119 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理、VPN 和 Tor 有什么区别？</title><meta name="description" content="对照代理、VPN 和 Tor 的连接方式、流量覆盖和信任对象，弄清浏览器能用时，为什么桌面应用可能仍在直连。文章也解释操作系统代理设置与 VPN 隧道的区别，以及登录账号之后还能不能隐藏身份。按使用场景判断哪类工具适合自己，再去核对客户端的实际设置。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/proxy-vpn-tor/"><meta property="og:url" content="https://ladderer.com/articles/proxy-vpn-tor/"><meta property="og:title" content="代理、VPN 和 Tor 有什么区别？"><meta property="og:description" content="对照代理、VPN 和 Tor 的连接方式、流量覆盖和信任对象，弄清浏览器能用时，为什么桌面应用可能仍在直连。文章也解释操作系统代理设置与 VPN 隧道的区别，以及登录账号之后还能不能隐藏身份。按使用场景判断哪类工具适合自己，再去核对客户端的实际设置。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理、VPN 和 Tor 有什么区别？"><meta name="twitter:description" content="对照代理、VPN 和 Tor 的连接方式、流量覆盖和信任对象，弄清浏览器能用时，为什么桌面应用可能仍在直连。文章也解释操作系统代理设置与 VPN 隧道的区别，以及登录账号之后还能不能隐藏身份。按使用场景判断哪类工具适合自己，再去核对客户端的实际设置。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"代理、VPN 和 Tor 有什么区别？","description":"对照代理、VPN 和 Tor 的连接方式、流量覆盖和信任对象，弄清浏览器能用时，为什么桌面应用可能仍在直连。文章也解释操作系统代理设置与 VPN 隧道的区别，以及登录账号之后还能不能隐藏身份。按使用场景判断哪类工具适合自己，再去核对客户端的实际设置。","inLanguage":"zh-CN","datePublished":"2026-10-22","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/proxy-vpn-tor/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"基础认知","item":"https://ladderer.com/#group-basics"},{"@type":"ListItem","position":3,"name":"代理、VPN 和 Tor 有什么区别？","item":"https://ladderer.com/articles/proxy-vpn-tor/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>u4ee3u7406u3001VPN u548c Tor u6709u4ec0u4e48u533au522buff1f</title><meta name="description" content="u5bf9u7167u4ee3u7406u3001VPN u548c Tor u7684u8fdeu63a5u65b9u5f0fu3001u6d41u91cfu8986u76d6u548cu4fe1u4efbu5bf9u8c61uff0cu5f04u6e05u6d4fu89c8u5668u80fdu7528u65f6uff0cu4e3au4ec0u4e48u684cu9762u5e94u7528u53efu80fdu4ecdu5728u76f4u8fdeu3002u6587u7ae0u4e5fu89e3u91cau64cdu4f5cu7cfbu7edfu4ee3u7406u8bbeu7f6eu4e0e VPN u96a7u9053u7684u533au522buff0cu4ee5u53cau767bu5f55u8d26u53f7u4e4bu540eu8fd8u80fdu4e0du80fdu9690u85cfu8eabu4efdu3002u6309u4f7fu7528u573au666fu5224u65adu54eau7c7bu5de5u5177u9002u5408u81eau5df1uff0cu518du53bbu6838u5bf9u5ba2u6237u7aefu7684u5b9eu9645u8bbeu7f6eu3002"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/proxy-vpn-tor/"><meta property="og:url" content="https://ladderer.com/articles/proxy-vpn-tor/"><meta property="og:title" content="u4ee3u7406u3001VPN u548c Tor u6709u4ec0u4e48u533au522buff1f"><meta property="og:description" content="u5bf9u7167u4ee3u7406u3001VPN u548c Tor u7684u8fdeu63a5u65b9u5f0fu3001u6d41u91cfu8986u76d6u548cu4fe1u4efbu5bf9u8c61uff0cu5f04u6e05u6d4fu89c8u5668u80fdu7528u65f6uff0cu4e3au4ec0u4e48u684cu9762u5e94u7528u53efu80fdu4ecdu5728u76f4u8fdeu3002u6587u7ae0u4e5fu89e3u91cau64cdu4f5cu7cfbu7edfu4ee3u7406u8bbeu7f6eu4e0e VPN u96a7u9053u7684u533au522buff0cu4ee5u53cau767bu5f55u8d26u53f7u4e4bu540eu8fd8u80fdu4e0du80fdu9690u85cfu8eabu4efdu3002u6309u4f7fu7528u573au666fu5224u65adu54eau7c7bu5de5u5177u9002u5408u81eau5df1uff0cu518du53bbu6838u5bf9u5ba2u6237u7aefu7684u5b9eu9645u8bbeu7f6eu3002"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="u79d1u5b66u4e0au7f51u5165u95e8u624bu518c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="u4ee3u7406u3001VPN u548c Tor u6709u4ec0u4e48u533au522buff1f"><meta name="twitter:description" content="u5bf9u7167u4ee3u7406u3001VPN u548c Tor u7684u8fdeu63a5u65b9u5f0fu3001u6d41u91cfu8986u76d6u548cu4fe1u4efbu5bf9u8c61uff0cu5f04u6e05u6d4fu89c8u5668u80fdu7528u65f6uff0cu4e3au4ec0u4e48u684cu9762u5e94u7528u53efu80fdu4ecdu5728u76f4u8fdeu3002u6587u7ae0u4e5fu89e3u91cau64cdu4f5cu7cfbu7edfu4ee3u7406u8bbeu7f6eu4e0e VPN u96a7u9053u7684u533au522buff0cu4ee5u53cau767bu5f55u8d26u53f7u4e4bu540eu8fd8u80fdu4e0du80fdu9690u85cfu8eabu4efdu3002u6309u4f7fu7528u573au666fu5224u65adu54eau7c7bu5de5u5177u9002u5408u81eau5df1uff0cu518du53bbu6838u5bf9u5ba2u6237u7aefu7684u5b9eu9645u8bbeu7f6eu3002"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"u4ee3u7406u3001VPN u548c Tor u6709u4ec0u4e48u533au522buff1f","description":"u5bf9u7167u4ee3u7406u3001VPN u548c Tor u7684u8fdeu63a5u65b9u5f0fu3001u6d41u91cfu8986u76d6u548cu4fe1u4efbu5bf9u8c61uff0cu5f04u6e05u6d4fu89c8u5668u80fdu7528u65f6uff0cu4e3au4ec0u4e48u684cu9762u5e94u7528u53efu80fdu4ecdu5728u76f4u8fdeu3002u6587u7ae0u4e5fu89e3u91cau64cdu4f5cu7cfbu7edfu4ee3u7406u8bbeu7f6eu4e0e VPN u96a7u9053u7684u533au522buff0cu4ee5u53cau767bu5f55u8d26u53f7u4e4bu540eu8fd8u80fdu4e0du80fdu9690u85cfu8eabu4efdu3002u6309u4f7fu7528u573au666fu5224u65adu54eau7c7bu5de5u5177u9002u5408u81eau5df1uff0cu518du53bbu6838u5bf9u5ba2u6237u7aefu7684u5b9eu9645u8bbeu7f6eu3002","inLanguage":"zh-CN","datePublished":"2026-10-22","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/proxy-vpn-tor/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"u9996u9875","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"u57fau7840u8ba4u77e5","item":"https://ladderer.com/#group-basics"},{"@type":"ListItem","position":3,"name":"u4ee3u7406u3001VPN u548c Tor u6709u4ec0u4e48u533au522buff1f","item":"https://ladderer.com/articles/proxy-vpn-tor/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">u8df3u5230u6b63u6587</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>u79d1u5b66u4e0au7f51u5165u95e8u624bu518c<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="u4e3bu5bfcu822a"><a  href="https://ladderer.com/">u9996u9875</a><a href="https://ladderer.com/#chapters">u9605u8bfbu76eeu5f55</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">u670du52a1u8bc4u6d4b</a><a  href="https://ladderer.com/about/">u5173u4e8e</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
-          <nav class="breadcrumbs" aria-label="当前位置">
-            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-basics">基础认知</a><span aria-hidden="true">/</span>
-            <span aria-current="page">第 02 篇</span>
+          <nav class="breadcrumbs" aria-label="u5f53u524du4f4du7f6e">
+            <a href="https://ladderer.com/">u9996u9875</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-basics">u57fau7840u8ba4u77e5</a><span aria-hidden="true">/</span>
+            <span aria-current="page">u7b2c 02 u7bc7</span>
           </nav>
           <header class="article-header">
             <p class="eyebrow">CHAPTER 02 <span> / 18</span></p>
-            <h1>代理、VPN 和 Tor 有什么区别？</h1>
-            <p class="article-summary">从覆盖范围、信任关系与隐私目标，理解三种不同的网络工具。</p>
-            <div class="article-meta"><span>约 6 分钟阅读</span><span>内容复核 <time datetime="2026-10-18">2026.10.18</time></span></div>
+            <h1>u4ee3u7406u3001VPN u548c Tor u6709u4ec0u4e48u533au522buff1f</h1>
+            <p class="article-summary">u4eceu8986u76d6u8303u56f4u3001u4fe1u4efbu5173u7cfbu4e0eu9690u79c1u76eeu6807uff0cu7406u89e3u4e09u79cdu4e0du540cu7684u7f51u7edcu5de5u5177u3002</p>
+            <div class="article-meta"><span>u7ea6 6 u5206u949fu9605u8bfb</span><span>u5185u5bb9u590du6838 <time datetime="2026-10-18">2026.10.18</time></span></div>
           </header>
         </div>
         <nav class="toc-sidebar" aria-labelledby="article-toc-title">
-          <h2 id="article-toc-title">本文目录</h2>
-          <ol><li class="toc-h2"><a href="#代理-一个中转站">代理：一个中转站</a></li><li class="toc-h2"><a href="#vpn-一条加密隧道">VPN：一条加密隧道</a></li><li class="toc-h2"><a href="#tor-多层中继网络">Tor：多层中继网络</a></li><li class="toc-h2"><a href="#三者放在一起怎么比较">三者放在一起怎么比较</a></li><li class="toc-h2"><a href="#怎么按需求思考">怎么按需求思考</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
+          <h2 id="article-toc-title">u672cu6587u76eeu5f55</h2>
+          <ol><li class="toc-h2"><a href="#u4ee3u7406-u4e00u4e2au4e2du8f6cu7ad9">u4ee3u7406uff1au4e00u4e2au4e2du8f6cu7ad9</a></li><li class="toc-h2"><a href="#vpn-u4e00u6761u52a0u5bc6u96a7u9053">VPNuff1au4e00u6761u52a0u5bc6u96a7u9053</a></li><li class="toc-h2"><a href="#tor-u591au5c42u4e2du7ee7u7f51u7edc">Toruff1au591au5c42u4e2du7ee7u7f51u7edc</a></li><li class="toc-h2"><a href="#u4e09u8005u653eu5728u4e00u8d77u600eu4e48u6bd4u8f83">u4e09u8005u653eu5728u4e00u8d77u600eu4e48u6bd4u8f83</a></li><li class="toc-h2"><a href="#u600eu4e48u6309u9700u6c42u601du8003">u600eu4e48u6309u9700u6c42u601du8003</a></li><li class="toc-h2"><a href="#u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</a></li></ol>
         </nav>
         <div class="article-main">
-          <article class="prose"><p>浏览器开了代理，其他软件也会走这条线路吗？这个问题可以从流量覆盖、连接路径和信任对象三个角度拆开。</p>
-<p>它们确实都涉及流量转发，但覆盖范围、信任关系和隐私目标不同，适合的场景也不一样。</p>
-<p>“机场 VPN”这个叫法容易让人混淆服务类型。机场通常指提供代理订阅和节点的服务，VPN 则描述一种隧道技术或相应服务。判断它们会接管哪些流量，还要看客户端的运行模式和实际配置。</p>
-<h2 id="代理-一个中转站">代理：一个中转站</h2>
-<p>代理可以理解成“替你向目标网站发请求的中间人”。你的浏览器或某个应用先把请求交给代理服务器，代理再访问目标地址，把结果返回给你。</p>
-<p>HTTP 代理常用于网页请求，也能通过 CONNECT 方法建立隧道；SOCKS5 则定义了连接转发与 UDP 转发等机制。具体应用和服务器支持哪些能力，仍要看实现，不能简单理解为“HTTP 代理只能打开网页”。[4][5]</p>
-<p>它们都可以按应用配置。例如，只让浏览器经过代理，其他软件仍然使用原来的网络路径。</p>
-<p>不过，只给浏览器配好代理，不代表其他程序也能用。代理可能只对一个应用生效，某些应用还有自己的网络设置，完全不理会浏览器代理。于是就会出现“网页能开，但桌面客户端还是连不上”的情况。</p>
-<p>代理还带来一个信任问题：请求经过谁的服务器？对方保存什么日志？是否修改内容？如果代理服务商没有清晰的运营主体和隐私说明，就不适合拿来处理重要账号或敏感资料。</p>
-<h2 id="vpn-一条加密隧道">VPN：一条加密隧道</h2>
-<p>VPN 的常见工作方式，是在设备与 VPN 服务器之间建立一条加密隧道。设备的部分或全部网络流量经过隧道转发，再从 VPN 服务器访问互联网。</p>
-<p>它的覆盖范围通常比浏览器代理更大，能够影响多个应用，甚至整个系统的网络出口。对于公共 Wi-Fi、远程办公或访问企业内网，VPN 也有正常且广泛的使用场景。</p>
-<p>但“VPN 有加密”不等于“VPN 让你完全匿名”。你把一部分网络信任从本地网络转移给 VPN 服务商。VPN 服务器会解开 VPN 这一层隧道；如果里面还使用了正常校验的 HTTPS，网页内容仍受 HTTPS 保护。没有应用层加密的内容，则不能指望 VPN 自动保护到目标网站。</p>
-<p>即使读不到 HTTPS 正文，服务商仍可能接触到连接时间、流量规模和目标 IP 等元数据；如果你登录网站，网站也仍能关联到你的账户。</p>
-<p>VPN 更适合解决“让一组应用通过另一条网络路径访问”的问题，而不是承诺消除所有身份线索。</p>
-<h2 id="tor-多层中继网络">Tor：多层中继网络</h2>
-<p>Tor 通过多个中继节点转发流量。Tor Project 的介绍通常把它概括为：连接经过多个中继，每一层只知道自己需要知道的那一部分，从而降低单个观察者同时把用户和目标网站对应起来的可能性。[1]</p>
-<p>Tor Browser 不是普通浏览器简单加一个代理。它基于 Firefox ESR，并针对隐私、浏览器指纹和会话管理做了专门修改。Tor Project 也不建议把其他浏览器随意接到 Tor 网络上，因为浏览器配置、插件和应用行为可能造成信息泄露。[2]</p>
-<p>Tor 的代价也很明显：多跳转发会增加延迟，部分网站会把 Tor 出口视为高风险来源，要求额外验证，甚至拒绝服务。它更偏向隐私和匿名性场景，不是追求视频速度或低延迟游戏体验的万能方案。</p>
-<h2 id="三者放在一起怎么比较">三者放在一起怎么比较</h2>
-<div class="table-wrap" role="region" aria-label="对比表格，可横向滚动" tabindex="0"><table>
+          <article class="prose"><p>u6d4fu89c8u5668u5f00u4e86u4ee3u7406uff0cu5176u4ed6u8f6fu4ef6u4e5fu4f1au8d70u8fd9u6761u7ebfu8defu5417uff1fu8fd9u4e2au95eeu9898u53efu4ee5u4eceu6d41u91cfu8986u76d6u3001u8fdeu63a5u8defu5f84u548cu4fe1u4efbu5bf9u8c61u4e09u4e2au89d2u5ea6u62c6u5f00u3002</p>
+<p>u5b83u4eecu786eu5b9eu90fdu6d89u53cau6d41u91cfu8f6cu53d1uff0cu4f46u8986u76d6u8303u56f4u3001u4fe1u4efbu5173u7cfbu548cu9690u79c1u76eeu6807u4e0du540cuff0cu9002u5408u7684u573au666fu4e5fu4e0du4e00u6837u3002</p>
+<p>u201cu673au573a VPNu201du8fd9u4e2au53ebu6cd5u5bb9u6613u8ba9u4ebau6df7u6dc6u670du52a1u7c7bu578bu3002u673au573au901au5e38u6307u63d0u4f9bu4ee3u7406u8ba2u9605u548cu8282u70b9u7684u670du52a1uff0cVPN u5219u63cfu8ff0u4e00u79cdu96a7u9053u6280u672fu6216u76f8u5e94u670du52a1u3002u5224u65adu5b83u4eecu4f1au63a5u7ba1u54eau4e9bu6d41u91cfuff0cu8fd8u8981u770bu5ba2u6237u7aefu7684u8fd0u884cu6a21u5f0fu548cu5b9eu9645u914du7f6eu3002</p>
+<h2 id="u4ee3u7406-u4e00u4e2au4e2du8f6cu7ad9">u4ee3u7406uff1au4e00u4e2au4e2du8f6cu7ad9</h2>
+<p>u4ee3u7406u53efu4ee5u7406u89e3u6210u201cu66ffu4f60u5411u76eeu6807u7f51u7ad9u53d1u8bf7u6c42u7684u4e2du95f4u4ebau201du3002u4f60u7684u6d4fu89c8u5668u6216u67d0u4e2au5e94u7528u5148u628au8bf7u6c42u4ea4u7ed9u4ee3u7406u670du52a1u5668uff0cu4ee3u7406u518du8bbfu95eeu76eeu6807u5730u5740uff0cu628au7ed3u679cu8fd4u56deu7ed9u4f60u3002</p>
+<p>HTTP u4ee3u7406u5e38u7528u4e8eu7f51u9875u8bf7u6c42uff0cu4e5fu80fdu901au8fc7 CONNECT u65b9u6cd5u5efau7acbu96a7u9053uff1bSOCKS5 u5219u5b9au4e49u4e86u8fdeu63a5u8f6cu53d1u4e0e UDP u8f6cu53d1u7b49u673au5236u3002u5177u4f53u5e94u7528u548cu670du52a1u5668u652fu6301u54eau4e9bu80fdu529buff0cu4ecdu8981u770bu5b9eu73b0uff0cu4e0du80fdu7b80u5355u7406u89e3u4e3au201cHTTP u4ee3u7406u53eau80fdu6253u5f00u7f51u9875u201du3002[4][5]</p>
+<p>u5b83u4eecu90fdu53efu4ee5u6309u5e94u7528u914du7f6eu3002u4f8bu5982uff0cu53eau8ba9u6d4fu89c8u5668u7ecfu8fc7u4ee3u7406uff0cu5176u4ed6u8f6fu4ef6u4ecdu7136u4f7fu7528u539fu6765u7684u7f51u7edcu8defu5f84u3002</p>
+<p>u4e0du8fc7uff0cu53eau7ed9u6d4fu89c8u5668u914du597du4ee3u7406uff0cu4e0du4ee3u8868u5176u4ed6u7a0bu5e8fu4e5fu80fdu7528u3002u4ee3u7406u53efu80fdu53eau5bf9u4e00u4e2au5e94u7528u751fu6548uff0cu67d0u4e9bu5e94u7528u8fd8u6709u81eau5df1u7684u7f51u7edcu8bbeu7f6euff0cu5b8cu5168u4e0du7406u4f1au6d4fu89c8u5668u4ee3u7406u3002u4e8eu662fu5c31u4f1au51fau73b0u201cu7f51u9875u80fdu5f00uff0cu4f46u684cu9762u5ba2u6237u7aefu8fd8u662fu8fdeu4e0du4e0au201du7684u60c5u51b5u3002</p>
+<p>u4ee3u7406u8fd8u5e26u6765u4e00u4e2au4fe1u4efbu95eeu9898uff1au8bf7u6c42u7ecfu8fc7u8c01u7684u670du52a1u5668uff1fu5bf9u65b9u4fddu5b58u4ec0u4e48u65e5u5fd7uff1fu662fu5426u4feeu6539u5185u5bb9uff1fu5982u679cu4ee3u7406u670du52a1u5546u6ca1u6709u6e05u6670u7684u8fd0u8425u4e3bu4f53u548cu9690u79c1u8bf4u660euff0cu5c31u4e0du9002u5408u62ffu6765u5904u7406u91cdu8981u8d26u53f7u6216u654fu611fu8d44u6599u3002</p>
+<h2 id="vpn-u4e00u6761u52a0u5bc6u96a7u9053">VPNuff1au4e00u6761u52a0u5bc6u96a7u9053</h2>
+<p>VPN u7684u5e38u89c1u5de5u4f5cu65b9u5f0fuff0cu662fu5728u8bbeu5907u4e0e VPN u670du52a1u5668u4e4bu95f4u5efau7acbu4e00u6761u52a0u5bc6u96a7u9053u3002u8bbeu5907u7684u90e8u5206u6216u5168u90e8u7f51u7edcu6d41u91cfu7ecfu8fc7u96a7u9053u8f6cu53d1uff0cu518du4ece VPN u670du52a1u5668u8bbfu95eeu4e92u8054u7f51u3002</p>
+<p>u5b83u7684u8986u76d6u8303u56f4u901au5e38u6bd4u6d4fu89c8u5668u4ee3u7406u66f4u5927uff0cu80fdu591fu5f71u54cdu591au4e2au5e94u7528uff0cu751au81f3u6574u4e2au7cfbu7edfu7684u7f51u7edcu51fau53e3u3002u5bf9u4e8eu516cu5171 Wi-Fiu3001u8fdcu7a0bu529eu516cu6216u8bbfu95eeu4f01u4e1au5185u7f51uff0cVPN u4e5fu6709u6b63u5e38u4e14u5e7fu6cdbu7684u4f7fu7528u573au666fu3002</p>
+<p>u4f46u201cVPN u6709u52a0u5bc6u201du4e0du7b49u4e8eu201cVPN u8ba9u4f60u5b8cu5168u533fu540du201du3002u4f60u628au4e00u90e8u5206u7f51u7edcu4fe1u4efbu4eceu672cu5730u7f51u7edcu8f6cu79fbu7ed9 VPN u670du52a1u5546u3002VPN u670du52a1u5668u4f1au89e3u5f00 VPN u8fd9u4e00u5c42u96a7u9053uff1bu5982u679cu91ccu9762u8fd8u4f7fu7528u4e86u6b63u5e38u6821u9a8cu7684 HTTPSuff0cu7f51u9875u5185u5bb9u4ecdu53d7 HTTPS u4fddu62a4u3002u6ca1u6709u5e94u7528u5c42u52a0u5bc6u7684u5185u5bb9uff0cu5219u4e0du80fdu6307u671b VPN u81eau52a8u4fddu62a4u5230u76eeu6807u7f51u7ad9u3002</p>
+<p>u5373u4f7fu8bfbu4e0du5230 HTTPS u6b63u6587uff0cu670du52a1u5546u4ecdu53efu80fdu63a5u89e6u5230u8fdeu63a5u65f6u95f4u3001u6d41u91cfu89c4u6a21u548cu76eeu6807 IP u7b49u5143u6570u636euff1bu5982u679cu4f60u767bu5f55u7f51u7ad9uff0cu7f51u7ad9u4e5fu4ecdu80fdu5173u8054u5230u4f60u7684u8d26u6237u3002</p>
+<p>VPN u66f4u9002u5408u89e3u51b3u201cu8ba9u4e00u7ec4u5e94u7528u901au8fc7u53e6u4e00u6761u7f51u7edcu8defu5f84u8bbfu95eeu201du7684u95eeu9898uff0cu800cu4e0du662fu627fu8bfau6d88u9664u6240u6709u8eabu4efdu7ebfu7d22u3002</p>
+<h2 id="tor-u591au5c42u4e2du7ee7u7f51u7edc">Toruff1au591au5c42u4e2du7ee7u7f51u7edc</h2>
+<p>Tor u901au8fc7u591au4e2au4e2du7ee7u8282u70b9u8f6cu53d1u6d41u91cfu3002Tor Project u7684u4ecbu7ecdu901au5e38u628au5b83u6982u62ecu4e3auff1au8fdeu63a5u7ecfu8fc7u591au4e2au4e2du7ee7uff0cu6bcfu4e00u5c42u53eau77e5u9053u81eau5df1u9700u8981u77e5u9053u7684u90a3u4e00u90e8u5206uff0cu4eceu800cu964du4f4eu5355u4e2au89c2u5bdfu8005u540cu65f6u628au7528u6237u548cu76eeu6807u7f51u7ad9u5bf9u5e94u8d77u6765u7684u53efu80fdu6027u3002[1]</p>
+<p>Tor Browser u4e0du662fu666eu901au6d4fu89c8u5668u7b80u5355u52a0u4e00u4e2au4ee3u7406u3002u5b83u57fau4e8e Firefox ESRuff0cu5e76u9488u5bf9u9690u79c1u3001u6d4fu89c8u5668u6307u7eb9u548cu4f1au8bddu7ba1u7406u505au4e86u4e13u95e8u4feeu6539u3002Tor Project u4e5fu4e0du5efau8baeu628au5176u4ed6u6d4fu89c8u5668u968fu610fu63a5u5230 Tor u7f51u7edcu4e0auff0cu56e0u4e3au6d4fu89c8u5668u914du7f6eu3001u63d2u4ef6u548cu5e94u7528u884cu4e3au53efu80fdu9020u6210u4fe1u606fu6cc4u9732u3002[2]</p>
+<p>Tor u7684u4ee3u4ef7u4e5fu5f88u660eu663euff1au591au8df3u8f6cu53d1u4f1au589eu52a0u5ef6u8fdfuff0cu90e8u5206u7f51u7ad9u4f1au628a Tor u51fau53e3u89c6u4e3au9ad8u98ceu9669u6765u6e90uff0cu8981u6c42u989du5916u9a8cu8bc1uff0cu751au81f3u62d2u7eddu670du52a1u3002u5b83u66f4u504fu5411u9690u79c1u548cu533fu540du6027u573au666fuff0cu4e0du662fu8ffdu6c42u89c6u9891u901fu5ea6u6216u4f4eu5ef6u8fdfu6e38u620fu4f53u9a8cu7684u4e07u80fdu65b9u6848u3002</p>
+<h2 id="u4e09u8005u653eu5728u4e00u8d77u600eu4e48u6bd4u8f83">u4e09u8005u653eu5728u4e00u8d77u600eu4e48u6bd4u8f83</h2>
+<div class="table-wrap" role="region" aria-label="u5bf9u6bd4u8868u683cuff0cu53efu6a2au5411u6edau52a8" tabindex="0"><table>
 <thead>
 <tr>
-<th>维度</th>
-<th>代理</th>
+<th>u7ef4u5ea6</th>
+<th>u4ee3u7406</th>
 <th>VPN</th>
 <th>Tor</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>覆盖范围</td>
-<td>常见是单个应用</td>
-<td>可覆盖多个应用或全局流量</td>
-<td>主要是配置正确的应用，Tor Browser 最稳妥</td>
+<td>u8986u76d6u8303u56f4</td>
+<td>u5e38u89c1u662fu5355u4e2au5e94u7528</td>
+<td>u53efu8986u76d6u591au4e2au5e94u7528u6216u5168u5c40u6d41u91cf</td>
+<td>u4e3bu8981u662fu914du7f6eu6b63u786eu7684u5e94u7528uff0cTor Browser u6700u7a33u59a5</td>
 </tr>
 <tr>
-<td>速度</td>
-<td>取决于线路、负载与实现</td>
-<td>取决于线路、负载与实现</td>
-<td>多跳转发通常增加延迟</td>
+<td>u901fu5ea6</td>
+<td>u53d6u51b3u4e8eu7ebfu8defu3001u8d1fu8f7du4e0eu5b9eu73b0</td>
+<td>u53d6u51b3u4e8eu7ebfu8defu3001u8d1fu8f7du4e0eu5b9eu73b0</td>
+<td>u591au8df3u8f6cu53d1u901au5e38u589eu52a0u5ef6u8fdf</td>
 </tr>
 <tr>
-<td>信任对象</td>
-<td>代理运营者</td>
-<td>VPN 服务商</td>
-<td>多个中继运营者和 Tor 网络机制</td>
+<td>u4fe1u4efbu5bf9u8c61</td>
+<td>u4ee3u7406u8fd0u8425u8005</td>
+<td>VPN u670du52a1u5546</td>
+<td>u591au4e2au4e2du7ee7u8fd0u8425u8005u548c Tor u7f51u7edcu673au5236</td>
 </tr>
 <tr>
-<td>主要目标</td>
-<td>转发和访问路径</td>
-<td>隧道、远程访问、网络出口变化</td>
-<td>降低单点关联和追踪风险</td>
+<td>u4e3bu8981u76eeu6807</td>
+<td>u8f6cu53d1u548cu8bbfu95eeu8defu5f84</td>
+<td>u96a7u9053u3001u8fdcu7a0bu8bbfu95eeu3001u7f51u7edcu51fau53e3u53d8u5316</td>
+<td>u964du4f4eu5355u70b9u5173u8054u548cu8ffdu8e2au98ceu9669</td>
 </tr>
 <tr>
-<td>常见误区</td>
-<td>以为所有应用都会走代理</td>
-<td>以为 VPN 等于匿名</td>
-<td>以为 Tor 能保护整台设备所有流量</td>
+<td>u5e38u89c1u8befu533a</td>
+<td>u4ee5u4e3au6240u6709u5e94u7528u90fdu4f1au8d70u4ee3u7406</td>
+<td>u4ee5u4e3a VPN u7b49u4e8eu533fu540d</td>
+<td>u4ee5u4e3a Tor u80fdu4fddu62a4u6574u53f0u8bbeu5907u6240u6709u6d41u91cf</td>
 </tr>
 </tbody>
 </table></div>
-<h2 id="怎么按需求思考">怎么按需求思考</h2>
-<p>如果你的问题是“某个浏览器访问不了”，代理可能是最小范围的解决思路；如果希望多种应用都通过同一条加密连接，VPN 更接近这个需求；如果重点是降低网站和本地观察者之间的直接关联，Tor 的设计目标更相关。</p>
-<p>很难脱离需求，说哪个工具“最强”。工具越复杂，需要留意的配置细节就越多，也越容易误用。Tor Project 明确提醒，Tor Browser 只保护经过正确配置的应用，不会自动保护电脑上所有程序。[3]</p>
-<p>先问自己三个问题：</p>
+<h2 id="u600eu4e48u6309u9700u6c42u601du8003">u600eu4e48u6309u9700u6c42u601du8003</h2>
+<p>u5982u679cu4f60u7684u95eeu9898u662fu201cu67d0u4e2au6d4fu89c8u5668u8bbfu95eeu4e0du4e86u201duff0cu4ee3u7406u53efu80fdu662fu6700u5c0fu8303u56f4u7684u89e3u51b3u601du8defuff1bu5982u679cu5e0cu671bu591au79cdu5e94u7528u90fdu901au8fc7u540cu4e00u6761u52a0u5bc6u8fdeu63a5uff0cVPN u66f4u63a5u8fd1u8fd9u4e2au9700u6c42uff1bu5982u679cu91cdu70b9u662fu964du4f4eu7f51u7ad9u548cu672cu5730u89c2u5bdfu8005u4e4bu95f4u7684u76f4u63a5u5173u8054uff0cTor u7684u8bbeu8ba1u76eeu6807u66f4u76f8u5173u3002</p>
+<p>u5f88u96beu8131u79bbu9700u6c42uff0cu8bf4u54eau4e2au5de5u5177u201cu6700u5f3au201du3002u5de5u5177u8d8au590du6742uff0cu9700u8981u7559u610fu7684u914du7f6eu7ec6u8282u5c31u8d8au591auff0cu4e5fu8d8au5bb9u6613u8befu7528u3002Tor Project u660eu786eu63d0u9192uff0cTor Browser u53eau4fddu62a4u7ecfu8fc7u6b63u786eu914du7f6eu7684u5e94u7528uff0cu4e0du4f1au81eau52a8u4fddu62a4u7535u8111u4e0au6240u6709u7a0bu5e8fu3002[3]</p>
+<p>u5148u95eeu81eau5df1u4e09u4e2au95eeu9898uff1a</p>
 <ul>
-<li>我需要改变哪一个应用的访问路径？</li>
-<li>我更在意速度、兼容性，还是隐私？</li>
-<li>我是否清楚自己把信任交给了谁？</li>
+<li>u6211u9700u8981u6539u53d8u54eau4e00u4e2au5e94u7528u7684u8bbfu95eeu8defu5f84uff1f</li>
+<li>u6211u66f4u5728u610fu901fu5ea6u3001u517cu5bb9u6027uff0cu8fd8u662fu9690u79c1uff1f</li>
+<li>u6211u662fu5426u6e05u695au81eau5df1u628au4fe1u4efbu4ea4u7ed9u4e86u8c01uff1f</li>
 </ul>
-<h2 id="参考资料">参考资料</h2>
+<h2 id="u53c2u8003u8d44u6599">u53c2u8003u8d44u6599</h2>
 <ul>
-<li>[1] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Project：Tor Browser 与 Tor 网络如何工作</a></li>
-<li>[2] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Project：Tor Browser 的隐私设计与浏览器差异</a></li>
-<li>[3] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Project：匿名性限制与安全使用建议</a></li>
-<li>[4] <a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3.6">RFC 9110：HTTP CONNECT 方法</a></li>
-<li>[5] <a href="https://www.rfc-editor.org/rfc/rfc1928.html">RFC 1928：SOCKS 协议第五版</a></li>
+<li>[1] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Projectuff1aTor Browser u4e0e Tor u7f51u7edcu5982u4f55u5de5u4f5c</a></li>
+<li>[2] <a href="https://support.torproject.org/tor-browser/getting-started/about-tor-browser/">Tor Projectuff1aTor Browser u7684u9690u79c1u8bbeu8ba1u4e0eu6d4fu89c8u5668u5deeu5f02</a></li>
+<li>[3] <a href="https://support.torproject.org/tor-browser/security/using-tb-safely/">Tor Projectuff1au533fu540du6027u9650u5236u4e0eu5b89u5168u4f7fu7528u5efau8bae</a></li>
+<li>[4] <a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3.6">RFC 9110uff1aHTTP CONNECT u65b9u6cd5</a></li>
+<li>[5] <a href="https://www.rfc-editor.org/rfc/rfc1928.html">RFC 1928uff1aSOCKS u534fu8baeu7b2cu4e94u7248</a></li>
 </ul>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/verify-app-proxy/">验证应用代理路径</a><p>用应用设置、连接日志和出口对照验证实际路径。</p></li><li><a href="https://ladderer.com/articles/privacy-boundaries/">VPN 与隐私边界</a><p>换了出口 IP，哪些身份信息和使用责任仍然存在？</p></li></ul></nav>
-          <section class="service-note" aria-label="订阅服务选购参考"><p class="eyebrow">NEXT STEP</p><h2>订阅服务选购参考</h2><p>准备选服务时，先查它能否覆盖你常用的应用，再比较分流方式。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">查看 GitHub 服务评测清单 ↗</a><p class="service-destination">外部推荐清单 · GitHub</p></section>
-          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">u4e0bu4e00u6b65u9605u8bfb</h2><ul><li><a href="https://ladderer.com/articles/verify-app-proxy/">u9a8cu8bc1u5e94u7528u4ee3u7406u8defu5f84</a><p>u7528u5e94u7528u8bbeu7f6eu3001u8fdeu63a5u65e5u5fd7u548cu51fau53e3u5bf9u7167u9a8cu8bc1u5b9eu9645u8defu5f84u3002</p></li><li><a href="https://ladderer.com/articles/privacy-boundaries/">VPN u4e0eu9690u79c1u8fb9u754c</a><p>u6362u4e86u51fau53e3 IPuff0cu54eau4e9bu8eabu4efdu4fe1u606fu548cu4f7fu7528u8d23u4efbu4ecdu7136u5b58u5728uff1f</p></li></ul></nav>
+          <div class="article-caution">u672cu6587u4e3au4e00u822cu6027u79d1u666euff0cu4e0du6784u6210u670du52a1u63a8u8350u6216u6cd5u5f8bu610fu89c1u3002u9879u76eeu652fu6301u8303u56f4u4f1au53d8u5316uff0cu4f7fu7528u524du8bf7u6838u5bf9u5b98u65b9u6587u6863u53cau6240u5728u5730u89c4u5219u3002</div>
         </div>
         <aside class="series-sidebar">
-          <nav aria-label="本组文章">
-            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
-            <div class="sidebar-group"><h2>基础认知</h2>
+          <nav aria-label="u672cu7ec4u6587u7ae0">
+            <a class="back-link" href="https://ladderer.com/#chapters">u67e5u770bu5168u90e8 18 u7bc7u6587u7ae0 u2192</a>
+            <div class="sidebar-group"><h2>u57fau7840u8ba4u77e5</h2>
       <a href="https://ladderer.com/articles/what-is-network-proxy/">
-        <span>01</span>网络代理入门
+        <span>01</span>u7f51u7edcu4ee3u7406u5165u95e8
       </a>
       <a href="https://ladderer.com/articles/proxy-vpn-tor/" aria-current="page">
-        <span>02</span>代理、VPN 与 Tor
+        <span>02</span>u4ee3u7406u3001VPN u4e0e Tor
       </a></div>
           </nav>
-          <nav class="article-pagination" aria-label="上一篇与下一篇">
-      <a rel="prev" href="https://ladderer.com/articles/what-is-network-proxy/"><small>← 上一篇</small><strong>网络代理入门</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/proxy-ecosystem/"><small>下一篇 →</small><strong>客户端与核心</strong></a></nav>
+          <nav class="article-pagination" aria-label="u4e0au4e00u7bc7u4e0eu4e0bu4e00u7bc7">
+      <a rel="prev" href="https://ladderer.com/articles/what-is-network-proxy/"><small>u2190 u4e0au4e00u7bc7</small><strong>u7f51u7edcu4ee3u7406u5165u95e8</strong></a>
+      <a rel="next" href="https://ladderer.com/articles/proxy-ecosystem/"><small>u4e0bu4e00u7bc7 u2192</small><strong>u5ba2u6237u7aefu4e0eu6838u5fc3</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">u79d1u5b66u4e0au7f51u5165u95e8u624bu518c</a><p>u5148u7406u89e3uff0cu518du9009u62e9u3002u8ba9u6bcfu4e00u6b21u8fdeu63a5u90fdu6709u636eu53efu5faau3002</p></div><div class="footer-links"><a href="https://ladderer.com/about/">u5173u4e8eu4e0eu4f7fu7528u8fb9u754c</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub u4e3bu9875 u2197</a><a href="#top">u56deu5230u9876u90e8 u2191</a></div><p class="footer-note">u72ecu7acbu79d1u666eu624bu518c u00b7 u79d1u666eu5185u5bb9u4e0eu670du52a1u5206u5f00 u00b7 u5185u5bb9u590du6838 2026-10-18</p></footer></body></html>
