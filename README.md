@@ -47,4 +47,4 @@
 
 - [怎样向服务商反馈连接故障](https://ladderer.com/articles/report-connection-problem/)：把时间、版本、故障范围和脱敏日志整理成一份可复制的反馈。
 
-📖 [翻墙犯法吗？使用前了解风险与边界](https://ladderer.com/articles/internet-access-risks/)：守住行为边界，了解工具限制，有风险意识，也不必过度恐惧。
+📖 [翻墙犯法吗？](https://ladderer.com/articles/internet-access-risks/)：守住行为边界，了解工具限制，有风险意识，也不必过度恐惧。
