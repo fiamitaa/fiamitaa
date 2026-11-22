@@ -1,13 +1,13 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理节点怎么测速？看延迟、抖动和丢包</title><meta name="description" content="测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/speed-test/"><meta property="og:url" content="https://ladderer.com/articles/speed-test/"><meta property="og:title" content="代理节点怎么测速？看延迟、抖动和丢包"><meta property="og:description" content="测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理节点怎么测速？看延迟、抖动和丢包"><meta name="twitter:description" content="测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"代理节点怎么测速？看延迟、抖动和丢包","description":"测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。","inLanguage":"zh-CN","datePublished":"2026-11-18","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/speed-test/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"入门延伸","item":"https://ladderer.com/#group-next-steps"},{"@type":"ListItem","position":3,"name":"代理节点怎么测速？看延迟、抖动和丢包","item":"https://ladderer.com/articles/speed-test/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="https://ladderer.com/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="https://ladderer.com/">首页</a><a href="https://ladderer.com/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="https://ladderer.com/about/">关于</a></nav></div></header>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代理节点怎么测速？看延迟、抖动和丢包</title><meta name="description" content="测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/speed-test/"><meta property="og:url" content="https://ladderer.com/articles/speed-test/"><meta property="og:title" content="代理节点怎么测速？看延迟、抖动和丢包"><meta property="og:description" content="测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代理节点怎么测速？看延迟、抖动和丢包"><meta name="twitter:description" content="测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"代理节点怎么测速？看延迟、抖动和丢包","description":"测代理节点时，延迟低为什么下载仍慢？弄清健康检查、吞吐、抖动和丢包分别测什么，学会固定设备、网络和测试目标做对照。文章也说明如何用下载、通话等应用复核结果，以及测速会消耗多少流量、哪些表现值得记录，帮助你判断一条线路在自己的场景中是否稳定。","inLanguage":"zh-CN","datePublished":"2026-11-18","dateModified":"2026-11-20","mainEntityOfPage":"https://ladderer.com/articles/speed-test/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"入门延伸","item":"https://ladderer.com/#group-next-steps"},{"@type":"ListItem","position":3,"name":"代理节点怎么测速？看延迟、抖动和丢包","item":"https://ladderer.com/articles/speed-test/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="/about/">关于</a></nav></div></header>
       <div class="reading-progress" aria-hidden="true"><span></span></div>
       <main class="article-shell" id="main">
         <div class="article-intro">
           <nav class="breadcrumbs" aria-label="当前位置">
-            <a href="https://ladderer.com/">首页</a><span aria-hidden="true">/</span><a href="https://ladderer.com/#group-next-steps">入门延伸</a><span aria-hidden="true">/</span>
-            <span aria-current="page">第 12 篇</span>
+            <a href="/">首页</a><span aria-hidden="true">/</span><a href="/#group-next-steps">入门延伸</a><span aria-hidden="true">/</span>
+            <span aria-current="page">第 13 篇</span>
           </nav>
           <header class="article-header">
-            <p class="eyebrow">CHAPTER 12 <span> / 18</span></p>
+            <p class="eyebrow">CHAPTER 13 <span> / 19</span></p>
             <h1>代理节点怎么测速？看延迟、抖动和丢包</h1>
             <p class="article-summary">延迟、吞吐、抖动和丢包测的是什么，怎样结合实际应用比较节点？</p>
             <div class="article-meta"><span>约 7 分钟阅读</span><span>内容复核 <time datetime="2026-11-18">2026.11.18</time></span></div>
@@ -141,41 +141,41 @@
 </ul>
 <p>资料查阅日期：2026-11-18。本文介绍测试方法，没有执行节点测速，也不提供商家速度排名。</p>
 </article>
-          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="https://ladderer.com/articles/node-entry-exit-ip/">节点入口与出口 IP</a><p>沿着一次请求分清节点配置、客户端连接地址和网站观察到的出口。</p></li><li><a href="https://ladderer.com/articles/troubleshooting/">网页打不开怎么查</a><p>从问题范围、应用代理和日志开始，逐步检查 DNS 与连接。</p></li><li><a href="https://ladderer.com/articles/choosing-proxy-service/">订阅、VPN 与自建</a><p>从设备、应用、维护时间和信任对象，判断哪种服务适合自己。</p></li></ul></nav>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="/articles/node-entry-exit-ip/">节点入口与出口 IP</a><p>沿着一次请求分清节点配置、客户端连接地址和网站观察到的出口。</p></li><li><a href="/articles/troubleshooting/">网页打不开怎么查</a><p>从问题范围、应用代理和日志开始，逐步检查 DNS 与连接。</p></li><li><a href="/articles/choosing-proxy-service/">订阅、VPN 与自建</a><p>从设备、应用、维护时间和信任对象，判断哪种服务适合自己。</p></li></ul></nav>
           <section class="service-note" aria-label="订阅服务选购参考"><p class="eyebrow">NEXT STEP</p><h2>订阅服务选购参考</h2><p>如果同一线路反复出现抖动或丢包，可选一条候选线路，用同一台设备和测试目标比较。</p><a class="button button-primary" href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">查看 GitHub 服务评测清单 ↗</a><p class="service-destination">外部推荐清单 · GitHub</p></section>
           <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
         </div>
         <aside class="series-sidebar">
           <nav aria-label="本组文章">
-            <a class="back-link" href="https://ladderer.com/#chapters">查看全部 18 篇文章 →</a>
+            <a class="back-link" href="/#chapters">查看全部 19 篇文章 →</a>
             <div class="sidebar-group"><h2>入门延伸</h2>
-      <a href="https://ladderer.com/articles/choosing-proxy-service/">
-        <span>11</span>订阅、VPN 与自建
+      <a href="/articles/choosing-proxy-service/">
+        <span>12</span>订阅、VPN 与自建
       </a>
-      <a href="https://ladderer.com/articles/speed-test/" aria-current="page">
-        <span>12</span>代理节点测速
+      <a href="/articles/speed-test/" aria-current="page">
+        <span>13</span>代理节点测速
       </a>
-      <a href="https://ladderer.com/articles/subscription-billing/">
-        <span>13</span>订阅计费与退款
+      <a href="/articles/subscription-billing/">
+        <span>14</span>订阅计费与退款
       </a>
-      <a href="https://ladderer.com/articles/subscription-leak/">
-        <span>14</span>订阅链接泄露
+      <a href="/articles/subscription-leak/">
+        <span>15</span>订阅链接泄露
       </a>
-      <a href="https://ladderer.com/articles/subscription-updates-node-fails/">
-        <span>15</span>订阅更新后节点不可用
+      <a href="/articles/subscription-updates-node-fails/">
+        <span>16</span>订阅更新后节点不可用
       </a>
-      <a href="https://ladderer.com/articles/verify-app-proxy/">
-        <span>16</span>验证应用代理路径
+      <a href="/articles/verify-app-proxy/">
+        <span>17</span>验证应用代理路径
       </a>
-      <a href="https://ladderer.com/articles/node-entry-exit-ip/">
-        <span>17</span>节点入口与出口 IP
+      <a href="/articles/node-entry-exit-ip/">
+        <span>18</span>节点入口与出口 IP
       </a>
-      <a href="https://ladderer.com/articles/report-connection-problem/">
-        <span>18</span>连接故障反馈
+      <a href="/articles/report-connection-problem/">
+        <span>19</span>连接故障反馈
       </a></div>
           </nav>
           <nav class="article-pagination" aria-label="上一篇与下一篇">
-      <a rel="prev" href="https://ladderer.com/articles/choosing-proxy-service/"><small>← 上一篇</small><strong>订阅、VPN 与自建</strong></a>
-      <a rel="next" href="https://ladderer.com/articles/subscription-billing/"><small>下一篇 →</small><strong>订阅计费与退款</strong></a></nav>
+      <a rel="prev" href="/articles/choosing-proxy-service/"><small>← 上一篇</small><strong>订阅、VPN 与自建</strong></a>
+      <a rel="next" href="/articles/subscription-billing/"><small>下一篇 →</small><strong>订阅计费与退款</strong></a></nav>
         </aside>
-      </main><footer class="site-footer"><div><a class="footer-brand" href="https://ladderer.com/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="https://ladderer.com/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>

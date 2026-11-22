@@ -46,3 +46,5 @@
 - [节点、入口和出口 IP 有什么区别](https://ladderer.com/articles/node-entry-exit-ip/)：沿着一次请求分清节点配置、客户端连接地址和网站观察到的出口。
 
 - [怎样向服务商反馈连接故障](https://ladderer.com/articles/report-connection-problem/)：把时间、版本、故障范围和脱敏日志整理成一份可复制的反馈。
+
+📖 [翻墙犯法吗？使用前了解风险与边界](https://ladderer.com/articles/internet-access-risks/)：守住行为边界，了解工具限制，有风险意识，也不必过度恐惧。

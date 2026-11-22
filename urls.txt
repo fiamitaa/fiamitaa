@@ -9,6 +9,7 @@ https://ladderer.com/articles/config-subscriptions/
 https://ladderer.com/articles/troubleshooting/
 https://ladderer.com/articles/tool-security/
 https://ladderer.com/articles/privacy-boundaries/
+https://ladderer.com/articles/internet-access-risks/
 https://ladderer.com/articles/choosing-proxy-service/
 https://ladderer.com/articles/speed-test/
 https://ladderer.com/articles/subscription-billing/
