@@ -12,6 +12,43 @@ if (progress && prose) {
 }
 
 const tocLinks = [...document.querySelectorAll('.toc-sidebar a')];
+
+document.querySelectorAll('.prose pre > code').forEach((code) => {
+  const block = document.createElement('div');
+  block.className = 'code-block';
+  const pre = code.parentElement;
+  pre.before(block);
+  block.append(pre);
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'code-copy';
+  button.textContent = '复制';
+  button.setAttribute('aria-label', '复制代码');
+  const status = document.createElement('span');
+  status.className = 'copy-status';
+  status.setAttribute('role', 'status');
+  block.append(button, status);
+  let reset;
+  button.addEventListener('click', async () => {
+    clearTimeout(reset);
+    button.disabled = true;
+    try {
+      await navigator.clipboard.writeText(code.textContent);
+      button.textContent = '已复制';
+      status.textContent = '代码已复制';
+    } catch {
+      button.textContent = '复制失败';
+      status.textContent = '无法访问剪贴板，请手动选择代码复制';
+    } finally {
+      button.disabled = false;
+      reset = setTimeout(() => {
+        button.textContent = '复制';
+        status.textContent = '';
+      }, 3000);
+    }
+  });
+});
+
 if ('IntersectionObserver' in window && tocLinks.length) {
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
