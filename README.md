@@ -48,3 +48,9 @@
 - [怎样向服务商反馈连接故障](https://ladderer.com/articles/report-connection-problem/)：把时间、版本、故障范围和脱敏日志整理成一份可复制的反馈。
 
 📖 [翻墙犯法吗？](https://ladderer.com/articles/internet-access-risks/)：守住行为边界，了解工具限制，有风险意识，也不必过度恐惧。
+
+
+## 技术操作：curl 代理验证
+
+- [验证 HTTP 代理](https://ladderer.com/articles/curl-http-proxy-test/)：分别用 Windows、macOS 和 Ubuntu 检查 HTTP 代理端口。
+- [验证 SOCKS5 代理](https://ladderer.com/articles/curl-socks5-proxy-test/)：分平台检查 SOCKS5 连接与域名解析路径。
