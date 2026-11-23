@@ -52,3 +52,17 @@
 .related-reading p{color:var(--muted);font-size:12px;line-height:1.7;margin:4px 0 0}
 @media (max-width:640px){.hero h1{font-size:34px}}
 @media (max-width:375px){.site-header nav{gap:10px}.header-inner{padding:0 12px}.brand{font-size:12px}.site-header nav a{white-space:nowrap}}
+
+/* Compact topic directories */
+.compact-list{display:block;border-top:1px solid var(--line)}
+.compact-list .chapter-card{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:15px 8px;gap:16px;box-shadow:none;transform:none;align-items:baseline}
+.compact-list .chapter-card:hover{background:#edf1e5}
+.compact-list .chapter-number{font-size:15px;min-width:24px}
+.compact-list .chapter-card h3{font-size:14px;margin:0 0 4px}
+.compact-list .chapter-card p{font-size:12px;margin:0;line-height:1.7}
+.compact-list .card-meta{display:none}
+.topic-link{display:inline-block;font-size:12px;color:var(--green);margin-top:16px;padding:6px 0;text-decoration:underline;text-underline-offset:4px}
+.reading-map .map-path:before{display:none}
+.reading-map .map-node:hover{border-color:#8ba37a}
+.reading-map .map-node{min-height:54px;padding:10px 14px}
+@media(max-width:640px){.compact-list .chapter-card{padding:14px 2px;gap:12px}.reading-map .map-node small{display:block;margin-left:0}.topic-page{padding-top:30px}}

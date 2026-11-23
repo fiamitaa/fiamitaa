@@ -1,4 +1,10 @@
 https://ladderer.com/
+https://ladderer.com/topics/basics/
+https://ladderer.com/topics/ecosystem/
+https://ladderer.com/topics/practice/
+https://ladderer.com/topics/safety/
+https://ladderer.com/topics/next-steps/
+https://ladderer.com/topics/connection-tests/
 https://ladderer.com/articles/what-is-network-proxy/
 https://ladderer.com/articles/proxy-vpn-tor/
 https://ladderer.com/articles/internet-access-risks/
@@ -16,8 +22,8 @@ https://ladderer.com/articles/subscription-billing/
 https://ladderer.com/articles/subscription-leak/
 https://ladderer.com/articles/subscription-updates-node-fails/
 https://ladderer.com/articles/verify-app-proxy/
-https://ladderer.com/articles/curl-http-proxy-test/
-https://ladderer.com/articles/curl-socks5-proxy-test/
 https://ladderer.com/articles/node-entry-exit-ip/
 https://ladderer.com/articles/report-connection-problem/
+https://ladderer.com/articles/curl-http-proxy-test/
+https://ladderer.com/articles/curl-socks5-proxy-test/
 https://ladderer.com/about/
