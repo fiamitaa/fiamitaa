@@ -54,3 +54,6 @@
 
 - [验证 HTTP 代理](https://ladderer.com/articles/curl-http-proxy-test/)：分别用 Windows、macOS 和 Ubuntu 检查 HTTP 代理端口。
 - [验证 SOCKS5 代理](https://ladderer.com/articles/curl-socks5-proxy-test/)：分平台检查 SOCKS5 连接与域名解析路径。
+
+- [直连与代理请求对照](https://ladderer.com/articles/compare-direct-proxy/)：三平台固定目标，比较请求路径和错误阶段。
+- [查询代理监听端口](https://ladderer.com/articles/find-proxy-listening-port/)：核对监听地址和进程，定位端口问题。

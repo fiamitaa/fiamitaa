@@ -26,4 +26,6 @@ https://ladderer.com/articles/node-entry-exit-ip/
 https://ladderer.com/articles/report-connection-problem/
 https://ladderer.com/articles/curl-http-proxy-test/
 https://ladderer.com/articles/curl-socks5-proxy-test/
+https://ladderer.com/articles/compare-direct-proxy/
+https://ladderer.com/articles/find-proxy-listening-port/
 https://ladderer.com/about/

@@ -1,0 +1,134 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>同一个网站，直连和代理结果怎么对照？</title><meta name="description" content="直连和代理访问同一个网站，结果为什么不同？分别用 Windows、macOS 和 Ubuntu 的 curl 命令固定测试目标，排除配置文件和代理例外的干扰，比较连接过程、HTTP 响应和退出码。文章也说明系统 TUN 或 VPN 对结果的影响，帮助你留下可对照的记录，避免同时修改多个设置。"><meta name="theme-color" content="#123f35"><link rel="canonical" href="https://ladderer.com/articles/compare-direct-proxy/"><meta property="og:url" content="https://ladderer.com/articles/compare-direct-proxy/"><meta property="og:title" content="同一个网站，直连和代理结果怎么对照？"><meta property="og:description" content="直连和代理访问同一个网站，结果为什么不同？分别用 Windows、macOS 和 Ubuntu 的 curl 命令固定测试目标，排除配置文件和代理例外的干扰，比较连接过程、HTTP 响应和退出码。文章也说明系统 TUN 或 VPN 对结果的影响，帮助你留下可对照的记录，避免同时修改多个设置。"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:site_name" content="科学上网入门手册"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="同一个网站，直连和代理结果怎么对照？"><meta name="twitter:description" content="直连和代理访问同一个网站，结果为什么不同？分别用 Windows、macOS 和 Ubuntu 的 curl 命令固定测试目标，排除配置文件和代理例外的干扰，比较连接过程、HTTP 响应和退出码。文章也说明系统 TUN 或 VPN 对结果的影响，帮助你留下可对照的记录，避免同时修改多个设置。"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"同一个网站，直连和代理结果怎么对照？","description":"直连和代理访问同一个网站，结果为什么不同？分别用 Windows、macOS 和 Ubuntu 的 curl 命令固定测试目标，排除配置文件和代理例外的干扰，比较连接过程、HTTP 响应和退出码。文章也说明系统 TUN 或 VPN 对结果的影响，帮助你留下可对照的记录，避免同时修改多个设置。","inLanguage":"zh-CN","datePublished":"2026-11-24","dateModified":"2026-11-24","mainEntityOfPage":"https://ladderer.com/articles/compare-direct-proxy/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://ladderer.com/"},{"@type":"ListItem","position":2,"name":"代理连接实操","item":"https://ladderer.com/#group-connection-tests"},{"@type":"ListItem","position":3,"name":"同一个网站，直连和代理结果怎么对照？","item":"https://ladderer.com/articles/compare-direct-proxy/"}]}]</script><script src="/assets/site.js" defer></script></head><body id="top"><a class="skip-link" href="#main">跳到正文</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 8h8c4 0 5 4 9 4M7 16h18M7 24h8c4 0 5-4 9-4" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="8" r="3" fill="currentColor"/><circle cx="25" cy="12" r="3" fill="currentColor"/><circle cx="7" cy="24" r="3" fill="currentColor"/><circle cx="25" cy="20" r="3" fill="currentColor"/></svg></span><span>科学上网入门手册<small>THE NETWORK FIELD GUIDE</small></span></a><nav aria-label="主导航"><a  href="/">首页</a><a href="/#chapters">阅读目录</a><a href="https://github.com/fiamitaa/jichangtuijian" rel="nofollow sponsored noopener noreferrer">服务评测</a><a  href="/about/">关于</a></nav></div></header>
+      <div class="reading-progress" aria-hidden="true"><span></span></div>
+      <main class="article-shell" id="main">
+        <div class="article-intro">
+          <nav class="breadcrumbs" aria-label="当前位置">
+            <a href="/">首页</a><span aria-hidden="true">/</span><a href="/#group-connection-tests">代理连接实操</a><span aria-hidden="true">/</span>
+            <span aria-current="page">第 22 篇</span>
+          </nav>
+          <header class="article-header">
+            <p class="eyebrow">CHAPTER 22 <span> / 23</span></p>
+            <h1>同一个网站，直连和代理结果怎么对照？</h1>
+            <p class="article-summary">固定网址，对照连接过程、响应和退出码，定位请求在哪一步失败。</p>
+            <div class="article-meta"><span>约 8 分钟阅读</span><span>内容复核 <time datetime="2026-11-24">2026.11.24</time></span></div>
+          </header>
+        </div>
+        <nav class="toc-sidebar" aria-labelledby="article-toc-title">
+          <h2 id="article-toc-title">本文目录</h2>
+          <ol><li class="toc-h2"><a href="#先控制测试条件">先控制测试条件</a></li><li class="toc-h2"><a href="#windows-在-powershell-中运行">Windows：在 PowerShell 中运行</a></li><li class="toc-h2"><a href="#macos-在终端中运行">macOS：在终端中运行</a></li><li class="toc-h2"><a href="#ubuntu-在终端中运行">Ubuntu：在终端中运行</a></li><li class="toc-h2"><a href="#对照时看什么">对照时看什么</a></li><li class="toc-h2"><a href="#参考资料">参考资料</a></li></ol>
+        </nav>
+        <div class="article-main">
+          <article class="prose"><p>浏览器能打开，终端却超时，先别同时换节点、DNS 和客户端。用 curl 对同一个网址分别发起“跳过显式代理”和“指定代理”的请求，看失败停在哪一步。</p>
+<p>下面适用于当前 Windows 11 的 PowerShell、macOS 的终端，以及 Ubuntu 桌面或服务器终端。示例使用本机 HTTP/Mixed 端口 <code>127.0.0.1:7890</code>，请替换为客户端实际端口。命令不会修改系统代理，测试结束无需恢复设置。</p>
+<h2 id="先控制测试条件">先控制测试条件</h2>
+<p>保持同一台设备、同一个网络和同一个目标网址。先运行代理客户端，记录测试时间。<code>https://example.com/</code> 是示例目标，排查某个网站时，将两条命令中的网址一起替换为该站的公开页面，不要使用带登录令牌的链接。</p>
+<p>命令中的 <code>-q</code> 放在首个选项位置，用于忽略默认 curl 配置文件；<code>--noproxy &quot;*&quot;</code> 跳过 curl 显式代理，<code>--noproxy &quot;&quot;</code> 清除本次请求的代理例外。已有 curl 配置或 <code>NO_PROXY</code> 可能改变请求路径，这几个选项用于排除它们的干扰。[1]</p>
+<p><strong>跳过 curl 代理，不等于绕过系统 TUN、VPN 或路由器代理。</strong> 如果这些接管方式正在运行，两次请求仍可能经过同一个上游。需要比较基础网络时，先记录现状，在允许中断连接的情况下暂时停用相关接管，测试后恢复；不要在远程维护会话中贸然断开承载会话的 VPN。</p>
+<h2 id="windows-在-powershell-中运行">Windows：在 PowerShell 中运行</h2>
+<p>开始菜单搜索“终端”，打开 PowerShell 标签页。先确认使用 curl 程序，而不是旧版 PowerShell 的同名别名：</p>
+<pre><code class="language-powershell">curl.exe --version
+</code></pre>
+<p>先执行跳过代理的请求：</p>
+<pre><code class="language-powershell">curl.exe -q --noproxy &quot;*&quot; --connect-timeout 10 --max-time 30 -v https://example.com/ -o NUL
+$LASTEXITCODE
+</code></pre>
+<p>再指定本机 HTTP 代理。每条 curl 命令后立即读取退出码，别在中间执行其他命令：</p>
+<pre><code class="language-powershell">curl.exe -q --noproxy &quot;&quot; --proxy http://127.0.0.1:7890 --connect-timeout 10 --max-time 30 -v https://example.com/ -o NUL
+$LASTEXITCODE
+</code></pre>
+<p>这里使用当前 PowerShell 7 的参数传递方式。如果你使用 Windows PowerShell 5.1，空字符串参数传递可能不同，可将第二条命令改为以下写法，避免传递空参数：</p>
+<pre><code class="language-powershell">curl.exe -q --noproxy example.invalid --proxy http://127.0.0.1:7890 --connect-timeout 10 --max-time 30 -v https://example.com/ -o NUL
+$LASTEXITCODE
+</code></pre>
+<p><code>example.invalid</code> 是这里专门设置的不匹配例外，测试网址不要改为这个域名。Windows 11 内置 curl；若找不到程序，用 <code>where.exe curl</code> 核对路径，再检查系统组件或从 curl 官方渠道安装。[2]</p>
+<h2 id="macos-在终端中运行">macOS：在终端中运行</h2>
+<p>按 Command + 空格，搜索“终端”并打开。检查 curl：</p>
+<pre><code class="language-sh">curl --version
+</code></pre>
+<p>先跳过 curl 代理，再指定代理，每次执行后立即查看退出码：</p>
+<pre><code class="language-sh">curl -q --noproxy &quot;*&quot; --connect-timeout 10 --max-time 30 -v https://example.com/ -o /dev/null
+printf 'exit=%s\n' &quot;$?&quot;
+</code></pre>
+<pre><code class="language-sh">curl -q --noproxy &quot;&quot; --proxy http://127.0.0.1:7890 --connect-timeout 10 --max-time 30 -v https://example.com/ -o /dev/null
+printf 'exit=%s\n' &quot;$?&quot;
+</code></pre>
+<p>如果命令不存在，先确认终端路径和 curl 安装情况。无需为了这次测试修改 macOS 的网络代理开关。</p>
+<h2 id="ubuntu-在终端中运行">Ubuntu：在终端中运行</h2>
+<p>桌面版按 Ctrl + Alt + T；服务器版直接使用当前 shell。先检查工具，缺少 curl 时再安装：</p>
+<pre><code class="language-sh">curl --version
+</code></pre>
+<pre><code class="language-sh">sudo apt update
+sudo apt install curl
+</code></pre>
+<p>执行两次请求，保持网址与端口一致：</p>
+<pre><code class="language-sh">curl -q --noproxy &quot;*&quot; --connect-timeout 10 --max-time 30 -v https://example.com/ -o /dev/null
+printf 'exit=%s\n' &quot;$?&quot;
+</code></pre>
+<pre><code class="language-sh">curl -q --noproxy &quot;&quot; --proxy http://127.0.0.1:7890 --connect-timeout 10 --max-time 30 -v https://example.com/ -o /dev/null
+printf 'exit=%s\n' &quot;$?&quot;
+</code></pre>
+<p>安装需要管理员权限，测试请求本身不需要 <code>sudo</code>。APT 安装失败时先处理软件源或基础联网问题，不要把安装失败当成 curl 测试结果。[3]</p>
+<h2 id="对照时看什么">对照时看什么</h2>
+<p><code>-v</code> 显示连接过程，网页正文被丢弃。指定代理的请求，应先看到连接本机代理地址；HTTPS 目标还可能显示 HTTP CONNECT 隧道响应，然后才是目标站点的 TLS 握手和 HTTP 响应。</p>
+<div class="table-wrap" role="region" aria-label="对比表格，可横向滚动" tabindex="0"><table>
+<thead>
+<tr>
+<th>对照结果</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两次都成功</td>
+<td>这次目标在两条 curl 配置下都可访问，不能据此判断其他应用</td>
+</tr>
+<tr>
+<td>跳过代理成功，指定代理失败</td>
+<td>先看是否连上本机端口，再查代理握手和上游连接</td>
+</tr>
+<tr>
+<td>跳过代理失败，指定代理成功</td>
+<td>当前两条请求路径表现不同，继续核对 DNS、路由或访问限制</td>
+</tr>
+<tr>
+<td>两次都失败</td>
+<td>对照具体阶段；相同错误也可能来自目标站点或基础网络</td>
+</tr>
+</tbody>
+</table></div>
+<p>退出码 <code>0</code> 表示 curl 传输完成，<strong>不保证 HTTP 状态是 200</strong>。未加 <code>--fail</code> 时，收到 403、404 等响应也可能退出为 0。代理返回的 <code>200 Connection established</code> 只表示隧道建立，后面仍可能 TLS 失败。[1]</p>
+<p><code>--connect-timeout 10</code> 限制连接阶段，<code>--max-time 30</code> 限制整次请求，单位都是秒。超时后记录报错即可，不需要不停重试。若两次结果矛盾，可在相同条件下再各执行一次，排除偶发波动；它们不是测速数据。</p>
+<p>需要 SOCKS5 时，将代理地址换成 <code>socks5h://127.0.0.1:实际端口</code>，其余条件保持不变。解析位置的区别见 <a href="https://ladderer.com/articles/curl-socks5-proxy-test/">SOCKS5 代理验证</a>。分享结果前遮住认证头、账号、内网地址和敏感网址。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>[1] <a href="https://curl.se/docs/manpage.html">curl 官方手册：配置文件、代理例外、超时和退出码</a></li>
+<li>[2] <a href="https://learn.microsoft.com/en-us/windows/curl/">Microsoft：Windows 中的 curl</a></li>
+<li>[3] <a href="https://ubuntu.com/server/docs/how-to/software/package-management/">Ubuntu Server：软件包管理</a></li>
+</ul>
+<p>操作依据官方文档整理，三平台实机结果待补充。</p>
+</article>
+          <nav class="related-reading" aria-labelledby="related-title"><h2 id="related-title">下一步阅读</h2><ul><li><a href="/articles/curl-http-proxy-test/">curl 测试 HTTP 代理</a><p>用 Windows、macOS 或 Ubuntu 的 curl 检查本机 HTTP 代理端口。</p></li><li><a href="/articles/curl-socks5-proxy-test/">curl 测试 SOCKS5 代理</a><p>分平台验证 SOCKS5 端口，并比较本地与代理端 DNS 解析。</p></li></ul></nav>
+          <div class="article-caution">本文为一般性科普，不构成服务推荐或法律意见。项目支持范围会变化，使用前请核对官方文档及所在地规则。</div>
+        </div>
+        <aside class="series-sidebar">
+          <nav aria-label="本组文章">
+            <a class="back-link" href="/#chapters">查看全部 23 篇文章 →</a>
+            <div class="sidebar-group"><h2>代理连接实操</h2>
+      <a href="/articles/curl-http-proxy-test/">
+        <span>20</span>curl 测试 HTTP 代理
+      </a>
+      <a href="/articles/curl-socks5-proxy-test/">
+        <span>21</span>curl 测试 SOCKS5 代理
+      </a>
+      <a href="/articles/compare-direct-proxy/" aria-current="page">
+        <span>22</span>对照直连与代理请求
+      </a>
+      <a href="/articles/find-proxy-listening-port/">
+        <span>23</span>查询代理监听端口
+      </a></div>
+          </nav>
+          <nav class="article-pagination" aria-label="上一篇与下一篇">
+      <a rel="prev" href="/articles/curl-socks5-proxy-test/"><small>← 上一篇</small><strong>curl 测试 SOCKS5 代理</strong></a>
+      <a rel="next" href="/articles/find-proxy-listening-port/"><small>下一篇 →</small><strong>查询代理监听端口</strong></a></nav>
+        </aside>
+      </main><footer class="site-footer"><div><a class="footer-brand" href="/">科学上网入门手册</a><p>先理解，再选择。让每一次连接都有据可循。</p></div><div class="footer-links"><a href="/about/">关于与使用边界</a><a href="https://github.com/fiamitaa" rel="noopener">GitHub 主页 ↗</a><a href="#top">回到顶部 ↑</a></div><p class="footer-note">独立科普手册 · 科普内容与服务分开 · 内容复核 2026-10-18</p></footer></body></html>
